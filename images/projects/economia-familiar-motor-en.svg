@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" font-family="Inter, Helvetica, Arial, sans-serif" role="img">
+<title>How each transaction is categorised</title>
+<defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F7F4EE"/><stop offset="1" stop-color="#EAF2EF"/></linearGradient><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#C9D6D2"/></marker><marker id="art" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#0E7C6B"/></marker><filter id="sh" x="-5%" y="-5%" width="110%" height="120%"><feDropShadow dx="0" dy="3" stdDeviation="5" flood-color="#1F2D2A" flood-opacity=".08"/></filter></defs>
+<rect width="1200" height="720" fill="url(#bg)"/>
+<text x="60" y="70" font-family="Georgia, serif" font-size="34" font-weight="700" fill="#1F2D2A">How each transaction is categorised</text>
+<text x="60" y="102" font-size="18" fill="#5B6B67">From bank statement to category, with no AI and without leaving the computer</text>
+<text x="60" y="150" font-size="13" font-weight="700" letter-spacing="1.5" fill="#0E7C6B">1 · CSV STATEMENT</text>
+<text x="345" y="150" font-size="13" font-weight="700" letter-spacing="1.5" fill="#0E7C6B">2 · MERCHANT KEY</text>
+<text x="600" y="150" font-size="13" font-weight="700" letter-spacing="1.5" fill="#0E7C6B">3 · CHOOSE THE CATEGORY</text>
+<text x="930" y="150" font-size="13" font-weight="700" letter-spacing="1.5" fill="#0E7C6B">4 · RESULT</text>
+<g filter="url(#sh)"><rect x="60" y="190" width="250" height="56" rx="10" fill="#fff"/></g>
+<text x="76" y="213" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="13" fill="#5B6B67">02/10  <tspan fill="#C2410C">-77,00EUR</tspan></text>
+<text x="76" y="234" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="15" font-weight="700" fill="#1F2D2A">MERCADONA PUERTA</text>
+<line x1="314" y1="218" x2="340" y2="218" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<g filter="url(#sh)"><rect x="60" y="265" width="250" height="56" rx="10" fill="#fff"/></g>
+<text x="76" y="288" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="13" fill="#5B6B67">03/10  <tspan fill="#C2410C">-49,99EUR</tspan></text>
+<text x="76" y="309" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="15" font-weight="700" fill="#1F2D2A">DECATHLON ALCOBEN</text>
+<line x1="314" y1="293" x2="340" y2="293" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<g filter="url(#sh)"><rect x="60" y="340" width="250" height="56" rx="10" fill="#fff"/></g>
+<text x="76" y="363" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="13" fill="#5B6B67">05/10  <tspan fill="#C2410C">-23,40EUR</tspan></text>
+<text x="76" y="384" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="15" font-weight="700" fill="#1F2D2A">LEROY MERLIN SS</text>
+<line x1="314" y1="368" x2="340" y2="368" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<g filter="url(#sh)"><rect x="60" y="415" width="250" height="56" rx="10" fill="#fff"/></g>
+<text x="76" y="438" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="13" fill="#5B6B67">06/10  <tspan fill="#C2410C">-50,00EUR</tspan></text>
+<text x="76" y="459" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="15" font-weight="700" fill="#1F2D2A">REINTEGRO CAJERO</text>
+<line x1="314" y1="443" x2="340" y2="443" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="345" y="200" width="200" height="36" rx="18" fill="#E2EFEB"/>
+<text x="445" y="223" text-anchor="middle" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="14" fill="#1F2D2A">mercadona</text>
+<rect x="345" y="275" width="200" height="36" rx="18" fill="#E2EFEB"/>
+<text x="445" y="298" text-anchor="middle" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="14" fill="#1F2D2A">decathlon</text>
+<rect x="345" y="350" width="200" height="36" rx="18" fill="#E2EFEB"/>
+<text x="445" y="373" text-anchor="middle" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="14" fill="#1F2D2A">leroy merlin</text>
+<rect x="345" y="425" width="200" height="36" rx="18" fill="#E2EFEB"/>
+<text x="445" y="448" text-anchor="middle" font-family="DejaVu Sans Mono, Menlo, monospace" font-size="14" fill="#1F2D2A">reintegro cajero</text>
+<text x="445" y="492" text-anchor="middle" font-size="12.5" fill="#5B6B67">lowercase · no accents · first 1–2 words</text>
+<g filter="url(#sh)"><rect x="600" y="200" width="280" height="74" rx="12" fill="#fff" stroke="#0E7C6B" stroke-opacity=".35"/></g>
+<circle cx="626" cy="237" r="13" fill="#0E7C6B"/><text x="626" y="242" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">1</text>
+<text x="650" y="232" font-size="17" font-weight="700" fill="#1F2D2A">Confirmed by you</text>
+<text x="650" y="254" font-size="13" fill="#5B6B67">an answer you already gave wins</text>
+<g filter="url(#sh)"><rect x="600" y="295" width="280" height="74" rx="12" fill="#fff" stroke="#0E7C6B" stroke-opacity=".35"/></g>
+<circle cx="626" cy="332" r="13" fill="#0E7C6B"/><text x="626" y="337" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">2</text>
+<text x="650" y="327" font-size="17" font-weight="700" fill="#1F2D2A">Family history</text>
+<text x="650" y="349" font-size="13" fill="#5B6B67">majority vote over past spreadsheets</text>
+<g filter="url(#sh)"><rect x="600" y="390" width="280" height="74" rx="12" fill="#fff" stroke="#C2410C" stroke-opacity=".35"/></g>
+<circle cx="626" cy="427" r="13" fill="#C2410C"/><text x="626" y="432" text-anchor="middle" font-size="14" font-weight="700" fill="#fff">3</text>
+<text x="650" y="422" font-size="17" font-weight="700" fill="#1F2D2A">No clue</text>
+<text x="650" y="444" font-size="13" fill="#5B6B67">never guesses: goes to the inbox</text>
+<path d="M549 218 C 575 218, 575 332, 597 332" fill="none" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<path d="M549 293 C 575 293, 575 237, 597 237" fill="none" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<path d="M549 368 C 575 368, 575 332, 597 332" fill="none" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<path d="M549 443 C 575 443, 575 427, 597 427" fill="none" stroke="#C9D6D2" stroke-width="2" marker-end="url(#ar)"/>
+<path d="M884 332 C 905 332, 905 218, 926 218" fill="none" stroke="#0E7C6B" stroke-opacity=".55" stroke-width="2" marker-end="url(#art)"/>
+<rect x="926" y="196" width="244" height="44" rx="22" fill="#E2EFEB" stroke="#0E7C6B" stroke-opacity=".5"/>
+<text x="952" y="224" font-size="17" font-weight="700" fill="#0E7C6B">✓</text>
+<text x="974" y="224" font-size="16" font-weight="700" fill="#1F2D2A">Groceries</text>
+<text x="1158" y="223" text-anchor="end" font-size="11.5" fill="#5B6B67">history</text>
+<path d="M884 237 C 905 237, 905 293, 926 293" fill="none" stroke="#0E7C6B" stroke-opacity=".55" stroke-width="2" marker-end="url(#art)"/>
+<rect x="926" y="271" width="244" height="44" rx="22" fill="#E2EFEB" stroke="#0E7C6B" stroke-opacity=".5"/>
+<text x="952" y="299" font-size="17" font-weight="700" fill="#0E7C6B">✓</text>
+<text x="974" y="299" font-size="16" font-weight="700" fill="#1F2D2A">Sports</text>
+<text x="1158" y="298" text-anchor="end" font-size="11.5" fill="#5B6B67">confirmed</text>
+<path d="M884 332 C 905 332, 905 368, 926 368" fill="none" stroke="#0E7C6B" stroke-opacity=".55" stroke-width="2" marker-end="url(#art)"/>
+<rect x="926" y="346" width="244" height="44" rx="22" fill="#E2EFEB" stroke="#0E7C6B" stroke-opacity=".5"/>
+<text x="952" y="374" font-size="17" font-weight="700" fill="#0E7C6B">✓</text>
+<text x="974" y="374" font-size="16" font-weight="700" fill="#1F2D2A">Home</text>
+<text x="1158" y="373" text-anchor="end" font-size="11.5" fill="#5B6B67">history</text>
+<path d="M884 427 C 905 427, 905 443, 926 443" fill="none" stroke="#C2410C" stroke-opacity=".55" stroke-width="2" marker-end="url(#ar)"/>
+<rect x="926" y="421" width="244" height="44" rx="22" fill="#FFF4EC" stroke="#C2410C" stroke-opacity=".5"/>
+<text x="952" y="449" font-size="17" font-weight="700" fill="#C2410C">?</text>
+<text x="974" y="449" font-size="16" font-weight="700" fill="#1F2D2A">Pending</text>
+<text x="1158" y="448" text-anchor="end" font-size="11.5" fill="#5B6B67">inbox</text>
+<path d="M1035 471 C 1035 545, 760 560, 740 476" fill="none" stroke="#0E7C6B" stroke-width="2" stroke-dasharray="6 6" marker-end="url(#art)"/>
+<text x="888" y="548" text-anchor="middle" font-size="13.5" font-style="italic" fill="#0E7C6B">Once you confirm it in the inbox, the app remembers it for the next import</text>
+<g filter="url(#sh)"><rect x="60" y="598" width="340" height="80" rx="14" fill="#fff"/></g>
+<text x="88" y="650" font-family="Georgia, serif" font-size="36" font-weight="700" fill="#0E7C6B">94%</text>
+<text x="165" y="646" font-size="18" fill="#1F2D2A">automatic</text>
+<g filter="url(#sh)"><rect x="430" y="598" width="340" height="80" rx="14" fill="#fff"/></g>
+<text x="458" y="650" font-family="Georgia, serif" font-size="36" font-weight="700" fill="#0E7C6B">0</text>
+<text x="493" y="646" font-size="18" fill="#1F2D2A">duplicates</text>
+<g filter="url(#sh)"><rect x="800" y="598" width="340" height="80" rx="14" fill="#fff"/></g>
+<text x="828" y="650" font-family="Georgia, serif" font-size="36" font-weight="700" fill="#0E7C6B">0</text>
+<text x="863" y="646" font-size="18" fill="#1F2D2A">data in the cloud</text>
+</svg>
