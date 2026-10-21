@@ -130,6 +130,17 @@ def media(p, n=""):
             f'{L("Demo en vídeo próximamente.", "Video demo coming soon.", "p")}</div>')
 
 
+def arch_viewer(slug):
+    """Diagrama de arquitectura interactivo (Archify) en diagramas/<slug>-<idioma>.html."""
+    def frame(lang, title, open_label):
+        src = f"diagramas/{slug}-{lang}.html"
+        return (f'<div class="arch-viewer" data-l="{lang}">'
+                f'<iframe src="{src}?embed=1&amp;theme=light" title="{title}" loading="lazy"></iframe>'
+                f'<p class="arch-open"><a href="{src}?theme=light" target="_blank" rel="noopener">{open_label}</a></p></div>')
+    return (frame("es", "Diagrama de arquitectura", "Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)")
+            + frame("en", "Architecture diagram", "Open the diagram full screen (zoom, search and export)"))
+
+
 def project_page(p):
     s = p["slug"]
     tag_es, tag_en = p["tagline"]
@@ -141,7 +152,7 @@ def project_page(p):
         for tes, bes, ten, ben in p["decisions"]
     )
     flow_es, flow_en = p["flow"]
-    arch_es, arch_en = p["arch"]
+    arch_es, arch_en = p["arch_intro"]
     live = ""
     if p["link"]:
         live = (f'<li><a href="{p["link"]}" class="button primary large" target="_blank" rel="noopener">'
@@ -171,14 +182,10 @@ def project_page(p):
 						<script type="text/x-mermaid" data-target="flow-en">
 {flow_en}</script>
 
-						<details class="arch">
-							<summary>{L('Arquitectura técnica', 'Technical architecture')}</summary>
-							<div class="diagram"><div id="arch-es" data-l="es"></div><div id="arch-en" data-l="en"></div></div>
-						</details>
-						<script type="text/x-mermaid" data-target="arch-es">
-{arch_es}</script>
-						<script type="text/x-mermaid" data-target="arch-en">
-{arch_en}</script>
+						<h2>{L('Arquitectura', 'Architecture')}</h2>
+						<div data-l="es">{"".join(f"<p>{x}</p>" for x in arch_es)}</div>
+						<div data-l="en">{"".join(f"<p>{x}</p>" for x in arch_en)}</div>
+						{arch_viewer(s)}
 
 						<h2>{L('Decisiones técnicas', 'Technical decisions')}</h2>
 						<ul class="decisions">{decisions}</ul>

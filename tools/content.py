@@ -20,21 +20,23 @@ PROJECTS = [
             "Asistente de carrera con IA que construye tu perfil, analiza cada oferta y genera un CV adaptado que pasa una auditoría de veracidad antes de exportarse. Incluye simulador de entrevistas con feedback STAR.",
             "AI career assistant that builds your profile, analyses each job offer and generates a tailored CV that must pass a truthfulness audit before export. Includes an interview simulator with STAR feedback.",
         ),
-        "chips": ["Python", "FastAPI", "React + TypeScript", "Claude (Sonnet / Haiku)", "RAG", "PostgreSQL + pgvector", "Celery + Redis", "WeasyPrint", "Docker"],
+        "chips": ["Python", "FastAPI", "React + TypeScript", "Claude (Sonnet / Haiku)", "PostgreSQL + pgvector", "SQLite", "WeasyPrint", "Tauri 2", "Docker"],
         "facts": [
             ("~$0.10", "coste real por CV generado", "real cost per generated CV"),
             ("20/20", "exageraciones detectadas en el banco de evaluación", "exaggerations caught in the eval set"),
-            ("~840", "tests automáticos", "automated tests"),
+            ("~850", "tests automáticos", "automated tests"),
             ("10", "plantillas PDF legibles por ATS", "ATS-readable PDF templates"),
         ],
         "what": (
             [
                 "Escribir un CV distinto para cada oferta es lento, y los generadores con IA tienden a <em>adornar</em> la experiencia. CareerCraft parte de la idea contraria: primero construye una <strong>base de hechos verificada</strong> sobre ti y después redacta a partir de ella con el enfoque más favorable, siempre que siga siendo defendible.",
                 "Puedes empezar subiendo tu CV o tu PDF de LinkedIn, o con una entrevista conversacional que solo pregunta por lo que falta. Al pegar una oferta, la app cruza cada requisito con tu perfil (cubierto, implícito con evidencia o ausente), genera el CV en el idioma de la oferta y lo somete a una auditoría antes de dejarte exportarlo.",
+                "Funciona de dos maneras con el mismo código: como <strong>aplicación web</strong> con cuentas de usuario, o como <strong>app de escritorio para macOS</strong> en la que tus datos no salen del ordenador.",
             ],
             [
                 "Writing a different CV for every job offer is slow, and AI generators tend to <em>embellish</em> experience. CareerCraft takes the opposite approach: it first builds a <strong>verified fact base</strong> about you and then writes from it with the most favourable framing that is still defensible.",
                 "You can start by uploading your CV or LinkedIn PDF, or through a conversational interview that only asks about what is missing. When you paste a job offer, the app matches each requirement against your profile (covered, implied with evidence, or missing), generates the CV in the offer's language and audits it before letting you export it.",
+                "The same code runs in two ways: as a <strong>web application</strong> with user accounts, or as a <strong>macOS desktop app</strong> where your data never leaves your computer.",
             ],
         ),
         "flow": (
@@ -43,9 +45,8 @@ PROJECTS = [
   A2["Entrevista conversacional<br/>(solo pregunta lo que falta)"] --> C
   B --> C["Revisas y confirmas<br/>nada entra sin tu OK"]
   C --> D[("Perfil verificado")]
-  D --> E["Indexado para búsqueda semántica<br/>(RAG)"]
   F["Pegas una oferta"] --> G["Análisis de requisitos<br/>+ preguntas para concretar logros"]
-  E --> H["Genera el CV adaptado<br/>en el idioma de la oferta"]
+  D --> H["Genera el CV adaptado<br/>en el idioma de la oferta"]
   G --> H
   H --> I{"Auditoría de<br/>veracidad"}
   I -- "corrige" --> H
@@ -58,9 +59,8 @@ PROJECTS = [
   A2["Conversational interview<br/>(asks only what is missing)"] --> C
   B --> C["You review and confirm<br/>nothing enters without your OK"]
   C --> D[("Verified profile")]
-  D --> E["Indexed for semantic search<br/>(RAG)"]
   F["Paste a job offer"] --> G["Requirement analysis<br/>+ questions to pin down achievements"]
-  E --> H["Generates the tailored CV<br/>in the offer's language"]
+  D --> H["Generates the tailored CV<br/>in the offer's language"]
   G --> H
   H --> I{"Truthfulness<br/>audit"}
   I -- "fix" --> H
@@ -69,49 +69,21 @@ PROJECTS = [
   D --> L["Interview simulator<br/>STAR feedback against your profile"]
 """,
         ),
-        "arch": (
-            """flowchart TB
-  UI["SPA React + TypeScript"] --> API["API FastAPI<br/>(JWT)"]
-  subgraph SVC["Servicios"]
-    ING["Ingesta<br/>PDF / DOCX"]
-    ONB["Onboarding<br/>conversacional"]
-    JOB["Análisis de oferta<br/>+ cruce de requisitos"]
-    GEN["Generador de CV"]
-    QA["Gate de calidad<br/>reglas + jueces LLM"]
-    INT["Motor de entrevistas"]
-    REN["Render PDF<br/>Jinja2 + WeasyPrint"]
-  end
-  API --> ING & ONB & JOB & INT & REN
-  ING & ONB --> PROF[("Perfil<br/>PostgreSQL")]
-  PROF --> RAG["Embeddings"] --> VEC[("pgvector")]
-  JOB --> GEN
-  PROF --> GEN --> QA
-  QA -. "bucle de corrección" .-> GEN
-  ING & GEN & QA & JOB & INT --> LLM["Capa LLM<br/>Claude Sonnet / Haiku"]
-  LLM --> CRED[("Créditos y costes")]
-""",
-            """flowchart TB
-  UI["React + TypeScript SPA"] --> API["FastAPI API<br/>(JWT)"]
-  subgraph SVC["Services"]
-    ING["Ingestion<br/>PDF / DOCX"]
-    ONB["Conversational<br/>onboarding"]
-    JOB["Offer analysis<br/>+ requirement matching"]
-    GEN["CV generator"]
-    QA["Quality gate<br/>rules + LLM judges"]
-    INT["Interview engine"]
-    REN["PDF render<br/>Jinja2 + WeasyPrint"]
-  end
-  API --> ING & ONB & JOB & INT & REN
-  ING & ONB --> PROF[("Profile<br/>PostgreSQL")]
-  PROF --> RAG["Embeddings"] --> VEC[("pgvector")]
-  JOB --> GEN
-  PROF --> GEN --> QA
-  QA -. "correction loop" .-> GEN
-  ING & GEN & QA & JOB & INT --> LLM["LLM layer<br/>Claude Sonnet / Haiku"]
-  LLM --> CRED[("Credits & costs")]
-""",
+        "arch_intro": (
+            [
+                "Un único backend FastAPI concentra toda la lógica: perfil, generación del CV, entrevistas y créditos. La interfaz es una SPA en React que habla con él por REST. Los servicios de dominio son los únicos que tocan la base de datos, el render de PDF y la capa de IA, que elige el proveedor según el modelo: Claude para redactar y auditar, y OpenAI solo para embeddings.",
+                "El mismo backend se empaqueta de dos formas. En la versión web corre en un contenedor Docker con PostgreSQL + pgvector y login con JWT. En la app de escritorio, una shell Tauri 2 lanza el backend como proceso local con SQLite y guarda la credencial de IA en el llavero de macOS.",
+            ],
+            [
+                "A single FastAPI backend holds all the logic: profile, CV generation, interviews and credits. The UI is a React SPA that talks to it over REST. Only the domain services touch the database, the PDF renderer and the AI layer, which picks the provider by model: Claude to write and audit, and OpenAI for embeddings only.",
+                "The same backend ships in two forms. The web version runs in a Docker container with PostgreSQL + pgvector and JWT login. In the desktop app, a Tauri 2 shell launches the backend as a local process with SQLite and keeps the AI credential in the macOS keychain.",
+            ],
         ),
         "decisions": [
+            ("Un backend, dos productos",
+             "En lugar de mantener una app web y otra de escritorio, el mismo backend se empaqueta como contenedor o como proceso local de Tauri. Cambian la base de datos (PostgreSQL o SQLite) y la autenticación; la lógica de dominio y sus tests son los mismos.",
+             "One backend, two products",
+             "Instead of maintaining separate web and desktop apps, the same backend ships either as a container or as a local Tauri process. Only the database (PostgreSQL or SQLite) and authentication change; the domain logic and its tests are shared."),
             ("Antialucinación por capas",
              "Los datos factuales (empresa, puesto, fechas, skills) se copian tal cual; el modelo solo redacta resumen y bullets. Después, un gate audita cada dimensión: los años y el nivel se comprueban con código determinista (los LLM fallaban la aritmética) y la invención o el seniority inflado los revisan jueces LLM con responsabilidades separadas.",
              "Layered anti-hallucination",
@@ -194,41 +166,15 @@ PROJECTS = [
   F --> GAL["Gallery<br/>character and scene illustrations"]
 """,
         ),
-        "arch": (
-            """flowchart TB
-  subgraph APP["App de escritorio (Tauri 2)"]
-    UI["UI React 19<br/>+ stores Zustand"] --> CORE["core/<br/>TypeScript puro"]
-    CORE --> PLAT["Capa de plataforma"]
-    CORE --> CTX["Constructor de contexto"]
-    RUST["Proceso Rust<br/>red + llavero"]
-  end
-  PLAT --> FS[("Carpeta del proyecto<br/>Markdown + YAML + JSON Canvas")]
-  FS --> IDX[("Índice SQLite + FTS5<br/>en WASM, reconstruible")]
-  IDX --> CTX
-  CTX --> RUST
-  RUST --> KEY[("Llavero del SO")]
-  RUST --> ANT["Claude API<br/>streaming"]
-  RUST --> OLL["Ollama<br/>(local)"]
-  RUST --> OAI["OpenAI Images"]
-  RUST -. "eventos en streaming" .-> UI
-""",
-            """flowchart TB
-  subgraph APP["Desktop app (Tauri 2)"]
-    UI["React 19 UI<br/>+ Zustand stores"] --> CORE["core/<br/>pure TypeScript"]
-    CORE --> PLAT["Platform layer"]
-    CORE --> CTX["Context builder"]
-    RUST["Rust process<br/>network + keychain"]
-  end
-  PLAT --> FS[("Project folder<br/>Markdown + YAML + JSON Canvas")]
-  FS --> IDX[("SQLite + FTS5 index<br/>in WASM, rebuildable")]
-  IDX --> CTX
-  CTX --> RUST
-  RUST --> KEY[("OS keychain")]
-  RUST --> ANT["Claude API<br/>streaming"]
-  RUST --> OLL["Ollama<br/>(local)"]
-  RUST --> OAI["OpenAI Images"]
-  RUST -. "streaming events" .-> UI
-""",
+        "arch_intro": (
+            [
+                "La app es local-first. La interfaz en React y el núcleo en TypeScript puro corren dentro del webview de Tauri, y el núcleo no sabe en qué plataforma está: pide disco o IA a una capa de plataforma, que en escritorio delega en el proceso nativo en Rust.",
+                "Ese proceso nativo es la única salida al exterior: lee y escribe la carpeta del proyecto y los ajustes de la app, consulta el llavero del sistema y hace las peticiones a los proveedores de IA (Claude, OpenAI u Ollama en local). El índice SQLite con búsqueda de texto completo vive en memoria y se reconstruye a partir de los archivos.",
+            ],
+            [
+                "The app is local-first. The React UI and the pure-TypeScript core run inside Tauri's webview, and the core doesn't know which platform it runs on: it asks a platform layer for disk or AI access, which on desktop delegates to the native Rust process.",
+                "That native process is the only way out: it reads and writes the project folder and the app settings, uses the OS keychain and makes the requests to AI providers (Claude, OpenAI or local Ollama). The SQLite full-text index lives in memory and is rebuilt from the files.",
+            ],
         ),
         "decisions": [
             ("Archivos como fuente de verdad",
@@ -240,9 +186,9 @@ PROJECTS = [
              "Tauri instead of Electron",
              "A 3–15 MB installer and lower memory use. Logic lives in TypeScript; Rust is kept for native concerns only. A test prevents the core from importing React or Tauri."),
             ("IA segura por diseño",
-             "Las claves de API se guardan en el llavero del sistema y nunca llegan a JavaScript. Todas las peticiones salen desde Rust hacia una lista cerrada de destinos, y la CSP impide conexiones directas desde la interfaz.",
+             "Las claves de API se guardan en el llavero del sistema, no en la interfaz, y la red solo se usa desde el proceso nativo para hablar con los proveedores de IA.",
              "Secure-by-design AI",
-             "API keys live in the OS keychain and never reach JavaScript. Every request goes out through Rust to a closed list of destinations, and the CSP blocks direct network calls from the UI."),
+             "API keys are kept in the OS keychain, not in the UI, and the network is only used from the native process to talk to AI providers."),
             ("IA transparente",
              "El contexto que se envía se ve como chips editables, la «biblia» del libro se cachea con prompt caching y cada respuesta muestra su coste real. Hay alternativa local con Ollama.",
              "Transparent AI",
@@ -272,7 +218,7 @@ PROJECTS = [
         "facts": [
             ("~2¢", "por planificación semanal con IA", "per AI weekly plan"),
             ("4", "funciones de IA (recetas, importar, tickets, menú)", "AI features (recipes, import, receipts, menu)"),
-            ("RLS", "aislamiento de datos por hogar", "per-household data isolation"),
+            ("~280", "tests automáticos", "automated tests"),
             ("PWA", "instalable en el móvil", "installable on mobile"),
         ],
         "what": (
@@ -315,35 +261,15 @@ PROJECTS = [
   MENU --> COOK["Cooking mode<br/>deducts from the pantry"] --> PAN
 """,
         ),
-        "arch": (
-            """flowchart TB
-  U["Móvil (PWA)"] --> FE["Next.js 16 / React 19<br/>+ service worker"]
-  FE --> TRPC["API tRPC<br/>(serverless en Vercel)"]
-  TRPC --> MW["Middlewares<br/>auth · hogar · plan · cupo IA"]
-  MW --> AIL["Capa IA<br/>tool-use + Zod + guardarraíles"]
-  AIL --> HAI["Claude Haiku"]
-  AIL --> SON["Claude Sonnet"]
-  AIL --> VIS["Sonnet Vision"]
-  AIL --> WEB["Webs de recetas<br/>(fetch anti-SSRF)"]
-  AIL --> LED[("Ledger de coste")]
-  TRPC --> DB[("Supabase Postgres<br/>Drizzle + RLS")]
-  FE --> ST[("Storage<br/>imágenes")]
-  DB --> RT["Realtime"] --> FE
-""",
-            """flowchart TB
-  U["Mobile (PWA)"] --> FE["Next.js 16 / React 19<br/>+ service worker"]
-  FE --> TRPC["tRPC API<br/>(serverless on Vercel)"]
-  TRPC --> MW["Middlewares<br/>auth · household · plan · AI quota"]
-  MW --> AIL["AI layer<br/>tool-use + Zod + guardrails"]
-  AIL --> HAI["Claude Haiku"]
-  AIL --> SON["Claude Sonnet"]
-  AIL --> VIS["Sonnet Vision"]
-  AIL --> WEB["Recipe websites<br/>(SSRF-safe fetch)"]
-  AIL --> LED[("Cost ledger")]
-  TRPC --> DB[("Supabase Postgres<br/>Drizzle + RLS")]
-  FE --> ST[("Storage<br/>images")]
-  DB --> RT["Realtime"] --> FE
-""",
+        "arch_intro": (
+            [
+                "Es un monolito Next.js 16 desplegado en Vercel. Las páginas del App Router hablan con el servidor por un único endpoint tRPC, donde los routers de cada dominio (recetas, menú, despensa, compra…) trabajan siempre en el contexto del hogar del usuario y acceden a Postgres con Drizzle.",
+                "Supabase pone el resto de piezas: autenticación, base de datos, almacenamiento de fotos y Realtime, que empuja los cambios de la lista de la compra a todos los móviles del hogar. Las funciones de IA pasan por una capa común que aplica los cupos de uso, prepara los prompts y llama a Claude; para importar una receta, además, lee la web de origen.",
+            ],
+            [
+                "It is a Next.js 16 monolith deployed on Vercel. App Router pages talk to the server through a single tRPC endpoint, where each domain's routers (recipes, menu, pantry, shopping…) always work in the context of the user's household and reach Postgres through Drizzle.",
+                "Supabase provides the rest: authentication, database, photo storage and Realtime, which pushes shopping-list changes to every phone in the household. AI features go through a shared layer that applies usage quotas, builds the prompts and calls Claude; to import a recipe it also reads the source website.",
+            ],
         ),
         "decisions": [
             ("IA contenida por estructura",
@@ -362,10 +288,10 @@ PROJECTS = [
              "Ledger de tokens y coste por llamada, cupo diario por hogar, rate limiting atómico en Postgres y planes free / premium / prueba con caducidad sin necesidad de cron.",
              "Cost under control",
              "Per-call token and cost ledger, a daily quota per household, atomic rate limiting in Postgres and free / premium / trial plans with expiry and no cron jobs."),
-            ("Datos multi-hogar seguros",
-             "Row Level Security en Postgres junto con un middleware de hogar en cada endpoint. La lista de la compra se comparte por Supabase Realtime en un componente aislado.",
-             "Safe multi-household data",
-             "Postgres Row Level Security combined with a household middleware on every endpoint. The shopping list is shared via Supabase Realtime in an isolated component."),
+            ("Un hogar, un espacio de datos",
+             "Cada endpoint resuelve primero el hogar del usuario y solo trabaja con sus datos. La lista de la compra se comparte por Supabase Realtime en un componente aislado, y las recetas que alguien decide publicar se sirven desde un catálogo público separado.",
+             "One household, one data space",
+             "Every endpoint first resolves the user's household and only works with its data. The shopping list is shared via Supabase Realtime in an isolated component, and recipes someone chooses to publish are served from a separate public catalogue."),
         ],
     },
     # ------------------------------------------------------------------ Economía Familiar
@@ -381,24 +307,24 @@ PROJECTS = [
             "Desktop app for household finances: it imports the bank statement, categorises spending using the family's historical criteria and warns before the budget is exceeded. <strong>Local and AI-free, by design.</strong>",
         ),
         "card": (
-            "Sustituye el Excel familiar: importa el CSV del banco sin duplicados, categoriza el 94 % de los movimientos de forma automática aprendiendo del histórico y ofrece límites por categoría y una previsión del mes que se puede explicar.",
-            "Replaces the family spreadsheet: it imports the bank CSV without duplicates, auto-categorises 94% of transactions by learning from history, and provides per-category limits and an explainable monthly forecast.",
+            "Sustituye el Excel familiar: importa el CSV del banco sin duplicados, categoriza automáticamente la gran mayoría de los movimientos aprendiendo del histórico y ofrece límites por categoría y una previsión del mes que se puede explicar.",
+            "Replaces the family spreadsheet: it imports the bank CSV without duplicates, auto-categorises most transactions by learning from history, and provides per-category limits and an explainable monthly forecast.",
         ),
         "chips": ["Python 3.12", "Flet (Flutter)", "SQLite", "openpyxl", "smtplib", "pytest", "Windows .exe"],
         "facts": [
-            ("94 %", "movimientos categorizados automáticamente", "transactions auto-categorised"),
-            ("1.839", "movimientos históricos de aprendizaje", "historical transactions learned from"),
+            ("94 %", "categorizados sin intervención en la validación con datos reales", "auto-categorised in the real-data validation"),
+            ("1.839", "movimientos etiquetados de los que aprende", "labelled transactions it learns from"),
             ("~340", "tests automáticos", "automated tests"),
             ("0", "datos en la nube", "data in the cloud"),
         ],
         "what": (
             [
                 "Llevar las cuentas de casa en Excel funciona hasta que deja de hacerlo: copiar movimientos a mano, categorizarlos uno a uno y darse cuenta a fin de mes de que una partida se ha disparado. Economía Familiar automatiza ese proceso sin sacar los datos del ordenador.",
-                "Importas el extracto CSV del banco y la app descarta los duplicados, categoriza cada movimiento con el mismo criterio que la familia ha usado históricamente y deja en una bandeja solo los que no sabe clasificar. Al confirmarlos, aprende. Encima hay un dashboard, límites mensuales por categoría con avisos en la app y por email, y una previsión del gasto del mes que indica de dónde sale cada cifra.",
+                "Importas el extracto CSV del banco y la app descarta los duplicados, categoriza cada movimiento con el mismo criterio que la familia ha usado históricamente y deja en una bandeja solo los que no sabe clasificar. Al confirmarlos, aprende. Encima hay un dashboard, límites mensuales por categoría con avisos en la app (y por email, si lo activas), y una previsión del gasto del mes que indica de dónde sale cada cifra.",
             ],
             [
                 "Keeping household accounts in a spreadsheet works until it doesn't: copying transactions by hand, categorising them one by one and finding out at the end of the month that one category has gone through the roof. Economía Familiar (“Family Finances”) automates that process without data ever leaving the computer.",
-                "You import the bank's CSV statement and the app discards duplicates, categorises each transaction with the same criteria the family has used historically and leaves only the ones it can't classify in an inbox. When you confirm them, it learns. On top of that there is a dashboard, monthly limits per category with in-app and email alerts, and a forecast of the month's spending that explains where each figure comes from.",
+                "You import the bank's CSV statement and the app discards duplicates, categorises each transaction with the same criteria the family has used historically and leaves only the ones it can't classify in an inbox. When you confirm them, it learns. On top of that there is a dashboard, monthly limits per category with in-app alerts (and email, if you turn it on), and a forecast of the month's spending that explains where each figure comes from.",
             ],
         ),
         "flow": (
@@ -408,12 +334,12 @@ PROJECTS = [
   XLS["Excel históricos<br/>de la familia"] --> TRN["Aprende el criterio<br/>comercio → categoría"]
   TRN --> CAT{"¿Categoría<br/>conocida?"}
   DED --> CAT
-  CAT -- "sí (~94 %)" --> DB[("SQLite local")]
+  CAT -- "sí" --> DB[("SQLite local")]
   CAT -- "no" --> PEN["Bandeja de pendientes<br/>confirmas con un toque"]
   PEN -- "recuerda tu respuesta" --> TRN
   PEN --> DB
   DB --> DASH["Dashboard del mes"]
-  DB --> LIM["Límites por categoría<br/>avisos en app y email"]
+  DB --> LIM["Límites por categoría<br/>avisos en app y email opcional"]
   DB --> FC["Previsión del mes<br/>real · estacional · media"]
 """,
             """flowchart TD
@@ -422,46 +348,24 @@ PROJECTS = [
   XLS["Family's historical<br/>spreadsheets"] --> TRN["Learns the criteria<br/>merchant → category"]
   TRN --> CAT{"Known<br/>category?"}
   DED --> CAT
-  CAT -- "yes (~94%)" --> DB[("Local SQLite")]
+  CAT -- "yes" --> DB[("Local SQLite")]
   CAT -- "no" --> PEN["Pending inbox<br/>confirm with one tap"]
   PEN -- "remembers your answer" --> TRN
   PEN --> DB
   DB --> DASH["Monthly dashboard"]
-  DB --> LIM["Per-category limits<br/>in-app and email alerts"]
+  DB --> LIM["Per-category limits<br/>in-app + optional email alerts"]
   DB --> FC["Monthly forecast<br/>actual · seasonal · average"]
 """,
         ),
-        "arch": (
-            """flowchart TB
-  U["Usuario"] --> UI["UI Flet<br/>7 páginas"]
-  UI --> SVC["Servicios<br/>ingesta · categorías · límites · avisos · previsión"]
-  subgraph CORE["core/ (Python puro, sin dependencias de UI ni banco)"]
-    CATG["Categorizador"]
-    DEDU["Dedup"]
-    FCST["Previsión<br/>media robusta (Tukey)"]
-    ALR["Límites y avisos"]
-  end
-  SVC --> CATG & DEDU & FCST & ALR
-  SVC --> ADP["Adaptador CaixaBank"]
-  SVC <--> DB[("SQLite")]
-  DB -. "opcional" .-> DRV["Carpeta Google Drive<br/>(sincronizar 2 PCs)"]
-  ALR --> SMTP["Email (SMTP)"]
-""",
-            """flowchart TB
-  U["User"] --> UI["Flet UI<br/>7 pages"]
-  UI --> SVC["Services<br/>ingestion · categories · limits · alerts · forecast"]
-  subgraph CORE["core/ (pure Python, no UI or bank dependencies)"]
-    CATG["Categoriser"]
-    DEDU["Dedup"]
-    FCST["Forecast<br/>robust mean (Tukey)"]
-    ALR["Limits & alerts"]
-  end
-  SVC --> CATG & DEDU & FCST & ALR
-  SVC --> ADP["CaixaBank adapter"]
-  SVC <--> DB[("SQLite")]
-  DB -. "optional" .-> DRV["Google Drive folder<br/>(sync 2 PCs)"]
-  ALR --> SMTP["Email (SMTP)"]
-""",
+        "arch_intro": (
+            [
+                "Es una app de escritorio en Python con tres capas. La interfaz Flet tiene siete páginas (dashboard, movimientos, importar, pendientes, categorías, límites y previsión) y solo habla con los servicios, que son los casos de uso. Debajo hay un núcleo puro, sin base de datos ni red, con el categorizador, la detección de duplicados, la previsión y los límites.",
+                "Los extractos entran por un adaptador por banco (hoy CaixaBank) y el criterio de categorías se aprende al arrancar de los Excel históricos de la familia. Todo se guarda en un SQLite local; si se elige una carpeta de Google Drive, es Drive quien la sincroniza. El único servicio externo es el email opcional para los avisos de límites.",
+            ],
+            [
+                "It is a three-layer Python desktop app. The Flet UI has seven pages (dashboard, transactions, import, pending, categories, limits and forecast) and only talks to the services, which are the use cases. Underneath sits a pure core, with no database or network access, holding the categoriser, duplicate detection, forecast and limits.",
+                "Statements come in through one adapter per bank (CaixaBank today) and the category criteria are learned at start-up from the family's historical spreadsheets. Everything is stored in a local SQLite file; if a Google Drive folder is chosen, Drive syncs it. The only external service is optional email for limit alerts.",
+            ],
         ),
         "decisions": [
             ("Sin IA, por privacidad",
@@ -481,9 +385,9 @@ PROJECTS = [
              "From prototype to product",
              "The core of an already validated prototype was ported as-is with its regression tests instead of being redesigned. Spec-driven development, TDD and 19 ADRs."),
             ("Local-first con sincronización sencilla",
-             "Un ejecutable de Windows con los datos en Documentos y, opcionalmente, en una carpeta de Google Drive para compartirlos entre dos PCs. La base de datos se cierra limpia al salir para no subir un archivo a medio escribir.",
-             "Local-first with simple sync",
-             "A Windows executable with data in Documents and, optionally, in a Google Drive folder to share it between two PCs. The database is closed cleanly on exit so a half-written file is never uploaded."),
+             "Una app de escritorio para Windows con los datos en Documentos. Si se elige una carpeta de Google Drive, es el cliente de Drive quien la sincroniza entre los dos PCs, con una regla simple: una persona a la vez. Por eso la base de datos se cierra limpia al salir y nunca se sube un archivo a medio escribir.",
+             "Local-first, with simple sync",
+             "A Windows desktop app with data in Documents. If a Google Drive folder is chosen, the Drive client syncs it between the two PCs under a simple rule: one person at a time. That's why the database is closed cleanly on exit, so a half-written file is never uploaded."),
         ],
     },
 ]

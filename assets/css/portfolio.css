@@ -86,16 +86,17 @@ html[data-lang="en"] [data-l="es"] { display: none !important; }
 .diagram svg { max-width: 100%; height: auto; }
 .diagram .diagram-loading { color: #999; font-size: 0.9rem; }
 
-details.arch { margin: 0 0 2.5rem 0; }
-details.arch summary {
-	cursor: pointer;
-	font-family: "Source Sans Pro", Helvetica, sans-serif;
-	font-weight: 900;
-	text-transform: uppercase;
-	letter-spacing: 0.075em;
-	font-size: 0.85rem;
-	margin-bottom: 1rem;
+/* Diagrama de arquitectura interactivo (Archify), embebido desde diagramas/ */
+.arch-viewer { margin: 0 0 2.5rem 0; }
+.arch-viewer iframe {
+	display: block;
+	width: 100%;
+	height: 620px;
+	border: solid 1px #e2e5e8;
+	border-radius: 6px;
+	background: #fbfbfc;
 }
+.arch-viewer .arch-open { margin: 0.6rem 0 0 0; font-size: 0.9rem; text-align: right; }
 
 .decisions li { margin-bottom: 0.9rem; }
 .decisions li strong { color: #212931; }
@@ -122,6 +123,7 @@ details.arch summary {
 @media screen and (max-width: 736px) {
 	.chips li { font-size: 0.75rem; }
 	.diagram { padding: 1rem 0.25rem; }
+	.arch-viewer iframe { height: 320px; }
 	#nav ul.icons li.lang-switch { padding-left: 0.25rem; }
 }
 
