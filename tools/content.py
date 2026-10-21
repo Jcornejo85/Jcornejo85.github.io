@@ -9,8 +9,8 @@ PROJECTS = [
     {
         "slug": "careercraft",
         "name": "CareerCraft",
-        "cover": "images/projects/careercraft-cover.svg",
-        "video": None,  # p. ej. {"src": "assets/video/careercraft-demo.mp4", "poster": "images/projects/careercraft-poster.jpg"}
+        "cover": "images/projects/careercraft-poster.jpg",
+        "video": {"src": "assets/video/careercraft-demo.mp4", "poster": "images/projects/careercraft-poster.jpg"},
         "link": None,
         "tagline": (
             "Asistente de carrera con IA: construye un perfil profesional verificado y genera CVs adaptados a cada oferta <strong>sin inventar nada</strong>.",
@@ -22,7 +22,7 @@ PROJECTS = [
         ),
         "chips": ["Python", "FastAPI", "React + TypeScript", "Claude (Sonnet / Haiku)", "RAG", "PostgreSQL + pgvector", "Celery + Redis", "WeasyPrint", "Docker"],
         "facts": [
-            ("~$0.04", "coste por CV generado", "cost per generated CV"),
+            ("~$0.10", "coste real por CV generado", "real cost per generated CV"),
             ("20/20", "exageraciones detectadas en el banco de evaluación", "exaggerations caught in the eval set"),
             ("~840", "tests automáticos", "automated tests"),
             ("10", "plantillas PDF legibles por ATS", "ATS-readable PDF templates"),
@@ -125,9 +125,9 @@ PROJECTS = [
              "Requirements need evidence",
              "A requirement only counts as “implied” if it cites a fact from the profile; otherwise it becomes “missing”. Coverage and the ATS score are deterministic, not the model's opinion."),
             ("Coste bajo control",
-             "Cada tarea usa el modelo que necesita (Haiku para extraer, Sonnet para redactar), con prompt caching y un ledger de créditos atómico. Coste medido: unos 4 céntimos de dólar por CV.",
+             "Cada tarea usa el modelo que necesita (Haiku para extraer, Sonnet para redactar), con prompt caching y un ledger de créditos atómico. Coste real: unos 10 céntimos de dólar por CV (≈4 céntimos en el banco de evaluación).",
              "Cost under control",
-             "Each task uses the model it needs (Haiku to extract, Sonnet to write), with prompt caching and an atomic credit ledger. Measured cost: about 4 US cents per CV."),
+             "Each task uses the model it needs (Haiku to extract, Sonnet to write), with prompt caching and an atomic credit ledger. Real cost: about 10 US cents per CV (≈4 cents on the evaluation set)."),
             ("Medir antes que intuir",
              "Desarrollo guiado por specs y ADRs, con un banco de evaluación fijo y una rúbrica de calidad 0–100 que actúa como prueba de regresión antes de cada cambio de prompt o modelo.",
              "Measure, don't guess",
