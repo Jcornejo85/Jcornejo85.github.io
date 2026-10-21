@@ -2,7 +2,7 @@
 
 Las páginas `index.html`, `generic.html` y las de cada proyecto (`careercraft.html`, `writers.html`, `kocinai.html`, `economia-familiar.html`) **se generan**; no las edites a mano.
 
-1. Edita textos, diagramas de flujo (Mermaid) o vídeos en `tools/content.py`.
+1. Edita textos o vídeos en `tools/content.py`.
 2. Regenera: `python3 tools/build.py`
 3. Commit y push.
 
@@ -17,9 +17,9 @@ Las páginas `index.html`, `generic.html` y las de cada proyecto (`careercraft.h
 
 Alternativa para vídeos largos: subirlo a YouTube como «no listado» y sustituir el bloque `<video>` por un `<iframe>`.
 
-## Diagramas de arquitectura
+## Diagramas
 
-La sección «Arquitectura» de cada proyecto embebe `diagramas/<slug>-es.html` y `diagramas/<slug>-en.html`, diagramas interactivos generados con [Archify](https://github.com/tt-a1i/archify). Son HTML autónomos (sin peticiones de red): para actualizar uno, regenéralo con Archify y sustituye el archivo. Son versiones públicas: sin enlaces al código privado ni detalles internos de seguridad.
+Cada proyecto embebe dos diagramas interactivos en modo oscuro: «Cómo funciona» (`diagramas/<slug>-flujo-es.html` / `-en.html`) y «Arquitectura» (`diagramas/<slug>-es.html` / `-en.html`), generados con [Archify](https://github.com/tt-a1i/archify). Son HTML autónomos (sin peticiones de red): para actualizar uno, regenéralo con Archify y sustituye el archivo. Son versiones públicas: sin enlaces al código privado ni detalles internos de seguridad.
 
 ## Idiomas
 

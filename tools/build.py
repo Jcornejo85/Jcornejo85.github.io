@@ -13,7 +13,6 @@ from content import PROJECTS, PREVIOUS  # noqa: E402
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 LINKEDIN = "https://www.linkedin.com/in/juanmanuelcornejociruelo/"
 GITHUB = "https://github.com/Jcornejo85"
-MERMAID = "https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js"
 
 
 def L(es, en, tag="span", cls=""):
@@ -21,8 +20,7 @@ def L(es, en, tag="span", cls=""):
     return f'<{tag} data-l="es"{c}>{es}</{tag}><{tag} data-l="en"{c}>{en}</{tag}>'
 
 
-def head(title_es, title_en, mermaid=False):
-    m = f'\n\t\t<script src="{MERMAID}" defer></script>' if mermaid else ""
+def head(title_es, title_en):
     return f"""<!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
@@ -37,7 +35,7 @@ def head(title_es, title_en, mermaid=False):
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/portfolio.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>{m}
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 		<script src="assets/js/portfolio.js" defer></script>
 	</head>
 	<body class="is-preload">
@@ -130,15 +128,15 @@ def media(p, n=""):
             f'{L("Demo en vídeo próximamente.", "Video demo coming soon.", "p")}</div>')
 
 
-def arch_viewer(slug):
-    """Diagrama de arquitectura interactivo (Archify) en diagramas/<slug>-<idioma>.html."""
+def viewer(name, title_es, title_en):
+    """Diagrama interactivo de Archify (diagramas/<name>-<idioma>.html), en modo oscuro por defecto."""
     def frame(lang, title, open_label):
-        src = f"diagramas/{slug}-{lang}.html"
+        src = f"diagramas/{name}-{lang}.html"
         return (f'<div class="arch-viewer" data-l="{lang}">'
-                f'<iframe src="{src}?embed=1&amp;theme=light" title="{title}" loading="lazy"></iframe>'
-                f'<p class="arch-open"><a href="{src}?theme=light" target="_blank" rel="noopener">{open_label}</a></p></div>')
-    return (frame("es", "Diagrama de arquitectura", "Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)")
-            + frame("en", "Architecture diagram", "Open the diagram full screen (zoom, search and export)"))
+                f'<iframe src="{src}?embed=1&amp;theme=dark" title="{title}" loading="lazy"></iframe>'
+                f'<p class="arch-open"><a href="{src}?theme=dark" target="_blank" rel="noopener">{open_label}</a></p></div>')
+    return (frame("es", title_es, "Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)")
+            + frame("en", title_en, "Open the diagram full screen (zoom, search and export)"))
 
 
 def project_page(p):
@@ -151,7 +149,6 @@ def project_page(p):
         f"<li>{L(f'<strong>{tes}.</strong> {bes}', f'<strong>{ten}.</strong> {ben}')}</li>"
         for tes, bes, ten, ben in p["decisions"]
     )
-    flow_es, flow_en = p["flow"]
     arch_es, arch_en = p["arch_intro"]
     live = ""
     if p["link"]:
@@ -176,16 +173,12 @@ def project_page(p):
 						<div data-l="en">{what_en}</div>
 
 						<h2>{L('Cómo funciona', 'How it works')}</h2>
-						<div class="diagram"><div id="flow-es" data-l="es"><p class="diagram-loading">Cargando diagrama…</p></div><div id="flow-en" data-l="en"><p class="diagram-loading">Loading diagram…</p></div></div>
-						<script type="text/x-mermaid" data-target="flow-es">
-{flow_es}</script>
-						<script type="text/x-mermaid" data-target="flow-en">
-{flow_en}</script>
+						{viewer(f"{s}-flujo", "Diagrama de uso", "Usage flow diagram")}
 
 						<h2>{L('Arquitectura', 'Architecture')}</h2>
 						<div data-l="es">{"".join(f"<p>{x}</p>" for x in arch_es)}</div>
 						<div data-l="en">{"".join(f"<p>{x}</p>" for x in arch_en)}</div>
-						{arch_viewer(s)}
+						{viewer(s, "Diagrama de arquitectura", "Architecture diagram")}
 
 						<h2>{L('Decisiones técnicas', 'Technical decisions')}</h2>
 						<ul class="decisions">{decisions}</ul>
@@ -194,7 +187,7 @@ def project_page(p):
 					</section>
 				</div>
 """
-    out = head(f"{p['name']} · Juan Manuel Cornejo", f"{p['name']} · Juan Manuel Cornejo", mermaid=True) + nav(None) + body + FOOT
+    out = head(f"{p['name']} · Juan Manuel Cornejo", f"{p['name']} · Juan Manuel Cornejo", ) + nav(None) + body + FOOT
     with open(os.path.join(ROOT, f"{s}.html"), "w", encoding="utf-8") as f:
         f.write(out)
 

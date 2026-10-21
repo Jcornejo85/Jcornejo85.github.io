@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/portfolio.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" defer></script>
 		<script src="assets/js/portfolio.js" defer></script>
 	</head>
 	<body class="is-preload">
@@ -51,38 +50,12 @@
 						<div data-l="en"><p>Writing tools tend to separate three things that in practice go together: <strong>learning the craft</strong>, <strong>building the world</strong> and <strong>writing the book</strong>. Writers brings them together in a single desktop app.</p><p>The <em>School</em> has craft lessons whose exercises create or enrich real entities of the book. Those entities (characters, places, factions, magic systems…) live on an infinite canvas and feed derived views: a timeline with invented calendars, a relationship graph, plot threads and story structures. The <em>Manuscript</em> is written scene by scene, with mentions of entities and a spell checker that learns your world's names.</p><p>AI is designed as an editor: it checks continuity, spots gaps and asks questions, but it doesn't write the prose. The context sent to it is visible and editable before each request, and the real cost of every answer is shown.</p></div>
 
 						<h2><span data-l="es">Cómo funciona</span><span data-l="en">How it works</span></h2>
-						<div class="diagram"><div id="flow-es" data-l="es"><p class="diagram-loading">Cargando diagrama…</p></div><div id="flow-en" data-l="en"><p class="diagram-loading">Loading diagram…</p></div></div>
-						<script type="text/x-mermaid" data-target="flow-es">
-flowchart TD
-  ESC["Escuela<br/>lección + ejercicio"] --> F[("Fichas del mundo<br/>personajes, lugares, facciones…")]
-  F <--> MESA["Mesa de trabajo<br/>lienzo infinito"]
-  F --> V["Vistas derivadas<br/>cronología · relaciones · hilos · estructuras"]
-  F --> MAN["Manuscrito por escenas<br/>menciones + corrector"]
-  MAN --> DOCX["Exportar a Word"]
-  INV["Investigación hecha con Claude<br/>(documento HTML)"] --> IMP["Importar y enlazar<br/>con fichas"] --> F
-  F --> CTX["Contexto visible y editable<br/>ficha + relaciones + búsqueda"]
-  CTX --> IA["Asistente IA<br/>revisa continuidad, pregunta, sugiere"]
-  IA -. "no escribe la prosa" .-> MAN
-  F --> GAL["Galería<br/>ilustraciones de personajes y escenas"]
-</script>
-						<script type="text/x-mermaid" data-target="flow-en">
-flowchart TD
-  ESC["School<br/>lesson + exercise"] --> F[("World entities<br/>characters, places, factions…")]
-  F <--> MESA["Workbench<br/>infinite canvas"]
-  F --> V["Derived views<br/>timeline · relationships · threads · structures"]
-  F --> MAN["Scene-based manuscript<br/>mentions + spell checker"]
-  MAN --> DOCX["Export to Word"]
-  INV["Research done with Claude<br/>(HTML document)"] --> IMP["Import and link<br/>to entities"] --> F
-  F --> CTX["Visible, editable context<br/>entity + relations + search"]
-  CTX --> IA["AI assistant<br/>checks continuity, asks, suggests"]
-  IA -. "never writes the prose" .-> MAN
-  F --> GAL["Gallery<br/>character and scene illustrations"]
-</script>
+						<div class="arch-viewer" data-l="es"><iframe src="diagramas/writers-flujo-es.html?embed=1&amp;theme=dark" title="Diagrama de uso" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/writers-flujo-es.html?theme=dark" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/writers-flujo-en.html?embed=1&amp;theme=dark" title="Usage flow diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/writers-flujo-en.html?theme=dark" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
 
 						<h2><span data-l="es">Arquitectura</span><span data-l="en">Architecture</span></h2>
 						<div data-l="es"><p>La app es local-first. La interfaz en React y el núcleo en TypeScript puro corren dentro del webview de Tauri, y el núcleo no sabe en qué plataforma está: pide disco o IA a una capa de plataforma, que en escritorio delega en el proceso nativo en Rust.</p><p>Ese proceso nativo es la única salida al exterior: lee y escribe la carpeta del proyecto y los ajustes de la app, consulta el llavero del sistema y hace las peticiones a los proveedores de IA (Claude, OpenAI u Ollama en local). El índice SQLite con búsqueda de texto completo vive en memoria y se reconstruye a partir de los archivos.</p></div>
 						<div data-l="en"><p>The app is local-first. The React UI and the pure-TypeScript core run inside Tauri's webview, and the core doesn't know which platform it runs on: it asks a platform layer for disk or AI access, which on desktop delegates to the native Rust process.</p><p>That native process is the only way out: it reads and writes the project folder and the app settings, uses the OS keychain and makes the requests to AI providers (Claude, OpenAI or local Ollama). The SQLite full-text index lives in memory and is rebuilt from the files.</p></div>
-						<div class="arch-viewer" data-l="es"><iframe src="diagramas/writers-es.html?embed=1&amp;theme=light" title="Diagrama de arquitectura" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/writers-es.html?theme=light" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/writers-en.html?embed=1&amp;theme=light" title="Architecture diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/writers-en.html?theme=light" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
+						<div class="arch-viewer" data-l="es"><iframe src="diagramas/writers-es.html?embed=1&amp;theme=dark" title="Diagrama de arquitectura" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/writers-es.html?theme=dark" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/writers-en.html?embed=1&amp;theme=dark" title="Architecture diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/writers-en.html?theme=dark" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
 
 						<h2><span data-l="es">Decisiones técnicas</span><span data-l="en">Technical decisions</span></h2>
 						<ul class="decisions"><li><span data-l="es"><strong>Archivos como fuente de verdad.</strong> Todo se guarda en Markdown con YAML y JSON Canvas legibles y versionables con git. La base SQLite + FTS5 (en WebAssembly) es solo un índice derivado que se puede reconstruir en cualquier momento.</span><span data-l="en"><strong>Files as the source of truth.</strong> Everything is stored as readable, git-friendly Markdown with YAML and JSON Canvas. The SQLite + FTS5 database (in WebAssembly) is only a derived index that can be rebuilt at any time.</span></li><li><span data-l="es"><strong>Tauri en lugar de Electron.</strong> Instalador de 3–15 MB y menos memoria. La lógica vive en TypeScript y Rust queda solo para lo nativo. Un test impide que el núcleo importe React o Tauri.</span><span data-l="en"><strong>Tauri instead of Electron.</strong> A 3–15 MB installer and lower memory use. Logic lives in TypeScript; Rust is kept for native concerns only. A test prevents the core from importing React or Tauri.</span></li><li><span data-l="es"><strong>IA segura por diseño.</strong> Las claves de API se guardan en el llavero del sistema, no en la interfaz, y la red solo se usa desde el proceso nativo para hablar con los proveedores de IA.</span><span data-l="en"><strong>Secure-by-design AI.</strong> API keys are kept in the OS keychain, not in the UI, and the network is only used from the native process to talk to AI providers.</span></li><li><span data-l="es"><strong>IA transparente.</strong> El contexto que se envía se ve como chips editables, la «biblia» del libro se cachea con prompt caching y cada respuesta muestra su coste real. Hay alternativa local con Ollama.</span><span data-l="en"><strong>Transparent AI.</strong> The context being sent is shown as editable chips, the book's “bible” is cached with prompt caching and every answer shows its real cost. A local alternative with Ollama is available.</span></li><li><span data-l="es"><strong>Privacidad y trabajo offline.</strong> Corrector ortográfico local, fuentes servidas sin CDN y eliminación de metadatos (EXIF/GPS) en las imágenes que se suben.</span><span data-l="en"><strong>Privacy and offline work.</strong> Local spell checker, fonts served without a CDN and metadata (EXIF/GPS) stripped from uploaded images.</span></li></ul>
