@@ -1,0 +1,164 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Generado con tools/build.py — editar tools/content.py, no este archivo.
+-->
+<html lang="es" data-lang="es">
+	<head>
+		<title data-es="Economía Familiar · Juan Manuel Cornejo" data-en="Economía Familiar · Juan Manuel Cornejo">Economía Familiar · Juan Manuel Cornejo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/portfolio.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" defer></script>
+		<script src="assets/js/portfolio.js" defer></script>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+
+				<header id="header">
+					<a href="index.html" class="logo">Juan Manuel Cornejo</a>
+				</header>
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html"><span data-l="es">Proyectos</span><span data-l="en">Projects</span></a></li>
+						<li><a href="generic.html"><span data-l="es">Sobre mí</span><span data-l="en">About me</span></a></li>
+					</ul>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/Jcornejo85" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li class="lang-switch"><a href="#" class="lang-btn" role="button">EN</a></li>
+					</ul>
+				</nav>
+
+				<div id="main">
+					<section class="post">
+						<header class="major">
+							<h1>Economía Familiar</h1>
+							<p class="project-tagline"><span data-l="es">App de escritorio para las finanzas de casa: importa el extracto del banco, categoriza los gastos con el criterio histórico de la familia y avisa antes de pasarse del presupuesto. <strong>Local y sin IA, por privacidad.</strong></span><span data-l="en">Desktop app for household finances: it imports the bank statement, categorises spending using the family's historical criteria and warns before the budget is exceeded. <strong>Local and AI-free, by design.</strong></span></p>
+							<p><span class="badge-private"><span data-l="es">Repositorio privado</span><span data-l="en">Private repository</span></span></p>
+						</header>
+						<ul class="chips"><li>Python 3.12</li><li>Flet (Flutter)</li><li>SQLite</li><li>openpyxl</li><li>smtplib</li><li>pytest</li><li>Windows .exe</li></ul>
+						<div class="demo-pending"><img src="images/projects/economia-familiar-cover.svg" alt="Economía Familiar" /><p data-l="es">Demo en vídeo próximamente.</p><p data-l="en">Video demo coming soon.</p></div>
+						<div class="project-facts"><div><b>94 %</b><span data-l="es">movimientos categorizados automáticamente</span><span data-l="en">transactions auto-categorised</span></div><div><b>1.839</b><span data-l="es">movimientos históricos de aprendizaje</span><span data-l="en">historical transactions learned from</span></div><div><b>~340</b><span data-l="es">tests automáticos</span><span data-l="en">automated tests</span></div><div><b>0</b><span data-l="es">datos en la nube</span><span data-l="en">data in the cloud</span></div></div>
+
+						<h2><span data-l="es">Qué es</span><span data-l="en">What it is</span></h2>
+						<div data-l="es"><p>Llevar las cuentas de casa en Excel funciona hasta que deja de hacerlo: copiar movimientos a mano, categorizarlos uno a uno y darse cuenta a fin de mes de que una partida se ha disparado. Economía Familiar automatiza ese proceso sin sacar los datos del ordenador.</p><p>Importas el extracto CSV del banco y la app descarta los duplicados, categoriza cada movimiento con el mismo criterio que la familia ha usado históricamente y deja en una bandeja solo los que no sabe clasificar. Al confirmarlos, aprende. Encima hay un dashboard, límites mensuales por categoría con avisos en la app y por email, y una previsión del gasto del mes que indica de dónde sale cada cifra.</p></div>
+						<div data-l="en"><p>Keeping household accounts in a spreadsheet works until it doesn't: copying transactions by hand, categorising them one by one and finding out at the end of the month that one category has gone through the roof. Economía Familiar (“Family Finances”) automates that process without data ever leaving the computer.</p><p>You import the bank's CSV statement and the app discards duplicates, categorises each transaction with the same criteria the family has used historically and leaves only the ones it can't classify in an inbox. When you confirm them, it learns. On top of that there is a dashboard, monthly limits per category with in-app and email alerts, and a forecast of the month's spending that explains where each figure comes from.</p></div>
+
+						<h2><span data-l="es">Cómo funciona</span><span data-l="en">How it works</span></h2>
+						<div class="diagram"><div id="flow-es" data-l="es"><p class="diagram-loading">Cargando diagrama…</p></div><div id="flow-en" data-l="en"><p class="diagram-loading">Loading diagram…</p></div></div>
+						<script type="text/x-mermaid" data-target="flow-es">
+flowchart TD
+  CSV["Extracto CSV del banco"] --> ADP["Adaptador del banco<br/>formato, importes, fechas"]
+  ADP --> DED["Detecta duplicados"]
+  XLS["Excel históricos<br/>de la familia"] --> TRN["Aprende el criterio<br/>comercio → categoría"]
+  TRN --> CAT{"¿Categoría<br/>conocida?"}
+  DED --> CAT
+  CAT -- "sí (~94 %)" --> DB[("SQLite local")]
+  CAT -- "no" --> PEN["Bandeja de pendientes<br/>confirmas con un toque"]
+  PEN -- "recuerda tu respuesta" --> TRN
+  PEN --> DB
+  DB --> DASH["Dashboard del mes"]
+  DB --> LIM["Límites por categoría<br/>avisos en app y email"]
+  DB --> FC["Previsión del mes<br/>real · estacional · media"]
+</script>
+						<script type="text/x-mermaid" data-target="flow-en">
+flowchart TD
+  CSV["Bank CSV statement"] --> ADP["Bank adapter<br/>format, amounts, dates"]
+  ADP --> DED["Detects duplicates"]
+  XLS["Family's historical<br/>spreadsheets"] --> TRN["Learns the criteria<br/>merchant → category"]
+  TRN --> CAT{"Known<br/>category?"}
+  DED --> CAT
+  CAT -- "yes (~94%)" --> DB[("Local SQLite")]
+  CAT -- "no" --> PEN["Pending inbox<br/>confirm with one tap"]
+  PEN -- "remembers your answer" --> TRN
+  PEN --> DB
+  DB --> DASH["Monthly dashboard"]
+  DB --> LIM["Per-category limits<br/>in-app and email alerts"]
+  DB --> FC["Monthly forecast<br/>actual · seasonal · average"]
+</script>
+
+						<details class="arch">
+							<summary><span data-l="es">Arquitectura técnica</span><span data-l="en">Technical architecture</span></summary>
+							<div class="diagram"><div id="arch-es" data-l="es"></div><div id="arch-en" data-l="en"></div></div>
+						</details>
+						<script type="text/x-mermaid" data-target="arch-es">
+flowchart TB
+  U["Usuario"] --> UI["UI Flet<br/>7 páginas"]
+  UI --> SVC["Servicios<br/>ingesta · categorías · límites · avisos · previsión"]
+  subgraph CORE["core/ (Python puro, sin dependencias de UI ni banco)"]
+    CATG["Categorizador"]
+    DEDU["Dedup"]
+    FCST["Previsión<br/>media robusta (Tukey)"]
+    ALR["Límites y avisos"]
+  end
+  SVC --> CATG & DEDU & FCST & ALR
+  SVC --> ADP["Adaptador CaixaBank"]
+  SVC <--> DB[("SQLite")]
+  DB -. "opcional" .-> DRV["Carpeta Google Drive<br/>(sincronizar 2 PCs)"]
+  ALR --> SMTP["Email (SMTP)"]
+</script>
+						<script type="text/x-mermaid" data-target="arch-en">
+flowchart TB
+  U["User"] --> UI["Flet UI<br/>7 pages"]
+  UI --> SVC["Services<br/>ingestion · categories · limits · alerts · forecast"]
+  subgraph CORE["core/ (pure Python, no UI or bank dependencies)"]
+    CATG["Categoriser"]
+    DEDU["Dedup"]
+    FCST["Forecast<br/>robust mean (Tukey)"]
+    ALR["Limits & alerts"]
+  end
+  SVC --> CATG & DEDU & FCST & ALR
+  SVC --> ADP["CaixaBank adapter"]
+  SVC <--> DB[("SQLite")]
+  DB -. "optional" .-> DRV["Google Drive folder<br/>(sync 2 PCs)"]
+  ALR --> SMTP["Email (SMTP)"]
+</script>
+
+						<h2><span data-l="es">Decisiones técnicas</span><span data-l="en">Technical decisions</span></h2>
+						<ul class="decisions"><li><span data-l="es"><strong>Sin IA, por privacidad.</strong> Los movimientos bancarios no salen del ordenador. La categorización es estadística: voto mayoritario por comercio a partir del histórico, más la memoria de lo que el usuario confirma. Cada movimiento guarda de dónde viene su categoría.</span><span data-l="en"><strong>No AI, on purpose.</strong> Bank transactions never leave the computer. Categorisation is statistical: a majority vote per merchant learned from history, plus memory of what the user confirms. Each transaction records where its category came from.</span></li><li><span data-l="es"><strong>Arquitectura por capas con núcleo puro.</strong> El núcleo no conoce ni el banco ni la interfaz, y un test automático lo vigila. Añadir otro banco es escribir un adaptador; llevarlo al móvil solo cambiaría la capa de presentación.</span><span data-l="en"><strong>Layered architecture with a pure core.</strong> The core knows nothing about the bank or the UI, and an automated test enforces it. Adding another bank means writing an adapter; moving to mobile would only change the presentation layer.</span></li><li><span data-l="es"><strong>Previsión que se puede explicar.</strong> En lugar de una regla de tres, la previsión es el máximo entre el gasto real y la media del mismo mes en años anteriores (o la media general). Los meses atípicos se descartan con el criterio de Tukey para que, por ejemplo, una compra extraordinaria no infle la previsión.</span><span data-l="en"><strong>An explainable forecast.</strong> Instead of a simple extrapolation, the forecast is the maximum of actual spending and the average for the same month in previous years (or the overall average). Outlier months are discarded using Tukey's rule so that, for instance, a one-off purchase doesn't inflate the forecast.</span></li><li><span data-l="es"><strong>Del prototipo al producto.</strong> El núcleo de un prototipo ya validado se portó tal cual con sus tests de regresión en lugar de rediseñarlo. Desarrollo guiado por specs, TDD y 19 ADRs.</span><span data-l="en"><strong>From prototype to product.</strong> The core of an already validated prototype was ported as-is with its regression tests instead of being redesigned. Spec-driven development, TDD and 19 ADRs.</span></li><li><span data-l="es"><strong>Local-first con sincronización sencilla.</strong> Un ejecutable de Windows con los datos en Documentos y, opcionalmente, en una carpeta de Google Drive para compartirlos entre dos PCs. La base de datos se cierra limpia al salir para no subir un archivo a medio escribir.</span><span data-l="en"><strong>Local-first with simple sync.</strong> A Windows executable with data in Documents and, optionally, in a Google Drive folder to share it between two PCs. The database is closed cleanly on exit so a half-written file is never uploaded.</span></li></ul>
+
+						<ul class="actions special"><li><a href="index.html#projects" class="button large"><span data-l="es">Ver todos los proyectos</span><span data-l="en">All projects</span></a></li></ul>
+					</section>
+				</div>
+
+				<footer id="footer">
+					<section class="split contact">
+						<section class="alt">
+							<h3><span data-l="es">Ubicación</span><span data-l="en">Location</span></h3>
+							<p>Madrid, <span data-l="es">España</span><span data-l="en">Spain</span></p>
+						</section>
+						<section>
+							<h3><span data-l="es">Teléfono</span><span data-l="en">Phone</span></h3>
+							<p><a href="tel:+34600325300">(+34) 600325300</a></p>
+						</section>
+						<section>
+							<h3>Email</h3>
+							<p><a href="mailto:juanm.cornejoc@gmail.com">juanm.cornejoc@gmail.com</a></p>
+						</section>
+						<section>
+							<h3><span data-l="es">Redes</span><span data-l="en">Social</span></h3>
+							<ul class="icons alt">
+								<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://github.com/Jcornejo85" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+					</section>
+				</footer>
+				<div id="copyright">
+					<ul><li>&copy; Juan Manuel Cornejo</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+			</div>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

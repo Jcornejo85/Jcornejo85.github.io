@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Generado con tools/build.py — editar tools/content.py, no este archivo.
+-->
+<html lang="es" data-lang="es">
+	<head>
+		<title data-es="KocinAI · Juan Manuel Cornejo" data-en="KocinAI · Juan Manuel Cornejo">KocinAI · Juan Manuel Cornejo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/portfolio.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" defer></script>
+		<script src="assets/js/portfolio.js" defer></script>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+
+				<header id="header">
+					<a href="index.html" class="logo">Juan Manuel Cornejo</a>
+				</header>
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html"><span data-l="es">Proyectos</span><span data-l="en">Projects</span></a></li>
+						<li><a href="generic.html"><span data-l="es">Sobre mí</span><span data-l="en">About me</span></a></li>
+					</ul>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/Jcornejo85" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li class="lang-switch"><a href="#" class="lang-btn" role="button">EN</a></li>
+					</ul>
+				</nav>
+
+				<div id="main">
+					<section class="post">
+						<header class="major">
+							<h1>KocinAI</h1>
+							<p class="project-tagline"><span data-l="es">PWA para organizar la cocina de una familia: recetario, planificador semanal, despensa y lista de la compra, con IA que <strong>planifica, importa recetas y lee tickets</strong>.</span><span data-l="en">PWA that organises a family's kitchen: recipe book, weekly planner, pantry and shopping list, with AI that <strong>plans, imports recipes and reads receipts</strong>.</span></p>
+							<p><span class="badge-private"><span data-l="es">Repositorio privado</span><span data-l="en">Private repository</span></span></p>
+						</header>
+						<ul class="chips"><li>TypeScript</li><li>Next.js 16</li><li>React 19</li><li>tRPC</li><li>Supabase (Postgres · Auth · Realtime)</li><li>Drizzle</li><li>Claude Sonnet / Haiku</li><li>Vision</li><li>Vercel</li></ul>
+						<div class="demo-video"><video controls playsinline preload="metadata" poster="images/projects/kocinai-poster.jpg"><source src="assets/video/kocinai-demo.mp4" type="video/mp4" /></video></div>
+<p data-l="es" class="demo-note">Recorrido real por la app. El repositorio es privado: abajo se explica cómo funciona por dentro.</p><p data-l="en" class="demo-note">Real walkthrough of the app. The repository is private: how it works inside is explained below.</p>
+						<div class="project-facts"><div><b>~2¢</b><span data-l="es">por planificación semanal con IA</span><span data-l="en">per AI weekly plan</span></div><div><b>4</b><span data-l="es">funciones de IA (recetas, importar, tickets, menú)</span><span data-l="en">AI features (recipes, import, receipts, menu)</span></div><div><b>RLS</b><span data-l="es">aislamiento de datos por hogar</span><span data-l="en">per-household data isolation</span></div><div><b>PWA</b><span data-l="es">instalable en el móvil</span><span data-l="en">installable on mobile</span></div></div>
+
+						<h2><span data-l="es">Qué es</span><span data-l="en">What it is</span></h2>
+						<div data-l="es"><p>Decidir qué se come cada día, saber qué hay en casa y no olvidar nada en el súper son tres problemas que suelen vivir en apps distintas. KocinAI los junta en una PWA pensada para el móvil y compartida entre los miembros del hogar.</p><p>La lista de la compra se calcula sola: <strong>menú de la semana menos lo que ya hay en la despensa</strong>, agrupada por pasillos y sincronizada en tiempo real entre la familia. La IA se encarga de lo pesado: crea recetas a partir de una frase, las importa desde una web, lee el ticket del supermercado (foto o PDF) para rellenar la despensa y propone el menú de la semana a partir de una petición libre, siempre respetando las alergias del hogar.</p></div>
+						<div data-l="en"><p>Deciding what to eat each day, knowing what's at home and not forgetting anything at the supermarket are three problems that usually live in separate apps. KocinAI brings them together in a mobile-first PWA shared by everyone in the household.</p><p>The shopping list computes itself: <strong>this week's menu minus what is already in the pantry</strong>, grouped by aisle and synced in real time across the family. AI handles the heavy lifting: it creates recipes from a sentence, imports them from a website, reads the supermarket receipt (photo or PDF) to fill the pantry and proposes the week's menu from a free-text request, always respecting the household's allergies.</p></div>
+
+						<h2><span data-l="es">Cómo funciona</span><span data-l="en">How it works</span></h2>
+						<div class="diagram"><div id="flow-es" data-l="es"><p class="diagram-loading">Cargando diagrama…</p></div><div id="flow-en" data-l="en"><p class="diagram-loading">Loading diagram…</p></div></div>
+						<script type="text/x-mermaid" data-target="flow-es">
+flowchart TD
+  R1["Una frase, una web<br/>o texto pegado"] --> AI1["Claude estructura la receta"]
+  AI1 --> REC["Encaje con el catálogo<br/>+ aviso de alérgenos"]
+  REC --> REV1["Revisas y guardas"] --> BOOK[("Recetario")]
+  T["Foto o PDF del ticket"] --> VIS["Claude Vision<br/>lee las líneas"] --> REV2["Revisas"] --> PAN[("Despensa")]
+  P["«Semana ligera,<br/>pescado dos días»"] --> HK["Haiku interpreta<br/>la petición"]
+  HK --> FIL["Filtro determinista<br/>sin alérgenos · ≤ 40 recetas"]
+  BOOK --> FIL
+  FIL --> SON["Sonnet compone<br/>el menú"] --> REV3["Revisas"] --> MENU[("Menú semanal")]
+  MENU --> LIST["Lista de la compra<br/>= menú − despensa"]
+  PAN --> LIST
+  LIST --> RT["Compartida en tiempo real<br/>con la familia"]
+  MENU --> COOK["Modo cocina<br/>descuenta de la despensa"] --> PAN
+</script>
+						<script type="text/x-mermaid" data-target="flow-en">
+flowchart TD
+  R1["A sentence, a website<br/>or pasted text"] --> AI1["Claude structures the recipe"]
+  AI1 --> REC["Match against the catalogue<br/>+ allergen warning"]
+  REC --> REV1["Review and save"] --> BOOK[("Recipe book")]
+  T["Receipt photo or PDF"] --> VIS["Claude Vision<br/>reads the lines"] --> REV2["Review"] --> PAN[("Pantry")]
+  P["“Light week,<br/>fish twice”"] --> HK["Haiku interprets<br/>the request"]
+  HK --> FIL["Deterministic filter<br/>no allergens · ≤ 40 recipes"]
+  BOOK --> FIL
+  FIL --> SON["Sonnet composes<br/>the menu"] --> REV3["Review"] --> MENU[("Weekly menu")]
+  MENU --> LIST["Shopping list<br/>= menu − pantry"]
+  PAN --> LIST
+  LIST --> RT["Shared in real time<br/>with the family"]
+  MENU --> COOK["Cooking mode<br/>deducts from the pantry"] --> PAN
+</script>
+
+						<details class="arch">
+							<summary><span data-l="es">Arquitectura técnica</span><span data-l="en">Technical architecture</span></summary>
+							<div class="diagram"><div id="arch-es" data-l="es"></div><div id="arch-en" data-l="en"></div></div>
+						</details>
+						<script type="text/x-mermaid" data-target="arch-es">
+flowchart TB
+  U["Móvil (PWA)"] --> FE["Next.js 16 / React 19<br/>+ service worker"]
+  FE --> TRPC["API tRPC<br/>(serverless en Vercel)"]
+  TRPC --> MW["Middlewares<br/>auth · hogar · plan · cupo IA"]
+  MW --> AIL["Capa IA<br/>tool-use + Zod + guardarraíles"]
+  AIL --> HAI["Claude Haiku"]
+  AIL --> SON["Claude Sonnet"]
+  AIL --> VIS["Sonnet Vision"]
+  AIL --> WEB["Webs de recetas<br/>(fetch anti-SSRF)"]
+  AIL --> LED[("Ledger de coste")]
+  TRPC --> DB[("Supabase Postgres<br/>Drizzle + RLS")]
+  FE --> ST[("Storage<br/>imágenes")]
+  DB --> RT["Realtime"] --> FE
+</script>
+						<script type="text/x-mermaid" data-target="arch-en">
+flowchart TB
+  U["Mobile (PWA)"] --> FE["Next.js 16 / React 19<br/>+ service worker"]
+  FE --> TRPC["tRPC API<br/>(serverless on Vercel)"]
+  TRPC --> MW["Middlewares<br/>auth · household · plan · AI quota"]
+  MW --> AIL["AI layer<br/>tool-use + Zod + guardrails"]
+  AIL --> HAI["Claude Haiku"]
+  AIL --> SON["Claude Sonnet"]
+  AIL --> VIS["Sonnet Vision"]
+  AIL --> WEB["Recipe websites<br/>(SSRF-safe fetch)"]
+  AIL --> LED[("Cost ledger")]
+  TRPC --> DB[("Supabase Postgres<br/>Drizzle + RLS")]
+  FE --> ST[("Storage<br/>images")]
+  DB --> RT["Realtime"] --> FE
+</script>
+
+						<h2><span data-l="es">Decisiones técnicas</span><span data-l="en">Technical decisions</span></h2>
+						<ul class="decisions"><li><span data-l="es"><strong>IA contenida por estructura.</strong> Todas las llamadas usan tool-use forzado y validación con Zod, el resultado se reconcilia contra el catálogo de ingredientes y nada se guarda sin revisión humana. Encima hay un filtro de intención (cada función solo acepta lo suyo) y el contenido externo se delimita como datos, no como instrucciones.</span><span data-l="en"><strong>AI contained by structure.</strong> Every call uses forced tool-use and Zod validation, the output is reconciled against the ingredient catalogue and nothing is saved without human review. On top of that there is an intent filter (each feature only accepts its own task) and external content is fenced as data, not instructions.</span></li><li><span data-l="es"><strong>Primero filtrar, después generar.</strong> El planificador se rediseñó tras un 502 en producción: Haiku interpreta la petición, un filtro determinista reduce las recetas candidatas y solo entonces Sonnet compone. El prompt ya no crece con el recetario.</span><span data-l="en"><strong>Filter first, then generate.</strong> The planner was redesigned after a 502 in production: Haiku interprets the request, a deterministic filter narrows the candidate recipes and only then does Sonnet compose. The prompt no longer grows with the recipe book.</span></li><li><span data-l="es"><strong>Cada modelo para lo suyo.</strong> Haiku para extracciones y clasificación por lotes (78 recetas por unos 2,5 céntimos), Sonnet para calidad y visión. El modelo de cada tarea se cambia por variable de entorno.</span><span data-l="en"><strong>The right model for each job.</strong> Haiku for extraction and batch classification (78 recipes for about 2.5 cents), Sonnet for quality and vision. Each task's model is configurable through an environment variable.</span></li><li><span data-l="es"><strong>Coste bajo control.</strong> Ledger de tokens y coste por llamada, cupo diario por hogar, rate limiting atómico en Postgres y planes free / premium / prueba con caducidad sin necesidad de cron.</span><span data-l="en"><strong>Cost under control.</strong> Per-call token and cost ledger, a daily quota per household, atomic rate limiting in Postgres and free / premium / trial plans with expiry and no cron jobs.</span></li><li><span data-l="es"><strong>Datos multi-hogar seguros.</strong> Row Level Security en Postgres junto con un middleware de hogar en cada endpoint. La lista de la compra se comparte por Supabase Realtime en un componente aislado.</span><span data-l="en"><strong>Safe multi-household data.</strong> Postgres Row Level Security combined with a household middleware on every endpoint. The shopping list is shared via Supabase Realtime in an isolated component.</span></li></ul>
+
+						<ul class="actions special"><li><a href="https://kocin-ai.app" class="button primary large" target="_blank" rel="noopener"><span data-l="es">Abrir la app</span><span data-l="en">Open the app</span></a></li><li><a href="index.html#projects" class="button large"><span data-l="es">Ver todos los proyectos</span><span data-l="en">All projects</span></a></li></ul>
+					</section>
+				</div>
+
+				<footer id="footer">
+					<section class="split contact">
+						<section class="alt">
+							<h3><span data-l="es">Ubicación</span><span data-l="en">Location</span></h3>
+							<p>Madrid, <span data-l="es">España</span><span data-l="en">Spain</span></p>
+						</section>
+						<section>
+							<h3><span data-l="es">Teléfono</span><span data-l="en">Phone</span></h3>
+							<p><a href="tel:+34600325300">(+34) 600325300</a></p>
+						</section>
+						<section>
+							<h3>Email</h3>
+							<p><a href="mailto:juanm.cornejoc@gmail.com">juanm.cornejoc@gmail.com</a></p>
+						</section>
+						<section>
+							<h3><span data-l="es">Redes</span><span data-l="en">Social</span></h3>
+							<ul class="icons alt">
+								<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://github.com/Jcornejo85" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+					</section>
+				</footer>
+				<div id="copyright">
+					<ul><li>&copy; Juan Manuel Cornejo</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+			</div>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>

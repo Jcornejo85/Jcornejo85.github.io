@@ -1,0 +1,134 @@
+/* Portfolio 2026 — añadidos sobre Massively (HTML5 UP) */
+
+/* ---------- Idioma ES / EN ---------- */
+html[data-lang="es"] [data-l="en"],
+html[data-lang="en"] [data-l="es"] { display: none !important; }
+
+#nav ul.icons li.lang-switch, #navPanel ul.icons li.lang-switch { padding-left: 0.75rem; }
+#nav ul.icons li.lang-switch a.lang-btn,
+#navPanel ul.icons li.lang-switch a.lang-btn {
+	display: inline-block;
+	border: solid 2px rgba(33, 33, 33, 0.25);
+	border-radius: 4px;
+	padding: 0 0.6rem;
+	line-height: 2rem;
+	height: auto;
+	width: auto;
+	font-size: 0.75rem;
+	font-weight: 900;
+	letter-spacing: 0.075em;
+	text-decoration: none;
+	cursor: pointer;
+}
+#nav ul.icons li.lang-switch a.lang-btn:before,
+#navPanel ul.icons li.lang-switch a.lang-btn:before { content: none; }
+#nav.alt ul.icons li.lang-switch a.lang-btn { border-color: rgba(255, 255, 255, 0.5); }
+
+/* ---------- Bloques de proyecto ---------- */
+.project-tagline { font-size: 1.15rem; line-height: 1.6; }
+
+.chips { list-style: none; padding: 0; margin: 0 0 2rem 0; display: flex; flex-wrap: wrap; gap: 0.45rem; justify-content: center; }
+.chips li {
+	padding: 0.15rem 0.7rem;
+	border: solid 1px #c8cccf;
+	border-radius: 999px;
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-size: 0.8rem;
+	line-height: 1.6;
+	color: #555;
+	background: #fafafa;
+}
+.posts .chips { justify-content: flex-start; margin-bottom: 1.25rem; }
+
+.badge-private {
+	display: inline-block;
+	font-size: 0.7rem;
+	font-weight: 900;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	padding: 0.1rem 0.6rem;
+	border-radius: 4px;
+	background: #212931;
+	color: #fff;
+	vertical-align: middle;
+}
+
+.demo-video {
+	position: relative;
+	margin: 0 0 2.5rem 0;
+	border-radius: 6px;
+	overflow: hidden;
+	background: #0f1115;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+}
+.demo-video video { display: block; width: 100%; height: auto; }
+.demo-note { font-size: 0.85rem; color: #777; margin-top: -1.75rem; margin-bottom: 2.5rem; text-align: center; }
+
+.demo-pending {
+	margin: 0 0 2.5rem 0;
+	padding: 2.25rem 1.5rem;
+	border: dashed 2px #c8cccf;
+	border-radius: 6px;
+	text-align: center;
+	color: #666;
+}
+.demo-pending img { max-width: 100%; border-radius: 4px; margin-bottom: 1rem; }
+
+.diagram {
+	margin: 0 0 2.5rem 0;
+	padding: 1.5rem 1rem;
+	border: solid 1px #e2e5e8;
+	border-radius: 6px;
+	background: #fbfbfc;
+	overflow-x: auto;
+	text-align: center;
+}
+.diagram svg { max-width: 100%; height: auto; }
+.diagram .diagram-loading { color: #999; font-size: 0.9rem; }
+
+details.arch { margin: 0 0 2.5rem 0; }
+details.arch summary {
+	cursor: pointer;
+	font-family: "Source Sans Pro", Helvetica, sans-serif;
+	font-weight: 900;
+	text-transform: uppercase;
+	letter-spacing: 0.075em;
+	font-size: 0.85rem;
+	margin-bottom: 1rem;
+}
+
+.decisions li { margin-bottom: 0.9rem; }
+.decisions li strong { color: #212931; }
+
+.project-facts {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+	gap: 1rem;
+	margin: 0 0 2.5rem 0;
+}
+.project-facts div { border-left: solid 3px #18bfef; padding: 0.2rem 0 0.2rem 0.9rem; }
+.project-facts b { display: block; font-size: 1.35rem; line-height: 1.2; color: #212931; font-family: "Merriweather", Georgia, serif; }
+.project-facts span { font-size: 0.85rem; color: #666; }
+
+/* ---------- Portada: secciones ---------- */
+.section-title { text-align: center; margin: 0 0 3rem 0; }
+.section-title h2 { margin-bottom: 0.5rem; }
+.section-title p { margin: 0; color: #777; }
+
+.posts.previous article { padding-top: 3rem; padding-bottom: 3rem; }
+.posts.previous article h2 { font-size: 1.2rem; }
+.posts.previous article p { font-size: 0.95rem; }
+
+@media screen and (max-width: 736px) {
+	.chips li { font-size: 0.75rem; }
+	.diagram { padding: 1rem 0.25rem; }
+	#nav ul.icons li.lang-switch { padding-left: 0.25rem; }
+}
+
+/* Etiquetas de Mermaid: Massively justifica los párrafos; en los nodos queremos texto centrado. */
+.diagram foreignObject div,
+.diagram foreignObject span,
+.diagram foreignObject p { text-align: center !important; line-height: 1.35 !important; margin: 0 !important; }
+
+/* Portadas de los proyectos recientes con la misma proporción */
+.posts:not(.previous) .image.fit img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }

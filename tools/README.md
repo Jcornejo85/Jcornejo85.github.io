@@ -1,0 +1,22 @@
+# Cómo actualizar el portfolio
+
+Las páginas `index.html`, `generic.html` y las de cada proyecto (`careercraft.html`, `writers.html`, `kocinai.html`, `economia-familiar.html`) **se generan**; no las edites a mano.
+
+1. Edita textos, diagramas (Mermaid) o vídeos en `tools/content.py`.
+2. Regenera: `python3 tools/build.py`
+3. Commit y push.
+
+## Añadir el vídeo de un proyecto
+
+1. Graba la demo (30–90 s, 1280 px de ancho es suficiente) y comprímela:
+   `ffmpeg -i demo.mov -vf "scale=1280:-2,fps=30,format=yuv420p" -c:v libx264 -crf 27 -preset slow -movflags +faststart -an assets/video/<slug>-demo.mp4`
+   Mantén cada vídeo por debajo de ~10 MB (GitHub rechaza archivos de más de 100 MB).
+2. Saca un póster: `ffmpeg -ss 5 -i assets/video/<slug>-demo.mp4 -frames:v 1 -q:v 3 images/projects/<slug>-poster.jpg`
+3. En `content.py`, rellena `"video": {"src": "assets/video/<slug>-demo.mp4", "poster": "images/projects/<slug>-poster.jpg"}` (y, si quieres, cambia `"cover"` por el póster).
+4. `python3 tools/build.py`
+
+Alternativa para vídeos largos: subirlo a YouTube como «no listado» y sustituir el bloque `<video>` por un `<iframe>`.
+
+## Idiomas
+
+Todo texto va en pareja ES/EN (`data-l="es"` / `data-l="en"`). El selector del menú cambia el idioma y lo recuerda; `?lang=en` fuerza inglés en un enlace.

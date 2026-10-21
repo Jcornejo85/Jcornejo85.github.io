@@ -3,173 +3,171 @@
 	Massively by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Generado con tools/build.py — editar tools/content.py, no este archivo.
 -->
-<html>
+<html lang="es" data-lang="es">
 	<head>
-		<title>Juan Manuel Cornejo </title>
+		<title data-es="Juan Manuel Cornejo · Portfolio" data-en="Juan Manuel Cornejo · Portfolio">Juan Manuel Cornejo · Portfolio</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/portfolio.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="assets/js/portfolio.js" defer></script>
 	</head>
 	<body class="is-preload">
+		<div id="wrapper" class="fade-in">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="fade-in">
+				<div id="intro">
+					<h1>Juan Manuel Cornejo</h1>
+					<p><span data-l="es">Data Scientist especializado en <strong>IA generativa</strong>: sistemas con LLM, RAG y agentes, del prototipo a producción.</span><span data-l="en">Data Scientist specialised in <strong>generative AI</strong>: LLM systems, RAG and agents, from prototype to production.</span></p>
+					<ul class="actions">
+						<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly"><span data-l="es">Continuar</span><span data-l="en">Continue</span></a></li>
+					</ul>
+				</div>
 
-				<!-- Intro -->
-					<div id="intro">
-						<h1>Juan Manuel Cornejo<br />
-						</h1>
-						<p>Junior Data Science and Machine Learning Engineer, maybe the person you are looking for <a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/">@JuanManuelCornejo</a> 
-						<ul class="actions">
-							<li><a href="#header" class="button icon solid solo fa-arrow-down scrolly">Continue</a></li>
-						</ul>
-					</div>
+				<header id="header">
+					<a href="index.html" class="logo">Juan Manuel Cornejo</a>
+				</header>
+				<nav id="nav">
+					<ul class="links">
+						<li class="active"><a href="index.html"><span data-l="es">Proyectos</span><span data-l="en">Projects</span></a></li>
+						<li><a href="generic.html"><span data-l="es">Sobre mí</span><span data-l="en">About me</span></a></li>
+					</ul>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/Jcornejo85" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li class="lang-switch"><a href="#" class="lang-btn" role="button">EN</a></li>
+					</ul>
+				</nav>
 
-				<!-- Header -->
-					<header id="header">
-						<a href="index.html" class="logo">Juan Manuel Cornejo</a>
-					</header>
-
-				<!-- Nav -->
-					<nav id="nav">
-						<ul class="links">
-							<li class="active"><a href="index.html">Projects</a></li>
-							<li><a href="generic.html">About Me</a></li>
-						</ul>
-						<ul class="icons">
-							<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
-							<li><a href="https://github.com/Jcornejo85" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-						</ul>
-					</nav>
-
-				<!-- Main -->
-					<div id="main">
-
-						<!-- Featured Post -->
-							<article class="post featured">
-								<header class="major">
-									
-									<h2><a href="MRI.html">Brain Tumor Classifier<br />
-									</a></h2>
-									<p>A Personal Machine Learning Project, using convolutional neural networks for tumour classification in MRI.</p>
-									<p>Specifically VGG16, VGG19 Inception V3 were selected. Three notebooks can be found, one with image pre-processing. Two of machine learning, one with ImageDataGenerator and one without. You can find the results in the link below and the notebooks in the other link.</p>
+				<div id="main">
+					<article class="post featured" id="projects">
+						<header class="major">
+							<h2><span data-l="es">Proyectos recientes</span><span data-l="en">Recent projects</span></h2>
+							<p><span data-l="es">Cuatro aplicaciones completas diseñadas y desarrolladas por mí en 2026. Los repositorios son privados, así que cada proyecto tiene una demo y una explicación de cómo funciona por dentro.</span><span data-l="en">Four complete applications I designed and built in 2026. The repositories are private, so each project comes with a demo and an explanation of how it works inside.</span></p>
+						</header>
+					</article>
+					<section class="posts">
+							<article>
+								<header>
+									<h2><a href="careercraft.html">CareerCraft</a></h2>
 								</header>
-								<a href="MRI.html" class="image main"><img src="images/IMG0.jpeg" alt="" /></a>
+								<a href="careercraft.html" class="image fit"><img src="images/projects/careercraft-cover.svg" alt="CareerCraft" loading="lazy" /></a>
+								<ul class="chips"><li>Python</li><li>FastAPI</li><li>React + TypeScript</li><li>Claude (Sonnet / Haiku)</li><li>RAG</li></ul>
+								<p data-l="es">Asistente de carrera con IA que construye tu perfil, analiza cada oferta y genera un CV adaptado que pasa una auditoría de veracidad antes de exportarse. Incluye simulador de entrevistas con feedback STAR.</p><p data-l="en">AI career assistant that builds your profile, analyses each job offer and generates a tailored CV that must pass a truthfulness audit before export. Includes an interview simulator with STAR feedback.</p>
 								<ul class="actions special">
-									<li><a href="MRI.html" class="button large">Project summary</a></li>
-
+									<li><a href="careercraft.html" class="button"><span data-l="es">Ver proyecto</span><span data-l="en">View project</span></a></li>
 								</ul>
 							</article>
-
-						<!-- Posts -->
-							<section class="posts">
-								<article>
-									<header>
-										
-										<h2><a href="EDA.html">Exploratory Data Analysis The economic potential of telework in Spain <br />
-										</a></h2>
-									</header>
-									<a href="EDA.html" class="image fit"><img src="images/IMG2.jpeg" alt="" /></a>
-									<p>Check the economic potential and the possibility of choosing your place of residence based on personal and non-work preferences. Contrasting the labour market situation, the change in purchasing power based on the place of residence, cost analysis of the real estate market.
-										
-									</p>
-									<ul class="actions special">
-										<li><a href="EDA.html" class="button">Project summary</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="Gluby.html">Gluby,the personal assistant of your aquarium <br />
-										</a></h2>
-									</header>
-									<a href="Gluby.html" class="image fit"><img src="images/IMG3.jpeg" alt="" /></a>
-									<p>Multidisciplinary project, As manager of the Data Science team, we implement  a machine learning model for fish detection in production using CNN and AWS.When an MVP was released, in the estimated timeframe, the amount of images scraped for training was not sufficient and it was decided to reduce the requirements to obtain a better solution. You can find an article created by the UIX team explaining the overall project below.</p>
-									<ul class="actions special">
-										<li><a href="Gluby.html" class="button">View Story</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/Jcornejo85/JOBMadrid21">Final hackaton JOBMadrid21<br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/Jcornejo85/JOBMadrid21" class="image fit"><img src="images/IMG4.png" alt="" /></a>
-									<p>JOBMadrid21 hackathon final project. My role as Data Science consisted of carrying out an exploratory analysis of the data, 
-										to make a predictive model of prices, to pass my predictions to the other verticals in a JSON so that they could verify the mean square error.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Jcornejo85/JOBMadrid21" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/Jcornejo85/broomlib">Broomlib, a package made in the Data Science bootcamp <br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/Jcornejo85/broomlib" class="image fit"><img src="images/IMG5.png" alt="" /></a>
-									<p>Python  package to analyze datasets and plot the numerical and categorical features in a set of data quickly and efficientlyto facilitate fast and efficient pre-analysis of data. Project where I was manager of the data cleaning team.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Jcornejo85/broomlib" class="button">View Project</a></li>
-									</ul>
-								</article>
-								<article>
-									<header>
-										
-										<h2><a href="https://github.com/Jcornejo85/Clasificador-volcanes">Volcano classifier<br />
-										</a></h2>
-									</header>
-									<a href="https://github.com/Jcornejo85/Clasificador-volcanes" class="image fit"><img src="images/IMG6.jpeg" alt="" /></a>
-									<p>The aim of this challenge is to develop a predictive model based on Random Forest, which allows us to know the type of eruptions according to sensor data on volcanic slopes.</p>
-									<ul class="actions special">
-										<li><a href="https://github.com/Jcornejo85/Clasificador-volcanes" class="button">View project</a></li>
-									</ul>
-								</article>
-								
-							</section>
-
-						<!-- Footer -->
-
-					</div>
-
-				<!-- Footer -->
-					<footer id="footer">
-						
-						<section class="split contact">
-							<section class="alt">
-								<h3>Location</h3>
-								<p>Madrid, Spain<br />
-								</p>
-							</section>
-							<section>
-								<h3>Phone</h3>
-								<p><a href="#">(+34) 600325300</a></p>
-							</section>
-							<section>
-								<h3>Email</h3>
-								<p><a href="#">juanm.cornejoc@gmail.com</a></p>
-							</section>
-							<section>
-								<h3>Social</h3>
-								<ul class="icons alt">
-									<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
-									<li><a href="https://github.com/Jcornejo85" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							<article>
+								<header>
+									<h2><a href="writers.html">Writers</a></h2>
+								</header>
+								<a href="writers.html" class="image fit"><img src="images/projects/writers-poster.jpg" alt="Writers" loading="lazy" /></a>
+								<ul class="chips"><li>TypeScript</li><li>React 19</li><li>Tauri 2 (Rust)</li><li>SQLite + FTS5 (WASM)</li><li>Claude API</li></ul>
+								<p data-l="es">App de escritorio local-first para escribir novelas: lecciones de oficio cuyos ejercicios crean fichas reales, lienzo infinito para construir el mundo, cronología, relaciones, hilos de trama y manuscrito, con un asistente Claude que hace de editor.</p><p data-l="en">Local-first desktop app for novelists: craft lessons whose exercises create real story entities, an infinite canvas for world-building, timeline, relationships, plot threads and manuscript, with a Claude assistant acting as an editor.</p>
+								<ul class="actions special">
+									<li><a href="writers.html" class="button"><span data-l="es">Ver proyecto</span><span data-l="en">View project</span></a></li>
 								</ul>
-							</section>
+							</article>
+							<article>
+								<header>
+									<h2><a href="kocinai.html">KocinAI</a></h2>
+								</header>
+								<a href="kocinai.html" class="image fit"><img src="images/projects/kocinai-poster.jpg" alt="KocinAI" loading="lazy" /></a>
+								<ul class="chips"><li>TypeScript</li><li>Next.js 16</li><li>React 19</li><li>tRPC</li><li>Supabase (Postgres · Auth · Realtime)</li></ul>
+								<p data-l="es">PWA en producción que junta recetario, menú semanal, despensa y lista de la compra. La IA crea o importa recetas, lee tickets del súper con visión y planifica la semana teniendo en cuenta las alergias de la familia.</p><p data-l="en">Production PWA bringing together recipe book, weekly menu, pantry and shopping list. AI creates or imports recipes, reads supermarket receipts with vision and plans the week around the family's allergies.</p>
+								<ul class="actions special">
+									<li><a href="kocinai.html" class="button"><span data-l="es">Ver proyecto</span><span data-l="en">View project</span></a></li>
+								</ul>
+							</article>
+							<article>
+								<header>
+									<h2><a href="economia-familiar.html">Economía Familiar</a></h2>
+								</header>
+								<a href="economia-familiar.html" class="image fit"><img src="images/projects/economia-familiar-cover.svg" alt="Economía Familiar" loading="lazy" /></a>
+								<ul class="chips"><li>Python 3.12</li><li>Flet (Flutter)</li><li>SQLite</li><li>openpyxl</li><li>smtplib</li></ul>
+								<p data-l="es">Sustituye el Excel familiar: importa el CSV del banco sin duplicados, categoriza el 94 % de los movimientos de forma automática aprendiendo del histórico y ofrece límites por categoría y una previsión del mes que se puede explicar.</p><p data-l="en">Replaces the family spreadsheet: it imports the bank CSV without duplicates, auto-categorises 94% of transactions by learning from history, and provides per-category limits and an explainable monthly forecast.</p>
+								<ul class="actions special">
+									<li><a href="economia-familiar.html" class="button"><span data-l="es">Ver proyecto</span><span data-l="en">View project</span></a></li>
+								</ul>
+							</article>
+					</section>
+
+					<article class="post featured" id="previous">
+						<header class="major">
+							<h2><span data-l="es">Proyectos anteriores</span><span data-l="en">Previous projects</span></h2>
+							<p><span data-l="es">Machine learning y análisis de datos (2021–2022).</span><span data-l="en">Machine learning and data analysis (2021–2022).</span></p>
+						</header>
+					</article>
+					<section class="posts previous">
+							<article>
+								<header><h2><a href="MRI.html"><span data-l="es">Clasificador de tumores cerebrales</span><span data-l="en">Brain Tumor Classifier</span></a></h2></header>
+								<a href="MRI.html" class="image fit"><img src="images/IMG0.jpeg" alt="" loading="lazy" /></a>
+								<p data-l="es">Redes convolucionales (VGG16, VGG19, Inception V3) para clasificar tumores en resonancias magnéticas. 84 % de accuracy y 100 % de recall.</p><p data-l="en">Convolutional networks (VGG16, VGG19, Inception V3) to classify tumours in MRI scans. 84% accuracy and 100% recall.</p>
+								<ul class="actions special"><li><a href="MRI.html" class="button small"><span data-l="es">Ver</span><span data-l="en">View</span></a></li></ul>
+							</article>
+							<article>
+								<header><h2><a href="EDA.html"><span data-l="es">Potencial económico del teletrabajo en España</span><span data-l="en">The economic potential of telework in Spain</span></a></h2></header>
+								<a href="EDA.html" class="image fit"><img src="images/IMG2.jpeg" alt="" loading="lazy" /></a>
+								<p data-l="es">Análisis exploratorio del mercado laboral, el poder adquisitivo y el precio de la vivienda según el lugar de residencia.</p><p data-l="en">Exploratory analysis of the labour market, purchasing power and housing prices depending on place of residence.</p>
+								<ul class="actions special"><li><a href="EDA.html" class="button small"><span data-l="es">Ver</span><span data-l="en">View</span></a></li></ul>
+							</article>
+							<article>
+								<header><h2><a href="Gluby.html"><span data-l="es">Gluby, el asistente de tu acuario</span><span data-l="en">Gluby, your aquarium assistant</span></a></h2></header>
+								<a href="Gluby.html" class="image fit"><img src="images/IMG3.jpeg" alt="" loading="lazy" /></a>
+								<p data-l="es">Proyecto multidisciplinar: modelo de detección de peces con CNN desplegado en AWS, liderando el equipo de Data Science.</p><p data-l="en">Multidisciplinary project: a CNN fish-detection model deployed on AWS, leading the Data Science team.</p>
+								<ul class="actions special"><li><a href="Gluby.html" class="button small"><span data-l="es">Ver</span><span data-l="en">View</span></a></li></ul>
+							</article>
+							<article>
+								<header><h2><a href="https://github.com/Jcornejo85/JOBMadrid21" target="_blank" rel="noopener"><span data-l="es">Hackathon JOBMadrid21</span><span data-l="en">JOBMadrid21 hackathon</span></a></h2></header>
+								<a href="https://github.com/Jcornejo85/JOBMadrid21" class="image fit" target="_blank" rel="noopener"><img src="images/IMG4.png" alt="" loading="lazy" /></a>
+								<p data-l="es">Análisis exploratorio y modelo predictivo de precios integrado con el resto de verticales del equipo.</p><p data-l="en">Exploratory analysis and a price-prediction model integrated with the team's other verticals.</p>
+								<ul class="actions special"><li><a href="https://github.com/Jcornejo85/JOBMadrid21" class="button small" target="_blank" rel="noopener"><span data-l="es">Ver</span><span data-l="en">View</span></a></li></ul>
+							</article>
+							<article>
+								<header><h2><a href="https://github.com/Jcornejo85/broomlib" target="_blank" rel="noopener"><span data-l="es">Broomlib</span><span data-l="en">Broomlib</span></a></h2></header>
+								<a href="https://github.com/Jcornejo85/broomlib" class="image fit" target="_blank" rel="noopener"><img src="images/IMG5.png" alt="" loading="lazy" /></a>
+								<p data-l="es">Paquete de Python para el preanálisis rápido de datasets numéricos y categóricos.</p><p data-l="en">Python package for fast pre-analysis of numerical and categorical datasets.</p>
+								<ul class="actions special"><li><a href="https://github.com/Jcornejo85/broomlib" class="button small" target="_blank" rel="noopener"><span data-l="es">Ver</span><span data-l="en">View</span></a></li></ul>
+							</article>
+							<article>
+								<header><h2><a href="https://github.com/Jcornejo85/Clasificador-volcanes" target="_blank" rel="noopener"><span data-l="es">Clasificador de erupciones volcánicas</span><span data-l="en">Volcano eruption classifier</span></a></h2></header>
+								<a href="https://github.com/Jcornejo85/Clasificador-volcanes" class="image fit" target="_blank" rel="noopener"><img src="images/IMG6.jpeg" alt="" loading="lazy" /></a>
+								<p data-l="es">Random Forest que predice el tipo de erupción a partir de datos de sensores en las laderas del volcán.</p><p data-l="en">Random Forest predicting eruption type from sensor data on the volcano's slopes.</p>
+								<ul class="actions special"><li><a href="https://github.com/Jcornejo85/Clasificador-volcanes" class="button small" target="_blank" rel="noopener"><span data-l="es">Ver</span><span data-l="en">View</span></a></li></ul>
+							</article>
+					</section>
+				</div>
+
+				<footer id="footer">
+					<section class="split contact">
+						<section class="alt">
+							<h3><span data-l="es">Ubicación</span><span data-l="en">Location</span></h3>
+							<p>Madrid, <span data-l="es">España</span><span data-l="en">Spain</span></p>
 						</section>
-					</footer>
-
-				<!-- Copyright -->
-					<div id="copyright">
-						<ul><li>&copy; JuanManuelCornejo</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
-					</div>
-
+						<section>
+							<h3><span data-l="es">Teléfono</span><span data-l="en">Phone</span></h3>
+							<p><a href="tel:+34600325300">(+34) 600325300</a></p>
+						</section>
+						<section>
+							<h3>Email</h3>
+							<p><a href="mailto:juanm.cornejoc@gmail.com">juanm.cornejoc@gmail.com</a></p>
+						</section>
+						<section>
+							<h3><span data-l="es">Redes</span><span data-l="en">Social</span></h3>
+							<ul class="icons alt">
+								<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://github.com/Jcornejo85" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+					</section>
+				</footer>
+				<div id="copyright">
+					<ul><li>&copy; Juan Manuel Cornejo</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
 			</div>
-
-		<!-- Scripts -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -177,6 +175,5 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-
 	</body>
 </html>

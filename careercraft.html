@@ -1,0 +1,176 @@
+<!DOCTYPE HTML>
+<!--
+	Massively by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+	Generado con tools/build.py — editar tools/content.py, no este archivo.
+-->
+<html lang="es" data-lang="es">
+	<head>
+		<title data-es="CareerCraft · Juan Manuel Cornejo" data-en="CareerCraft · Juan Manuel Cornejo">CareerCraft · Juan Manuel Cornejo</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/portfolio.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" defer></script>
+		<script src="assets/js/portfolio.js" defer></script>
+	</head>
+	<body class="is-preload">
+		<div id="wrapper">
+
+				<header id="header">
+					<a href="index.html" class="logo">Juan Manuel Cornejo</a>
+				</header>
+				<nav id="nav">
+					<ul class="links">
+						<li><a href="index.html"><span data-l="es">Proyectos</span><span data-l="en">Projects</span></a></li>
+						<li><a href="generic.html"><span data-l="es">Sobre mí</span><span data-l="en">About me</span></a></li>
+					</ul>
+					<ul class="icons">
+						<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+						<li><a href="https://github.com/Jcornejo85" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+						<li class="lang-switch"><a href="#" class="lang-btn" role="button">EN</a></li>
+					</ul>
+				</nav>
+
+				<div id="main">
+					<section class="post">
+						<header class="major">
+							<h1>CareerCraft</h1>
+							<p class="project-tagline"><span data-l="es">Asistente de carrera con IA: construye un perfil profesional verificado y genera CVs adaptados a cada oferta <strong>sin inventar nada</strong>.</span><span data-l="en">AI career assistant: it builds a verified professional profile and generates CVs tailored to each job offer <strong>without making anything up</strong>.</span></p>
+							<p><span class="badge-private"><span data-l="es">Repositorio privado</span><span data-l="en">Private repository</span></span></p>
+						</header>
+						<ul class="chips"><li>Python</li><li>FastAPI</li><li>React + TypeScript</li><li>Claude (Sonnet / Haiku)</li><li>RAG</li><li>PostgreSQL + pgvector</li><li>Celery + Redis</li><li>WeasyPrint</li><li>Docker</li></ul>
+						<div class="demo-pending"><img src="images/projects/careercraft-cover.svg" alt="CareerCraft" /><p data-l="es">Demo en vídeo próximamente.</p><p data-l="en">Video demo coming soon.</p></div>
+						<div class="project-facts"><div><b>~$0.04</b><span data-l="es">coste por CV generado</span><span data-l="en">cost per generated CV</span></div><div><b>20/20</b><span data-l="es">exageraciones detectadas en el banco de evaluación</span><span data-l="en">exaggerations caught in the eval set</span></div><div><b>~840</b><span data-l="es">tests automáticos</span><span data-l="en">automated tests</span></div><div><b>10</b><span data-l="es">plantillas PDF legibles por ATS</span><span data-l="en">ATS-readable PDF templates</span></div></div>
+
+						<h2><span data-l="es">Qué es</span><span data-l="en">What it is</span></h2>
+						<div data-l="es"><p>Escribir un CV distinto para cada oferta es lento, y los generadores con IA tienden a <em>adornar</em> la experiencia. CareerCraft parte de la idea contraria: primero construye una <strong>base de hechos verificada</strong> sobre ti y después redacta a partir de ella con el enfoque más favorable, siempre que siga siendo defendible.</p><p>Puedes empezar subiendo tu CV o tu PDF de LinkedIn, o con una entrevista conversacional que solo pregunta por lo que falta. Al pegar una oferta, la app cruza cada requisito con tu perfil (cubierto, implícito con evidencia o ausente), genera el CV en el idioma de la oferta y lo somete a una auditoría antes de dejarte exportarlo.</p></div>
+						<div data-l="en"><p>Writing a different CV for every job offer is slow, and AI generators tend to <em>embellish</em> experience. CareerCraft takes the opposite approach: it first builds a <strong>verified fact base</strong> about you and then writes from it with the most favourable framing that is still defensible.</p><p>You can start by uploading your CV or LinkedIn PDF, or through a conversational interview that only asks about what is missing. When you paste a job offer, the app matches each requirement against your profile (covered, implied with evidence, or missing), generates the CV in the offer's language and audits it before letting you export it.</p></div>
+
+						<h2><span data-l="es">Cómo funciona</span><span data-l="en">How it works</span></h2>
+						<div class="diagram"><div id="flow-es" data-l="es"><p class="diagram-loading">Cargando diagrama…</p></div><div id="flow-en" data-l="en"><p class="diagram-loading">Loading diagram…</p></div></div>
+						<script type="text/x-mermaid" data-target="flow-es">
+flowchart TD
+  A["Subes tu CV / LinkedIn<br/>o pegas texto"] --> B["La IA extrae los datos<br/>con confianza por campo"]
+  A2["Entrevista conversacional<br/>(solo pregunta lo que falta)"] --> C
+  B --> C["Revisas y confirmas<br/>nada entra sin tu OK"]
+  C --> D[("Perfil verificado")]
+  D --> E["Indexado para búsqueda semántica<br/>(RAG)"]
+  F["Pegas una oferta"] --> G["Análisis de requisitos<br/>+ preguntas para concretar logros"]
+  E --> H["Genera el CV adaptado<br/>en el idioma de la oferta"]
+  G --> H
+  H --> I{"Auditoría de<br/>veracidad"}
+  I -- "corrige" --> H
+  I --> J["Revisas bullet a bullet<br/>cobertura + score ATS"]
+  J --> K["PDF final<br/>(plantillas ATS)"]
+  D --> L["Simulador de entrevistas<br/>feedback STAR contra tu perfil"]
+</script>
+						<script type="text/x-mermaid" data-target="flow-en">
+flowchart TD
+  A["Upload your CV / LinkedIn<br/>or paste text"] --> B["AI extracts the data<br/>with per-field confidence"]
+  A2["Conversational interview<br/>(asks only what is missing)"] --> C
+  B --> C["You review and confirm<br/>nothing enters without your OK"]
+  C --> D[("Verified profile")]
+  D --> E["Indexed for semantic search<br/>(RAG)"]
+  F["Paste a job offer"] --> G["Requirement analysis<br/>+ questions to pin down achievements"]
+  E --> H["Generates the tailored CV<br/>in the offer's language"]
+  G --> H
+  H --> I{"Truthfulness<br/>audit"}
+  I -- "fix" --> H
+  I --> J["Review bullet by bullet<br/>coverage + ATS score"]
+  J --> K["Final PDF<br/>(ATS templates)"]
+  D --> L["Interview simulator<br/>STAR feedback against your profile"]
+</script>
+
+						<details class="arch">
+							<summary><span data-l="es">Arquitectura técnica</span><span data-l="en">Technical architecture</span></summary>
+							<div class="diagram"><div id="arch-es" data-l="es"></div><div id="arch-en" data-l="en"></div></div>
+						</details>
+						<script type="text/x-mermaid" data-target="arch-es">
+flowchart TB
+  UI["SPA React + TypeScript"] --> API["API FastAPI<br/>(JWT)"]
+  subgraph SVC["Servicios"]
+    ING["Ingesta<br/>PDF / DOCX"]
+    ONB["Onboarding<br/>conversacional"]
+    JOB["Análisis de oferta<br/>+ cruce de requisitos"]
+    GEN["Generador de CV"]
+    QA["Gate de calidad<br/>reglas + jueces LLM"]
+    INT["Motor de entrevistas"]
+    REN["Render PDF<br/>Jinja2 + WeasyPrint"]
+  end
+  API --> ING & ONB & JOB & INT & REN
+  ING & ONB --> PROF[("Perfil<br/>PostgreSQL")]
+  PROF --> RAG["Embeddings"] --> VEC[("pgvector")]
+  JOB --> GEN
+  PROF --> GEN --> QA
+  QA -. "bucle de corrección" .-> GEN
+  ING & GEN & QA & JOB & INT --> LLM["Capa LLM<br/>Claude Sonnet / Haiku"]
+  LLM --> CRED[("Créditos y costes")]
+</script>
+						<script type="text/x-mermaid" data-target="arch-en">
+flowchart TB
+  UI["React + TypeScript SPA"] --> API["FastAPI API<br/>(JWT)"]
+  subgraph SVC["Services"]
+    ING["Ingestion<br/>PDF / DOCX"]
+    ONB["Conversational<br/>onboarding"]
+    JOB["Offer analysis<br/>+ requirement matching"]
+    GEN["CV generator"]
+    QA["Quality gate<br/>rules + LLM judges"]
+    INT["Interview engine"]
+    REN["PDF render<br/>Jinja2 + WeasyPrint"]
+  end
+  API --> ING & ONB & JOB & INT & REN
+  ING & ONB --> PROF[("Profile<br/>PostgreSQL")]
+  PROF --> RAG["Embeddings"] --> VEC[("pgvector")]
+  JOB --> GEN
+  PROF --> GEN --> QA
+  QA -. "correction loop" .-> GEN
+  ING & GEN & QA & JOB & INT --> LLM["LLM layer<br/>Claude Sonnet / Haiku"]
+  LLM --> CRED[("Credits & costs")]
+</script>
+
+						<h2><span data-l="es">Decisiones técnicas</span><span data-l="en">Technical decisions</span></h2>
+						<ul class="decisions"><li><span data-l="es"><strong>Antialucinación por capas.</strong> Los datos factuales (empresa, puesto, fechas, skills) se copian tal cual; el modelo solo redacta resumen y bullets. Después, un gate audita cada dimensión: los años y el nivel se comprueban con código determinista (los LLM fallaban la aritmética) y la invención o el seniority inflado los revisan jueces LLM con responsabilidades separadas.</span><span data-l="en"><strong>Layered anti-hallucination.</strong> Factual data (company, role, dates, skills) is copied verbatim; the model only writes the summary and bullets. A gate then audits each dimension: years and level are checked with deterministic code (LLMs got the arithmetic wrong) while invention or inflated seniority are reviewed by LLM judges with separate responsibilities.</span></li><li><span data-l="es"><strong>Ni inflar ni quedarse corto.</strong> El corrector funciona en las dos direcciones: si un arreglo elimina una exageración pero deja el logro por debajo de lo real, no se acepta. El objetivo es el «punto medio honesto».</span><span data-l="en"><strong>Neither inflate nor undersell.</strong> The corrector works both ways: if a fix removes an exaggeration but undersells the real achievement, it is rejected. The goal is the “honest middle”.</span></li><li><span data-l="es"><strong>Requisitos con evidencia obligatoria.</strong> Un requisito solo cuenta como «implícito» si cita un hecho del perfil; si no, pasa a «ausente». La cobertura y el score ATS son deterministas, no una opinión del modelo.</span><span data-l="en"><strong>Requirements need evidence.</strong> A requirement only counts as “implied” if it cites a fact from the profile; otherwise it becomes “missing”. Coverage and the ATS score are deterministic, not the model's opinion.</span></li><li><span data-l="es"><strong>Coste bajo control.</strong> Cada tarea usa el modelo que necesita (Haiku para extraer, Sonnet para redactar), con prompt caching y un ledger de créditos atómico. Coste medido: unos 4 céntimos de dólar por CV.</span><span data-l="en"><strong>Cost under control.</strong> Each task uses the model it needs (Haiku to extract, Sonnet to write), with prompt caching and an atomic credit ledger. Measured cost: about 4 US cents per CV.</span></li><li><span data-l="es"><strong>Medir antes que intuir.</strong> Desarrollo guiado por specs y ADRs, con un banco de evaluación fijo y una rúbrica de calidad 0–100 que actúa como prueba de regresión antes de cada cambio de prompt o modelo.</span><span data-l="en"><strong>Measure, don't guess.</strong> Spec-driven development with ADRs, a fixed evaluation set and a 0–100 quality rubric that acts as a regression test before every prompt or model change.</span></li></ul>
+
+						<ul class="actions special"><li><a href="index.html#projects" class="button large"><span data-l="es">Ver todos los proyectos</span><span data-l="en">All projects</span></a></li></ul>
+					</section>
+				</div>
+
+				<footer id="footer">
+					<section class="split contact">
+						<section class="alt">
+							<h3><span data-l="es">Ubicación</span><span data-l="en">Location</span></h3>
+							<p>Madrid, <span data-l="es">España</span><span data-l="en">Spain</span></p>
+						</section>
+						<section>
+							<h3><span data-l="es">Teléfono</span><span data-l="en">Phone</span></h3>
+							<p><a href="tel:+34600325300">(+34) 600325300</a></p>
+						</section>
+						<section>
+							<h3>Email</h3>
+							<p><a href="mailto:juanm.cornejoc@gmail.com">juanm.cornejoc@gmail.com</a></p>
+						</section>
+						<section>
+							<h3><span data-l="es">Redes</span><span data-l="en">Social</span></h3>
+							<ul class="icons alt">
+								<li><a href="https://www.linkedin.com/in/juanmanuelcornejociruelo/" class="icon brands alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								<li><a href="https://github.com/Jcornejo85" class="icon brands alt fa-github"><span class="label">GitHub</span></a></li>
+							</ul>
+						</section>
+					</section>
+				</footer>
+				<div id="copyright">
+					<ul><li>&copy; Juan Manuel Cornejo</li><li>Design: <a href="https://html5up.net">HTML5 UP</a></li></ul>
+				</div>
+			</div>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+	</body>
+</html>
