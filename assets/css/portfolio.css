@@ -74,27 +74,16 @@ html[data-lang="en"] [data-l="es"] { display: none !important; }
 }
 .demo-pending img { max-width: 100%; border-radius: 4px; margin-bottom: 1rem; }
 
-.diagram {
-	margin: 0 0 2.5rem 0;
-	padding: 1.5rem 1rem;
-	border: solid 1px #e2e5e8;
-	border-radius: 6px;
-	background: #fbfbfc;
-	overflow-x: auto;
-	text-align: center;
-}
-.diagram svg { max-width: 100%; height: auto; }
-.diagram .diagram-loading { color: #999; font-size: 0.9rem; }
-
-/* Diagrama de arquitectura interactivo (Archify), embebido desde diagramas/ */
+/* Diagramas interactivos (Archify) embebidos desde diagramas/, en modo oscuro */
 .arch-viewer { margin: 0 0 2.5rem 0; }
 .arch-viewer iframe {
 	display: block;
 	width: 100%;
 	height: 620px;
-	border: solid 1px #e2e5e8;
-	border-radius: 6px;
-	background: #fbfbfc;
+	border: 0;
+	border-radius: 8px;
+	background: #0d1117;
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
 }
 .arch-viewer .arch-open { margin: 0.6rem 0 0 0; font-size: 0.9rem; text-align: right; }
 
@@ -122,15 +111,9 @@ html[data-lang="en"] [data-l="es"] { display: none !important; }
 
 @media screen and (max-width: 736px) {
 	.chips li { font-size: 0.75rem; }
-	.diagram { padding: 1rem 0.25rem; }
 	.arch-viewer iframe { height: 320px; }
 	#nav ul.icons li.lang-switch { padding-left: 0.25rem; }
 }
-
-/* Etiquetas de Mermaid: Massively justifica los párrafos; en los nodos queremos texto centrado. */
-.diagram foreignObject div,
-.diagram foreignObject span,
-.diagram foreignObject p { text-align: center !important; line-height: 1.35 !important; margin: 0 !important; }
 
 /* Portadas de los proyectos recientes con la misma proporción */
 .posts:not(.previous) .image.fit img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }

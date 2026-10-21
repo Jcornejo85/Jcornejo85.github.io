@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/portfolio.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" defer></script>
 		<script src="assets/js/portfolio.js" defer></script>
 	</head>
 	<body class="is-preload">
@@ -51,42 +50,12 @@
 						<div data-l="en"><p>Writing a different CV for every job offer is slow, and AI generators tend to <em>embellish</em> experience. CareerCraft takes the opposite approach: it first builds a <strong>verified fact base</strong> about you and then writes from it with the most favourable framing that is still defensible.</p><p>You can start by uploading your CV or LinkedIn PDF, or through a conversational interview that only asks about what is missing. When you paste a job offer, the app matches each requirement against your profile (covered, implied with evidence, or missing), generates the CV in the offer's language and audits it before letting you export it.</p><p>The same code runs in two ways: as a <strong>web application</strong> with user accounts, or as a <strong>macOS desktop app</strong> where your data never leaves your computer.</p></div>
 
 						<h2><span data-l="es">Cómo funciona</span><span data-l="en">How it works</span></h2>
-						<div class="diagram"><div id="flow-es" data-l="es"><p class="diagram-loading">Cargando diagrama…</p></div><div id="flow-en" data-l="en"><p class="diagram-loading">Loading diagram…</p></div></div>
-						<script type="text/x-mermaid" data-target="flow-es">
-flowchart TD
-  A["Subes tu CV / LinkedIn<br/>o pegas texto"] --> B["La IA extrae los datos<br/>con confianza por campo"]
-  A2["Entrevista conversacional<br/>(solo pregunta lo que falta)"] --> C
-  B --> C["Revisas y confirmas<br/>nada entra sin tu OK"]
-  C --> D[("Perfil verificado")]
-  F["Pegas una oferta"] --> G["Análisis de requisitos<br/>+ preguntas para concretar logros"]
-  D --> H["Genera el CV adaptado<br/>en el idioma de la oferta"]
-  G --> H
-  H --> I{"Auditoría de<br/>veracidad"}
-  I -- "corrige" --> H
-  I --> J["Revisas bullet a bullet<br/>cobertura + score ATS"]
-  J --> K["PDF final<br/>(plantillas ATS)"]
-  D --> L["Simulador de entrevistas<br/>feedback STAR contra tu perfil"]
-</script>
-						<script type="text/x-mermaid" data-target="flow-en">
-flowchart TD
-  A["Upload your CV / LinkedIn<br/>or paste text"] --> B["AI extracts the data<br/>with per-field confidence"]
-  A2["Conversational interview<br/>(asks only what is missing)"] --> C
-  B --> C["You review and confirm<br/>nothing enters without your OK"]
-  C --> D[("Verified profile")]
-  F["Paste a job offer"] --> G["Requirement analysis<br/>+ questions to pin down achievements"]
-  D --> H["Generates the tailored CV<br/>in the offer's language"]
-  G --> H
-  H --> I{"Truthfulness<br/>audit"}
-  I -- "fix" --> H
-  I --> J["Review bullet by bullet<br/>coverage + ATS score"]
-  J --> K["Final PDF<br/>(ATS templates)"]
-  D --> L["Interview simulator<br/>STAR feedback against your profile"]
-</script>
+						<div class="arch-viewer" data-l="es"><iframe src="diagramas/careercraft-flujo-es.html?embed=1&amp;theme=dark" title="Diagrama de uso" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/careercraft-flujo-es.html?theme=dark" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/careercraft-flujo-en.html?embed=1&amp;theme=dark" title="Usage flow diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/careercraft-flujo-en.html?theme=dark" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
 
 						<h2><span data-l="es">Arquitectura</span><span data-l="en">Architecture</span></h2>
 						<div data-l="es"><p>Un único backend FastAPI concentra toda la lógica: perfil, generación del CV, entrevistas y créditos. La interfaz es una SPA en React que habla con él por REST. Los servicios de dominio son los únicos que tocan la base de datos, el render de PDF y la capa de IA, que elige el proveedor según el modelo: Claude para redactar y auditar, y OpenAI solo para embeddings.</p><p>El mismo backend se empaqueta de dos formas. En la versión web corre en un contenedor Docker con PostgreSQL + pgvector y login con JWT. En la app de escritorio, una shell Tauri 2 lanza el backend como proceso local con SQLite y guarda la credencial de IA en el llavero de macOS.</p></div>
 						<div data-l="en"><p>A single FastAPI backend holds all the logic: profile, CV generation, interviews and credits. The UI is a React SPA that talks to it over REST. Only the domain services touch the database, the PDF renderer and the AI layer, which picks the provider by model: Claude to write and audit, and OpenAI for embeddings only.</p><p>The same backend ships in two forms. The web version runs in a Docker container with PostgreSQL + pgvector and JWT login. In the desktop app, a Tauri 2 shell launches the backend as a local process with SQLite and keeps the AI credential in the macOS keychain.</p></div>
-						<div class="arch-viewer" data-l="es"><iframe src="diagramas/careercraft-es.html?embed=1&amp;theme=light" title="Diagrama de arquitectura" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/careercraft-es.html?theme=light" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/careercraft-en.html?embed=1&amp;theme=light" title="Architecture diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/careercraft-en.html?theme=light" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
+						<div class="arch-viewer" data-l="es"><iframe src="diagramas/careercraft-es.html?embed=1&amp;theme=dark" title="Diagrama de arquitectura" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/careercraft-es.html?theme=dark" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/careercraft-en.html?embed=1&amp;theme=dark" title="Architecture diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/careercraft-en.html?theme=dark" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
 
 						<h2><span data-l="es">Decisiones técnicas</span><span data-l="en">Technical decisions</span></h2>
 						<ul class="decisions"><li><span data-l="es"><strong>Un backend, dos productos.</strong> En lugar de mantener una app web y otra de escritorio, el mismo backend se empaqueta como contenedor o como proceso local de Tauri. Cambian la base de datos (PostgreSQL o SQLite) y la autenticación; la lógica de dominio y sus tests son los mismos.</span><span data-l="en"><strong>One backend, two products.</strong> Instead of maintaining separate web and desktop apps, the same backend ships either as a container or as a local Tauri process. Only the database (PostgreSQL or SQLite) and authentication change; the domain logic and its tests are shared.</span></li><li><span data-l="es"><strong>Antialucinación por capas.</strong> Los datos factuales (empresa, puesto, fechas, skills) se copian tal cual; el modelo solo redacta resumen y bullets. Después, un gate audita cada dimensión: los años y el nivel se comprueban con código determinista (los LLM fallaban la aritmética) y la invención o el seniority inflado los revisan jueces LLM con responsabilidades separadas.</span><span data-l="en"><strong>Layered anti-hallucination.</strong> Factual data (company, role, dates, skills) is copied verbatim; the model only writes the summary and bullets. A gate then audits each dimension: years and level are checked with deterministic code (LLMs got the arithmetic wrong) while invention or inflated seniority are reviewed by LLM judges with separate responsibilities.</span></li><li><span data-l="es"><strong>Ni inflar ni quedarse corto.</strong> El corrector funciona en las dos direcciones: si un arreglo elimina una exageración pero deja el logro por debajo de lo real, no se acepta. El objetivo es el «punto medio honesto».</span><span data-l="en"><strong>Neither inflate nor undersell.</strong> The corrector works both ways: if a fix removes an exaggeration but undersells the real achievement, it is rejected. The goal is the “honest middle”.</span></li><li><span data-l="es"><strong>Requisitos con evidencia obligatoria.</strong> Un requisito solo cuenta como «implícito» si cita un hecho del perfil; si no, pasa a «ausente». La cobertura y el score ATS son deterministas, no una opinión del modelo.</span><span data-l="en"><strong>Requirements need evidence.</strong> A requirement only counts as “implied” if it cites a fact from the profile; otherwise it becomes “missing”. Coverage and the ATS score are deterministic, not the model's opinion.</span></li><li><span data-l="es"><strong>Coste bajo control.</strong> Cada tarea usa el modelo que necesita (Haiku para extraer, Sonnet para redactar), con prompt caching y un ledger de créditos atómico. Coste real: unos 10 céntimos de dólar por CV (≈4 céntimos en el banco de evaluación).</span><span data-l="en"><strong>Cost under control.</strong> Each task uses the model it needs (Haiku to extract, Sonnet to write), with prompt caching and an atomic credit ledger. Real cost: about 10 US cents per CV (≈4 cents on the evaluation set).</span></li><li><span data-l="es"><strong>Medir antes que intuir.</strong> Desarrollo guiado por specs y ADRs, con un banco de evaluación fijo y una rúbrica de calidad 0–100 que actúa como prueba de regresión antes de cada cambio de prompt o modelo.</span><span data-l="en"><strong>Measure, don't guess.</strong> Spec-driven development with ADRs, a fixed evaluation set and a 0–100 quality rubric that acts as a regression test before every prompt or model change.</span></li></ul>

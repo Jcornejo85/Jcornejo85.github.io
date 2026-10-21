@@ -1,4 +1,4 @@
-/* Portfolio 2026: selector de idioma ES/EN y renderizado de diagramas Mermaid. */
+/* Portfolio 2026: selector de idioma ES/EN. */
 (function () {
 	var KEY = "portfolio-lang";
 	var root = document.documentElement;
@@ -41,50 +41,4 @@
 	}
 	if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", bindToggle);
 	else bindToggle();
-
-	// ---------- Mermaid ----------
-	// Cada diagrama vive en <script type="text/x-mermaid" data-target="id">; se renderiza en el div #id.
-	function renderDiagrams() {
-		var sources = document.querySelectorAll('script[type="text/x-mermaid"]');
-		if (!sources.length || !window.mermaid) return;
-		window.mermaid.initialize({
-			startOnLoad: false,
-			securityLevel: "strict",
-			theme: "base",
-			flowchart: { htmlLabels: true, curve: "basis", useMaxWidth: true },
-			themeVariables: {
-				fontFamily: "Source Sans Pro, Helvetica, Arial, sans-serif",
-				fontSize: "15px",
-				primaryColor: "#ffffff",
-				primaryBorderColor: "#18bfef",
-				primaryTextColor: "#212931",
-				lineColor: "#7f8a96",
-				secondaryColor: "#eaf8fd",
-				tertiaryColor: "#f4f5f6",
-				clusterBkg: "#f4f7f9",
-				clusterBorder: "#c8cccf",
-				edgeLabelBackground: "#ffffff"
-			}
-		});
-		// mermaid.render() mide en un contenedor temporal propio, así que el diagrama del idioma oculto
-		// se dibuja bien aunque su destino esté en display:none.
-		var jobs = [];
-		for (var i = 0; i < sources.length; i++) {
-			(function (src, n) {
-				var target = document.getElementById(src.getAttribute("data-target"));
-				if (!target) return;
-				jobs.push(
-					window.mermaid.render("mmd-" + n, src.textContent.trim()).then(function (out) {
-						target.innerHTML = out.svg;
-					}).catch(function () {
-						target.innerHTML = '<p class="diagram-loading">—</p>';
-					})
-				);
-			})(sources[i], i);
-		}
-		return Promise.all(jobs);
-	}
-
-	if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", renderDiagrams);
-	else renderDiagrams();
 })();

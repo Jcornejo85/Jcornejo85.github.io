@@ -13,7 +13,6 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="stylesheet" href="assets/css/portfolio.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-		<script src="https://cdn.jsdelivr.net/npm/mermaid@11.4.1/dist/mermaid.min.js" defer></script>
 		<script src="assets/js/portfolio.js" defer></script>
 	</head>
 	<body class="is-preload">
@@ -51,42 +50,12 @@
 						<div data-l="en"><p>Deciding what to eat each day, knowing what's at home and not forgetting anything at the supermarket are three problems that usually live in separate apps. KocinAI brings them together in a mobile-first PWA shared by everyone in the household.</p><p>The shopping list computes itself: <strong>this week's menu minus what is already in the pantry</strong>, grouped by aisle and synced in real time across the family. AI handles the heavy lifting: it creates recipes from a sentence, imports them from a website, reads the supermarket receipt (photo or PDF) to fill the pantry and proposes the week's menu from a free-text request, always respecting the household's allergies.</p></div>
 
 						<h2><span data-l="es">Cómo funciona</span><span data-l="en">How it works</span></h2>
-						<div class="diagram"><div id="flow-es" data-l="es"><p class="diagram-loading">Cargando diagrama…</p></div><div id="flow-en" data-l="en"><p class="diagram-loading">Loading diagram…</p></div></div>
-						<script type="text/x-mermaid" data-target="flow-es">
-flowchart TD
-  R1["Una frase, una web<br/>o texto pegado"] --> AI1["Claude estructura la receta"]
-  AI1 --> REC["Encaje con el catálogo<br/>+ aviso de alérgenos"]
-  REC --> REV1["Revisas y guardas"] --> BOOK[("Recetario")]
-  T["Foto o PDF del ticket"] --> VIS["Claude Vision<br/>lee las líneas"] --> REV2["Revisas"] --> PAN[("Despensa")]
-  P["«Semana ligera,<br/>pescado dos días»"] --> HK["Haiku interpreta<br/>la petición"]
-  HK --> FIL["Filtro determinista<br/>sin alérgenos · ≤ 40 recetas"]
-  BOOK --> FIL
-  FIL --> SON["Sonnet compone<br/>el menú"] --> REV3["Revisas"] --> MENU[("Menú semanal")]
-  MENU --> LIST["Lista de la compra<br/>= menú − despensa"]
-  PAN --> LIST
-  LIST --> RT["Compartida en tiempo real<br/>con la familia"]
-  MENU --> COOK["Modo cocina<br/>descuenta de la despensa"] --> PAN
-</script>
-						<script type="text/x-mermaid" data-target="flow-en">
-flowchart TD
-  R1["A sentence, a website<br/>or pasted text"] --> AI1["Claude structures the recipe"]
-  AI1 --> REC["Match against the catalogue<br/>+ allergen warning"]
-  REC --> REV1["Review and save"] --> BOOK[("Recipe book")]
-  T["Receipt photo or PDF"] --> VIS["Claude Vision<br/>reads the lines"] --> REV2["Review"] --> PAN[("Pantry")]
-  P["“Light week,<br/>fish twice”"] --> HK["Haiku interprets<br/>the request"]
-  HK --> FIL["Deterministic filter<br/>no allergens · ≤ 40 recipes"]
-  BOOK --> FIL
-  FIL --> SON["Sonnet composes<br/>the menu"] --> REV3["Review"] --> MENU[("Weekly menu")]
-  MENU --> LIST["Shopping list<br/>= menu − pantry"]
-  PAN --> LIST
-  LIST --> RT["Shared in real time<br/>with the family"]
-  MENU --> COOK["Cooking mode<br/>deducts from the pantry"] --> PAN
-</script>
+						<div class="arch-viewer" data-l="es"><iframe src="diagramas/kocinai-flujo-es.html?embed=1&amp;theme=dark" title="Diagrama de uso" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/kocinai-flujo-es.html?theme=dark" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/kocinai-flujo-en.html?embed=1&amp;theme=dark" title="Usage flow diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/kocinai-flujo-en.html?theme=dark" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
 
 						<h2><span data-l="es">Arquitectura</span><span data-l="en">Architecture</span></h2>
 						<div data-l="es"><p>Es un monolito Next.js 16 desplegado en Vercel. Las páginas del App Router hablan con el servidor por un único endpoint tRPC, donde los routers de cada dominio (recetas, menú, despensa, compra…) trabajan siempre en el contexto del hogar del usuario y acceden a Postgres con Drizzle.</p><p>Supabase pone el resto de piezas: autenticación, base de datos, almacenamiento de fotos y Realtime, que empuja los cambios de la lista de la compra a todos los móviles del hogar. Las funciones de IA pasan por una capa común que aplica los cupos de uso, prepara los prompts y llama a Claude; para importar una receta, además, lee la web de origen.</p></div>
 						<div data-l="en"><p>It is a Next.js 16 monolith deployed on Vercel. App Router pages talk to the server through a single tRPC endpoint, where each domain's routers (recipes, menu, pantry, shopping…) always work in the context of the user's household and reach Postgres through Drizzle.</p><p>Supabase provides the rest: authentication, database, photo storage and Realtime, which pushes shopping-list changes to every phone in the household. AI features go through a shared layer that applies usage quotas, builds the prompts and calls Claude; to import a recipe it also reads the source website.</p></div>
-						<div class="arch-viewer" data-l="es"><iframe src="diagramas/kocinai-es.html?embed=1&amp;theme=light" title="Diagrama de arquitectura" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/kocinai-es.html?theme=light" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/kocinai-en.html?embed=1&amp;theme=light" title="Architecture diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/kocinai-en.html?theme=light" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
+						<div class="arch-viewer" data-l="es"><iframe src="diagramas/kocinai-es.html?embed=1&amp;theme=dark" title="Diagrama de arquitectura" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/kocinai-es.html?theme=dark" target="_blank" rel="noopener">Abrir el diagrama a pantalla completa (zoom, búsqueda y exportación)</a></p></div><div class="arch-viewer" data-l="en"><iframe src="diagramas/kocinai-en.html?embed=1&amp;theme=dark" title="Architecture diagram" loading="lazy"></iframe><p class="arch-open"><a href="diagramas/kocinai-en.html?theme=dark" target="_blank" rel="noopener">Open the diagram full screen (zoom, search and export)</a></p></div>
 
 						<h2><span data-l="es">Decisiones técnicas</span><span data-l="en">Technical decisions</span></h2>
 						<ul class="decisions"><li><span data-l="es"><strong>IA contenida por estructura.</strong> Todas las llamadas usan tool-use forzado y validación con Zod, el resultado se reconcilia contra el catálogo de ingredientes y nada se guarda sin revisión humana. Encima hay un filtro de intención (cada función solo acepta lo suyo) y el contenido externo se delimita como datos, no como instrucciones.</span><span data-l="en"><strong>AI contained by structure.</strong> Every call uses forced tool-use and Zod validation, the output is reconciled against the ingredient catalogue and nothing is saved without human review. On top of that there is an intent filter (each feature only accepts its own task) and external content is fenced as data, not instructions.</span></li><li><span data-l="es"><strong>Primero filtrar, después generar.</strong> El planificador se rediseñó tras un 502 en producción: Haiku interpreta la petición, un filtro determinista reduce las recetas candidatas y solo entonces Sonnet compone. El prompt ya no crece con el recetario.</span><span data-l="en"><strong>Filter first, then generate.</strong> The planner was redesigned after a 502 in production: Haiku interprets the request, a deterministic filter narrows the candidate recipes and only then does Sonnet compose. The prompt no longer grows with the recipe book.</span></li><li><span data-l="es"><strong>Cada modelo para lo suyo.</strong> Haiku para extracciones y clasificación por lotes (78 recetas por unos 2,5 céntimos), Sonnet para calidad y visión. El modelo de cada tarea se cambia por variable de entorno.</span><span data-l="en"><strong>The right model for each job.</strong> Haiku for extraction and batch classification (78 recipes for about 2.5 cents), Sonnet for quality and vision. Each task's model is configurable through an environment variable.</span></li><li><span data-l="es"><strong>Coste bajo control.</strong> Ledger de tokens y coste por llamada, cupo diario por hogar, rate limiting atómico en Postgres y planes free / premium / prueba con caducidad sin necesidad de cron.</span><span data-l="en"><strong>Cost under control.</strong> Per-call token and cost ledger, a daily quota per household, atomic rate limiting in Postgres and free / premium / trial plans with expiry and no cron jobs.</span></li><li><span data-l="es"><strong>Un hogar, un espacio de datos.</strong> Cada endpoint resuelve primero el hogar del usuario y solo trabaja con sus datos. La lista de la compra se comparte por Supabase Realtime en un componente aislado, y las recetas que alguien decide publicar se sirven desde un catálogo público separado.</span><span data-l="en"><strong>One household, one data space.</strong> Every endpoint first resolves the user's household and only works with its data. The shopping list is shared via Supabase Realtime in an isolated component, and recipes someone chooses to publish are served from a separate public catalogue.</span></li></ul>

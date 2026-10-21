@@ -39,36 +39,6 @@ PROJECTS = [
                 "The same code runs in two ways: as a <strong>web application</strong> with user accounts, or as a <strong>macOS desktop app</strong> where your data never leaves your computer.",
             ],
         ),
-        "flow": (
-            """flowchart TD
-  A["Subes tu CV / LinkedIn<br/>o pegas texto"] --> B["La IA extrae los datos<br/>con confianza por campo"]
-  A2["Entrevista conversacional<br/>(solo pregunta lo que falta)"] --> C
-  B --> C["Revisas y confirmas<br/>nada entra sin tu OK"]
-  C --> D[("Perfil verificado")]
-  F["Pegas una oferta"] --> G["Análisis de requisitos<br/>+ preguntas para concretar logros"]
-  D --> H["Genera el CV adaptado<br/>en el idioma de la oferta"]
-  G --> H
-  H --> I{"Auditoría de<br/>veracidad"}
-  I -- "corrige" --> H
-  I --> J["Revisas bullet a bullet<br/>cobertura + score ATS"]
-  J --> K["PDF final<br/>(plantillas ATS)"]
-  D --> L["Simulador de entrevistas<br/>feedback STAR contra tu perfil"]
-""",
-            """flowchart TD
-  A["Upload your CV / LinkedIn<br/>or paste text"] --> B["AI extracts the data<br/>with per-field confidence"]
-  A2["Conversational interview<br/>(asks only what is missing)"] --> C
-  B --> C["You review and confirm<br/>nothing enters without your OK"]
-  C --> D[("Verified profile")]
-  F["Paste a job offer"] --> G["Requirement analysis<br/>+ questions to pin down achievements"]
-  D --> H["Generates the tailored CV<br/>in the offer's language"]
-  G --> H
-  H --> I{"Truthfulness<br/>audit"}
-  I -- "fix" --> H
-  I --> J["Review bullet by bullet<br/>coverage + ATS score"]
-  J --> K["Final PDF<br/>(ATS templates)"]
-  D --> L["Interview simulator<br/>STAR feedback against your profile"]
-""",
-        ),
         "arch_intro": (
             [
                 "Un único backend FastAPI concentra toda la lógica: perfil, generación del CV, entrevistas y créditos. La interfaz es una SPA en React que habla con él por REST. Los servicios de dominio son los únicos que tocan la base de datos, el render de PDF y la capa de IA, que elige el proveedor según el modelo: Claude para redactar y auditar, y OpenAI solo para embeddings.",
@@ -140,32 +110,6 @@ PROJECTS = [
                 "AI is designed as an editor: it checks continuity, spots gaps and asks questions, but it doesn't write the prose. The context sent to it is visible and editable before each request, and the real cost of every answer is shown.",
             ],
         ),
-        "flow": (
-            """flowchart TD
-  ESC["Escuela<br/>lección + ejercicio"] --> F[("Fichas del mundo<br/>personajes, lugares, facciones…")]
-  F <--> MESA["Mesa de trabajo<br/>lienzo infinito"]
-  F --> V["Vistas derivadas<br/>cronología · relaciones · hilos · estructuras"]
-  F --> MAN["Manuscrito por escenas<br/>menciones + corrector"]
-  MAN --> DOCX["Exportar a Word"]
-  INV["Investigación hecha con Claude<br/>(documento HTML)"] --> IMP["Importar y enlazar<br/>con fichas"] --> F
-  F --> CTX["Contexto visible y editable<br/>ficha + relaciones + búsqueda"]
-  CTX --> IA["Asistente IA<br/>revisa continuidad, pregunta, sugiere"]
-  IA -. "no escribe la prosa" .-> MAN
-  F --> GAL["Galería<br/>ilustraciones de personajes y escenas"]
-""",
-            """flowchart TD
-  ESC["School<br/>lesson + exercise"] --> F[("World entities<br/>characters, places, factions…")]
-  F <--> MESA["Workbench<br/>infinite canvas"]
-  F --> V["Derived views<br/>timeline · relationships · threads · structures"]
-  F --> MAN["Scene-based manuscript<br/>mentions + spell checker"]
-  MAN --> DOCX["Export to Word"]
-  INV["Research done with Claude<br/>(HTML document)"] --> IMP["Import and link<br/>to entities"] --> F
-  F --> CTX["Visible, editable context<br/>entity + relations + search"]
-  CTX --> IA["AI assistant<br/>checks continuity, asks, suggests"]
-  IA -. "never writes the prose" .-> MAN
-  F --> GAL["Gallery<br/>character and scene illustrations"]
-""",
-        ),
         "arch_intro": (
             [
                 "La app es local-first. La interfaz en React y el núcleo en TypeScript puro corren dentro del webview de Tauri, y el núcleo no sabe en qué plataforma está: pide disco o IA a una capa de plataforma, que en escritorio delega en el proceso nativo en Rust.",
@@ -230,36 +174,6 @@ PROJECTS = [
                 "Deciding what to eat each day, knowing what's at home and not forgetting anything at the supermarket are three problems that usually live in separate apps. KocinAI brings them together in a mobile-first PWA shared by everyone in the household.",
                 "The shopping list computes itself: <strong>this week's menu minus what is already in the pantry</strong>, grouped by aisle and synced in real time across the family. AI handles the heavy lifting: it creates recipes from a sentence, imports them from a website, reads the supermarket receipt (photo or PDF) to fill the pantry and proposes the week's menu from a free-text request, always respecting the household's allergies.",
             ],
-        ),
-        "flow": (
-            """flowchart TD
-  R1["Una frase, una web<br/>o texto pegado"] --> AI1["Claude estructura la receta"]
-  AI1 --> REC["Encaje con el catálogo<br/>+ aviso de alérgenos"]
-  REC --> REV1["Revisas y guardas"] --> BOOK[("Recetario")]
-  T["Foto o PDF del ticket"] --> VIS["Claude Vision<br/>lee las líneas"] --> REV2["Revisas"] --> PAN[("Despensa")]
-  P["«Semana ligera,<br/>pescado dos días»"] --> HK["Haiku interpreta<br/>la petición"]
-  HK --> FIL["Filtro determinista<br/>sin alérgenos · ≤ 40 recetas"]
-  BOOK --> FIL
-  FIL --> SON["Sonnet compone<br/>el menú"] --> REV3["Revisas"] --> MENU[("Menú semanal")]
-  MENU --> LIST["Lista de la compra<br/>= menú − despensa"]
-  PAN --> LIST
-  LIST --> RT["Compartida en tiempo real<br/>con la familia"]
-  MENU --> COOK["Modo cocina<br/>descuenta de la despensa"] --> PAN
-""",
-            """flowchart TD
-  R1["A sentence, a website<br/>or pasted text"] --> AI1["Claude structures the recipe"]
-  AI1 --> REC["Match against the catalogue<br/>+ allergen warning"]
-  REC --> REV1["Review and save"] --> BOOK[("Recipe book")]
-  T["Receipt photo or PDF"] --> VIS["Claude Vision<br/>reads the lines"] --> REV2["Review"] --> PAN[("Pantry")]
-  P["“Light week,<br/>fish twice”"] --> HK["Haiku interprets<br/>the request"]
-  HK --> FIL["Deterministic filter<br/>no allergens · ≤ 40 recipes"]
-  BOOK --> FIL
-  FIL --> SON["Sonnet composes<br/>the menu"] --> REV3["Review"] --> MENU[("Weekly menu")]
-  MENU --> LIST["Shopping list<br/>= menu − pantry"]
-  PAN --> LIST
-  LIST --> RT["Shared in real time<br/>with the family"]
-  MENU --> COOK["Cooking mode<br/>deducts from the pantry"] --> PAN
-""",
         ),
         "arch_intro": (
             [
@@ -326,36 +240,6 @@ PROJECTS = [
                 "Keeping household accounts in a spreadsheet works until it doesn't: copying transactions by hand, categorising them one by one and finding out at the end of the month that one category has gone through the roof. Economía Familiar (“Family Finances”) automates that process without data ever leaving the computer.",
                 "You import the bank's CSV statement and the app discards duplicates, categorises each transaction with the same criteria the family has used historically and leaves only the ones it can't classify in an inbox. When you confirm them, it learns. On top of that there is a dashboard, monthly limits per category with in-app alerts (and email, if you turn it on), and a forecast of the month's spending that explains where each figure comes from.",
             ],
-        ),
-        "flow": (
-            """flowchart TD
-  CSV["Extracto CSV del banco"] --> ADP["Adaptador del banco<br/>formato, importes, fechas"]
-  ADP --> DED["Detecta duplicados"]
-  XLS["Excel históricos<br/>de la familia"] --> TRN["Aprende el criterio<br/>comercio → categoría"]
-  TRN --> CAT{"¿Categoría<br/>conocida?"}
-  DED --> CAT
-  CAT -- "sí" --> DB[("SQLite local")]
-  CAT -- "no" --> PEN["Bandeja de pendientes<br/>confirmas con un toque"]
-  PEN -- "recuerda tu respuesta" --> TRN
-  PEN --> DB
-  DB --> DASH["Dashboard del mes"]
-  DB --> LIM["Límites por categoría<br/>avisos en app y email opcional"]
-  DB --> FC["Previsión del mes<br/>real · estacional · media"]
-""",
-            """flowchart TD
-  CSV["Bank CSV statement"] --> ADP["Bank adapter<br/>format, amounts, dates"]
-  ADP --> DED["Detects duplicates"]
-  XLS["Family's historical<br/>spreadsheets"] --> TRN["Learns the criteria<br/>merchant → category"]
-  TRN --> CAT{"Known<br/>category?"}
-  DED --> CAT
-  CAT -- "yes" --> DB[("Local SQLite")]
-  CAT -- "no" --> PEN["Pending inbox<br/>confirm with one tap"]
-  PEN -- "remembers your answer" --> TRN
-  PEN --> DB
-  DB --> DASH["Monthly dashboard"]
-  DB --> LIM["Per-category limits<br/>in-app + optional email alerts"]
-  DB --> FC["Monthly forecast<br/>actual · seasonal · average"]
-""",
         ),
         "arch_intro": (
             [
