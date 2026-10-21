@@ -374,6 +374,7 @@ PROJECTS = [
         "name": "Economía Familiar",
         "cover": "images/projects/economia-familiar-cover.svg",
         "video": None,
+        "illustration": {"es": "images/projects/economia-familiar-motor-es.svg", "en": "images/projects/economia-familiar-motor-en.svg"},
         "link": None,
         "tagline": (
             "App de escritorio para las finanzas de casa: importa el extracto del banco, categoriza los gastos con el criterio histórico de la familia y avisa antes de pasarse del presupuesto. <strong>Local y sin IA, por privacidad.</strong>",

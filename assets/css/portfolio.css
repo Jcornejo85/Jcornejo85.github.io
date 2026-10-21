@@ -132,3 +132,7 @@ details.arch summary {
 
 /* Portadas de los proyectos recientes con la misma proporción */
 .posts:not(.previous) .image.fit img { aspect-ratio: 16 / 10; object-fit: cover; object-position: top center; }
+
+/* Ilustración en lugar de vídeo (Economía Familiar) */
+.demo-illustration { margin: 0 0 2.5rem 0; border-radius: 6px; overflow: hidden; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12); }
+.demo-illustration img { display: block; width: 100%; height: auto; }

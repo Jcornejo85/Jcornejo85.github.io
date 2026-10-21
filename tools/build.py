@@ -121,6 +121,11 @@ def media(p, n=""):
             "p", "demo-note")
         return (f'<div class="demo-video"><video controls playsinline preload="metadata" poster="{v["poster"]}">'
                 f'<source src="{v["src"]}" type="video/mp4" /></video></div>\n{note}')
+    ill = p.get("illustration")
+    if ill:
+        alt = html.escape(p["name"])
+        return (f'<figure class="demo-illustration">'
+                f'<img data-l="es" src="{ill["es"]}" alt="{alt}" /><img data-l="en" src="{ill["en"]}" alt="{alt}" /></figure>')
     return (f'<div class="demo-pending"><img src="{p["cover"]}" alt="{html.escape(p["name"])}" />'
             f'{L("Demo en vídeo próximamente.", "Video demo coming soon.", "p")}</div>')
 
