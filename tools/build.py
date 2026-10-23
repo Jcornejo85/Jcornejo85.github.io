@@ -4,6 +4,7 @@
 Uso:  python3 tools/build.py
 """
 import html
+import re
 import os
 import sys
 
@@ -20,7 +21,30 @@ def L(es, en, tag="span", cls=""):
     return f'<{tag} data-l="es"{c}>{es}</{tag}><{tag} data-l="en"{c}>{en}</{tag}>'
 
 
-def head(title_es, title_en):
+SITE = "https://jcornejo85.github.io/"
+
+
+def head(title_es, title_en, desc="", image="images/og/portfolio.jpg", page=""):
+    """Cabecera común. `desc`/`image`/`page` alimentan Open Graph y Twitter Card: es lo que
+    muestran LinkedIn, WhatsApp, Slack, etc. al compartir el enlace (imagen 1200x627)."""
+    d = html.escape(desc, quote=True)
+    t = html.escape(title_es, quote=True)
+    meta = (f'<meta name="description" content="{d}" />\n'
+            f'\t\t<meta property="og:type" content="website" />\n'
+            f'\t\t<meta property="og:site_name" content="Juan Manuel Cornejo · Portfolio" />\n'
+            f'\t\t<meta property="og:locale" content="es_ES" />\n'
+            f'\t\t<meta property="og:title" content="{t}" />\n'
+            f'\t\t<meta property="og:description" content="{d}" />\n'
+            f'\t\t<meta property="og:url" content="{SITE}{page}" />\n'
+            f'\t\t<meta property="og:image" content="{SITE}{image}" />\n'
+            f'\t\t<meta property="og:image:width" content="1200" />\n'
+            f'\t\t<meta property="og:image:height" content="627" />\n'
+            f'\t\t<meta name="twitter:card" content="summary_large_image" />\n'
+            f'\t\t<link rel="canonical" href="{SITE}{page}" />')
+    return _head(title_es, title_en).replace("<meta charset=\"utf-8\" />", "<meta charset=\"utf-8\" />\n\t\t" + meta, 1)
+
+
+def _head(title_es, title_en):
     return f"""<!DOCTYPE HTML>
 <!--
 	Massively by HTML5 UP
@@ -187,7 +211,9 @@ def project_page(p):
 					</section>
 				</div>
 """
-    out = head(f"{p['name']} · Juan Manuel Cornejo", f"{p['name']} · Juan Manuel Cornejo", ) + nav(None) + body + FOOT
+    desc = re.sub(r"<[^>]+>", "", p["card"][0])
+    out = head(f"{p['name']} · Juan Manuel Cornejo", f"{p['name']} · Juan Manuel Cornejo", desc,
+               f"images/og/{p['slug']}.jpg", f"{p['slug']}.html") + nav(None) + body + FOOT
     with open(os.path.join(ROOT, f"{s}.html"), "w", encoding="utf-8") as f:
         f.write(out)
 
@@ -224,6 +250,7 @@ def index_page():
 
     body = f"""
 				<div id="intro">
+					<canvas class="neuro-bg" aria-hidden="true"></canvas>
 					<h1>Juan Manuel Cornejo</h1>
 					<p>{L('Data Scientist especializado en <strong>IA generativa</strong>: sistemas con LLM, RAG y agentes, del prototipo a producción.',
                           'Data Scientist specialised in <strong>generative AI</strong>: LLM systems, RAG and agents, from prototype to production.')}</p>
@@ -253,7 +280,10 @@ def index_page():
 					</section>
 				</div>
 """
-    out = head("Juan Manuel Cornejo · Portfolio", "Juan Manuel Cornejo · Portfolio") + body + FOOT
+    out = head("Juan Manuel Cornejo · Portfolio", "Juan Manuel Cornejo · Portfolio",
+               "Data Scientist especializado en IA generativa (LLM, RAG y agentes). Cuatro aplicaciones "
+               "completas de 2026 con demo en vídeo: CareerCraft, Writers, KocinAI y Economía Familiar.") + body + FOOT
+    out = out.replace("</body>", '\t<script src="assets/js/neuro-intro.js" defer></script>\n\t</body>', 1)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(out)
 
@@ -285,7 +315,9 @@ def about_page():
 					</section>
 				</div>
 """
-    out = head("Sobre mí · Juan Manuel Cornejo", "About me · Juan Manuel Cornejo") + nav("about") + body + FOOT
+    out = head("Sobre mí · Juan Manuel Cornejo", "About me · Juan Manuel Cornejo",
+               "Data Scientist especializado en IA generativa: sistemas con LLM, RAG y agentes, del prototipo a producción.",
+               page="generic.html") + nav("about") + body + FOOT
     with open(os.path.join(ROOT, "generic.html"), "w", encoding="utf-8") as f:
         f.write(out)
 
