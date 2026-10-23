@@ -117,14 +117,8 @@ def media(p, n=""):
             "Recorrido real por la app. El repositorio es privado: abajo se explica cómo funciona por dentro.",
             "Real walkthrough of the app. The repository is private: how it works inside is explained below.")
         note = L(es, en, "p", "demo-note")
-        out = (f'<div class="demo-video"><video controls playsinline preload="metadata" poster="{v["poster"]}">'
-               f'<source src="{v["src"]}" type="video/mp4" /></video></div>\n{note}')
-        ill = p.get("illustration")
-        if ill:   # el vídeo no sustituye a la ilustración: va debajo
-            alt = html.escape(p["name"])
-            out += (f'\n<figure class="demo-illustration">'
-                    f'<img data-l="es" src="{ill["es"]}" alt="{alt}" /><img data-l="en" src="{ill["en"]}" alt="{alt}" /></figure>')
-        return out
+        return (f'<div class="demo-video"><video controls playsinline preload="metadata" poster="{v["poster"]}">'
+                f'<source src="{v["src"]}" type="video/mp4" /></video></div>\n{note}')
     ill = p.get("illustration")
     if ill:
         alt = html.escape(p["name"])

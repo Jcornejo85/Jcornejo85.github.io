@@ -217,15 +217,15 @@ PROJECTS = [
             "src": "assets/video/economia-familiar-demo.mp4",
             "poster": "images/projects/economia-familiar-poster.jpg",
             "note": (
-                "Recorrido real por la app, en modo claro y oscuro, con <strong>datos ficticios</strong>. El repositorio es privado: abajo se explica cómo funciona por dentro.",
-                "Real walkthrough of the app, in light and dark mode, with <strong>fictitious data</strong>. The repository is private: how it works inside is explained below.",
+                "Recorrido por las siete pantallas de la app, en modo claro y oscuro. Los datos son <strong>ficticios</strong>: los de la familia nunca salen de casa.",
+                "A walkthrough of the app's seven screens, in light and dark mode. The data is <strong>fictitious</strong>: the family's real data never leaves home.",
             ),
         },
-        "illustration": {"es": "images/projects/economia-familiar-motor-es.svg", "en": "images/projects/economia-familiar-motor-en.svg"},
+        "illustration": None,
         "link": None,
         "tagline": (
-            "App de escritorio para las finanzas de casa: importa el extracto del banco, categoriza los gastos con el criterio histórico de la familia y avisa antes de pasarse del presupuesto. <strong>Local y sin IA, por privacidad.</strong>",
-            "Desktop app for household finances: it imports the bank statement, categorises spending using the family's historical criteria and warns before the budget is exceeded. <strong>Local and AI-free, by design.</strong>",
+            "App de escritorio para las finanzas de casa: importa el extracto del banco, categoriza los gastos con el criterio histórico de la familia y avisa cuando una partida se pasa de su límite. <strong>Local y sin IA, por privacidad.</strong>",
+            "Desktop app for household finances: it imports the bank statement, categorises spending using the family's historical criteria and warns when a category goes over its limit. <strong>Local and AI-free, by design.</strong>",
         ),
         "card": (
             "Sustituye el Excel familiar: importa el CSV del banco sin duplicados, categoriza automáticamente la gran mayoría de los movimientos aprendiendo del histórico y ofrece límites por categoría y una previsión del mes que se puede explicar.",
@@ -241,11 +241,13 @@ PROJECTS = [
         "what": (
             [
                 "Llevar las cuentas de casa en Excel funciona hasta que deja de hacerlo: copiar movimientos a mano, categorizarlos uno a uno y darse cuenta a fin de mes de que una partida se ha disparado. Economía Familiar automatiza ese proceso sin sacar los datos del ordenador.",
-                "Importas el extracto CSV del banco y la app descarta los duplicados, categoriza cada movimiento con el mismo criterio que la familia ha usado históricamente y deja en una bandeja solo los que no sabe clasificar. Al confirmarlos, aprende. Encima hay un dashboard, límites mensuales por categoría con avisos en la app (y por email, si lo activas), y una previsión del gasto del mes que indica de dónde sale cada cifra.",
+                "Importas el extracto CSV del banco y la app descarta los duplicados, categoriza cada movimiento con el mismo criterio que la familia ha usado históricamente y deja en una bandeja solo los que no sabe clasificar. Al confirmarlos, aprende.",
+                "Encima hay un dashboard que compara cada categoría con su límite o con su media y lleva aparte los gastos excepcionales (cuentan para el ahorro, pero no distorsionan las medias). Se completa con límites mensuales sugeridos desde el histórico, avisos en la app (y por email, si lo activas) y una previsión del gasto del mes que indica de dónde sale cada cifra.",
             ],
             [
                 "Keeping household accounts in a spreadsheet works until it doesn't: copying transactions by hand, categorising them one by one and finding out at the end of the month that one category has gone through the roof. Economía Familiar (“Family Finances”) automates that process without data ever leaving the computer.",
-                "You import the bank's CSV statement and the app discards duplicates, categorises each transaction with the same criteria the family has used historically and leaves only the ones it can't classify in an inbox. When you confirm them, it learns. On top of that there is a dashboard, monthly limits per category with in-app alerts (and email, if you turn it on), and a forecast of the month's spending that explains where each figure comes from.",
+                "You import the bank's CSV statement and the app discards duplicates, categorises each transaction with the same criteria the family has used historically and leaves only the ones it can't classify in an inbox. When you confirm them, it learns.",
+                "On top of that there is a dashboard that compares each category with its limit or its average and keeps one-off expenses apart (they count towards savings but don't skew the averages). It is completed by monthly limits suggested from history, in-app alerts (and email, if you turn it on) and a forecast of the month's spending that explains where each figure comes from.",
             ],
         ),
         "arch_intro": (
