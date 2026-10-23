@@ -212,8 +212,15 @@ PROJECTS = [
     {
         "slug": "economia-familiar",
         "name": "Economía Familiar",
-        "cover": "images/projects/economia-familiar-cover.svg",
-        "video": None,
+        "cover": "images/projects/economia-familiar-poster.jpg",
+        "video": {
+            "src": "assets/video/economia-familiar-demo.mp4",
+            "poster": "images/projects/economia-familiar-poster.jpg",
+            "note": (
+                "Recorrido real por la app, en modo claro y oscuro, con <strong>datos ficticios</strong>. El repositorio es privado: abajo se explica cómo funciona por dentro.",
+                "Real walkthrough of the app, in light and dark mode, with <strong>fictitious data</strong>. The repository is private: how it works inside is explained below.",
+            ),
+        },
         "illustration": {"es": "images/projects/economia-familiar-motor-es.svg", "en": "images/projects/economia-familiar-motor-en.svg"},
         "link": None,
         "tagline": (
