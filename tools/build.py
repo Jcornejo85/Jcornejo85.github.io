@@ -250,6 +250,7 @@ def index_page():
 
     body = f"""
 				<div id="intro">
+					<canvas class="neuro-bg" aria-hidden="true"></canvas>
 					<h1>Juan Manuel Cornejo</h1>
 					<p>{L('Data Scientist especializado en <strong>IA generativa</strong>: sistemas con LLM, RAG y agentes, del prototipo a producción.',
                           'Data Scientist specialised in <strong>generative AI</strong>: LLM systems, RAG and agents, from prototype to production.')}</p>
@@ -282,6 +283,7 @@ def index_page():
     out = head("Juan Manuel Cornejo · Portfolio", "Juan Manuel Cornejo · Portfolio",
                "Data Scientist especializado en IA generativa (LLM, RAG y agentes). Cuatro aplicaciones "
                "completas de 2026 con demo en vídeo: CareerCraft, Writers, KocinAI y Economía Familiar.") + body + FOOT
+    out = out.replace("</body>", '\t<script src="assets/js/neuro-intro.js" defer></script>\n\t</body>', 1)
     with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
         f.write(out)
 
