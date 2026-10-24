@@ -100,7 +100,7 @@ def red_index(root, projects, previous, L, head, linkedin, github, desc):
 
 			<section class="outro fx shadow" id="contacto">
 				<h2>{L('Toda la red, encendida', 'The whole network, lit up')}</h2>
-				<p>{L('¿Hablamos de IA generativa, RAG o agentes? Madrid, España.', 'Shall we talk about generative AI, RAG or agents? Madrid, Spain.')}</p>
+				<p>{L('¿Hablamos de IA?', 'Shall we talk about AI?')}</p>
 				<ul class="links">
 					<li><a href="{linkedin}" target="_blank" rel="noopener">LinkedIn</a></li>
 					<li><a href="{github}" target="_blank" rel="noopener">GitHub</a></li>
