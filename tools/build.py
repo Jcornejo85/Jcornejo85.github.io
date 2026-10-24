@@ -78,7 +78,7 @@ def nav(active):
 				</header>
 				<nav id="nav">
 					<ul class="links">
-						{li('projects', 'index.html', 'Proyectos', 'Projects')}
+						{li('projects', 'proyectos.html', 'Proyectos', 'Projects')}
 						{li('about', 'generic.html', 'Sobre mí', 'About me')}
 					</ul>
 					<ul class="icons">
@@ -178,7 +178,9 @@ def project_page(p):
     if p["link"]:
         live = (f'<li><a href="{p["link"]}" class="button primary large" target="_blank" rel="noopener">'
                 f'{L("Abrir la app", "Open the app")}</a></li>')
-    actions = f"""<ul class="actions special">{live}<li><a href="index.html#projects" class="button large">{L('Ver todos los proyectos', 'All projects')}</a></li></ul>"""
+    actions = (f'<ul class="actions special">{live}'
+               f'<li><a href="index.html#{s}" class="button large">{L("Volver a la red", "Back to the network")}</a></li>'
+               f'<li><a href="proyectos.html" class="button large">{L("Ver todos los proyectos", "All projects")}</a></li></ul>')
 
     body = f"""
 				<div id="main">
@@ -218,7 +220,12 @@ def project_page(p):
         f.write(out)
 
 
-def index_page():
+DESC = ("Data Scientist especializado en IA generativa (LLM, RAG y agentes). Cuatro aplicaciones "
+        "completas de 2026 con demo en vídeo: CareerCraft, Writers, KocinAI y Economía Familiar.")
+
+
+def list_page():
+    """Lista clásica de proyectos (Massively). También es la alternativa sin WebGL de la portada."""
     posts = []
     for p in PROJECTS:
         es, en = p["card"]
@@ -280,11 +287,9 @@ def index_page():
 					</section>
 				</div>
 """
-    out = head("Juan Manuel Cornejo · Portfolio", "Juan Manuel Cornejo · Portfolio",
-               "Data Scientist especializado en IA generativa (LLM, RAG y agentes). Cuatro aplicaciones "
-               "completas de 2026 con demo en vídeo: CareerCraft, Writers, KocinAI y Economía Familiar.") + body + FOOT
+    out = head("Proyectos · Juan Manuel Cornejo", "Projects · Juan Manuel Cornejo", DESC, page="proyectos.html") + body + FOOT
     out = out.replace("</body>", '\t<script src="assets/js/neuro-intro.js" defer></script>\n\t</body>', 1)
-    with open(os.path.join(ROOT, "index.html"), "w", encoding="utf-8") as f:
+    with open(os.path.join(ROOT, "proyectos.html"), "w", encoding="utf-8") as f:
         f.write(out)
 
 
@@ -325,6 +330,8 @@ def about_page():
 if __name__ == "__main__":
     for p in PROJECTS:
         project_page(p)
-    index_page()
+    list_page()
     about_page()
-    print("OK:", ", ".join(p["slug"] + ".html" for p in PROJECTS), "+ index.html + generic.html")
+    from red import red_index  # portada inmersiva (tools/red.py)
+    red_index(ROOT, PROJECTS, PREVIOUS, L, head, LINKEDIN, GITHUB, DESC)
+    print("OK:", ", ".join(p["slug"] + ".html" for p in PROJECTS), "+ index.html + proyectos.html + generic.html")

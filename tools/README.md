@@ -1,6 +1,6 @@
 # Cómo actualizar el portfolio
 
-Las páginas `index.html`, `generic.html` y las de cada proyecto (`careercraft.html`, `writers.html`, `kocinai.html`, `economia-familiar.html`) **se generan**; no las edites a mano.
+Las páginas `index.html`, `proyectos.html`, `generic.html` y las de cada proyecto (`careercraft.html`, `writers.html`, `kocinai.html`, `economia-familiar.html`) **se generan**; no las edites a mano.
 
 1. Edita textos o vídeos en `tools/content.py`.
 2. Regenera: `python3 tools/build.py`
@@ -24,3 +24,12 @@ Cada proyecto embebe dos diagramas interactivos en modo oscuro: «Cómo funciona
 ## Idiomas
 
 Todo texto va en pareja ES/EN (`data-l="es"` / `data-l="en"`). El selector del menú cambia el idioma y lo recuerda; `?lang=en` fuerza inglés en un enlace.
+
+## Portada inmersiva
+
+`index.html` es la red neuronal que se recorre con el scroll; la genera `tools/red.py` con los mismos datos de `content.py` (vídeo, tagline, cifras y stack de cada proyecto). La animación está en `assets/js/red.js` (Three.js + GSAP ScrollTrigger + Lenis, por CDN) y los estilos en `assets/css/red.css`.
+
+- «Cómo funciona por dentro» abre, encima de la red, el contenido de la página del proyecto (`<slug>.html`), así que no hay nada duplicado.
+- `index.html#<slug>` lleva directamente a la neurona de ese proyecto.
+- Sin WebGL, o con «reducir movimiento», la portada se adapta (lista legible o vistas fijas). `proyectos.html` es la lista clásica.
+- El color de cada neurona está en `COLORS` de `tools/red.py`.
