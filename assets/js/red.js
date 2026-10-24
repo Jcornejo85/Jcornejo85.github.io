@@ -430,7 +430,11 @@ function updateHUD(p) {
   for (const f of fx) {
     let o = f.a < 0 ? 1 - smooth(f.b - f.f, f.b, p) : win(p, f.a, f.b, f.f);
     o = Math.round(o * 100) / 100;
-    if (o !== f.o) { f.o = o; setVis(f.el, o, f.slide); }
+    if (o !== f.o) {
+      f.o = o; setVis(f.el, o, f.slide);
+      // contacto: un solo destello en orden cada vez que aparece (se rearma al ocultarse)
+      if (f.el.id === 'contacto') { if (o > 0.6) f.el.classList.add('lit'); else if (o < 0.05) f.el.classList.remove('lit'); }
+    }
   }
   for (const c of SC) {
     let o = Math.round(win(p, c.show[0], c.show[1], 0.012) * 100) / 100;
