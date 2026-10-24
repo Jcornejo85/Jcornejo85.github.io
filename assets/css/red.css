@@ -69,8 +69,12 @@ a{color:inherit}
 .old a b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.4rem;line-height:1.1;color:var(--ink)}
 .old a small{display:block;font-size:.8rem;color:var(--ink-dim);margin-top:3px}
 .old a.live{pointer-events:auto}
-.old a:hover b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
+.old a .open{display:inline-flex;align-items:center;gap:5px;margin-top:7px;font:600 .74rem var(--f-body);color:var(--ink);padding:4px 10px;border-radius:999px;border:1px solid rgba(226,214,255,.35);background:rgba(0,0,0,.55);text-shadow:none;transition:background .2s,color .2s,border-color .2s}
+.old a:hover .open,.old a.hover .open,.old a:focus-visible .open{background:var(--mist);color:#0b0414;border-color:var(--mist)}
+.old a:hover b,.old a.hover b{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:4px}
 .plabel{font-family:var(--f-display);font-size:clamp(2rem,5vw,2.8rem);line-height:1;white-space:nowrap}
+.plabel.live{pointer-events:auto;cursor:pointer}
+.plabel.hover,.plabel:hover{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:6px}
 .plabel,.old a{text-shadow:0 0 8px #000,0 0 18px #000,0 0 32px rgba(0,0,0,.9)}
 
 /* escena de proyecto: texto a la izquierda, demo a la derecha */
@@ -98,8 +102,15 @@ a{color:inherit}
 .scene-video button{all:unset;cursor:pointer;display:block;width:100%;border-radius:10px;overflow:hidden;position:relative;background:#06020e;
   box-shadow:0 0 0 1px rgba(226,214,255,.14),0 0 60px -10px var(--ch),0 30px 60px -20px rgba(0,0,0,.9)}
 .scene-video video{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top center}
-.vhint{position:absolute;right:12px;bottom:12px;font-size:.75rem;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.72);color:var(--ink);opacity:0;transition:opacity .2s}
-.scene-video button:hover .vhint,.scene-video button:focus-visible .vhint{opacity:1}
+.ico{width:.95em;height:.95em;flex:none}
+.vbadge{position:absolute;left:12px;top:12px;display:inline-flex;align-items:center;gap:7px;font:600 .8rem var(--f-body);padding:7px 13px 7px 11px;border-radius:999px;
+  background:rgba(6,2,14,.82);color:var(--ink);box-shadow:0 0 0 1px var(--ch),0 0 18px -4px var(--ch);transition:background .2s,transform .2s}
+.vbadge .ico{color:var(--ch)}
+.scene-video button:hover .vbadge,.scene-video button:focus-visible .vbadge{background:var(--ch);color:#0b0414;transform:translateY(-2px)}
+.scene-video button:hover .vbadge .ico,.scene-video button:focus-visible .vbadge .ico{color:#0b0414}
+.scene-video button:hover video{filter:brightness(1.06)}
+@media (prefers-reduced-motion:no-preference){.scene.on .vbadge{animation:nudge 3.2s ease-in-out 1s infinite}}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 1px var(--ch),0 0 18px -4px var(--ch)}50%{box-shadow:0 0 0 1px var(--ch),0 0 26px 0 var(--ch)}}
 .scene-video figcaption{font-size:.74rem;color:var(--ink-dim);margin-top:8px;text-align:right}
 
 /* contacto */

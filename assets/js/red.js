@@ -68,6 +68,7 @@ function radial(stops) {
 }
 const SOFT = radial([[0, 1], [0.22, 0.85], [0.55, 0.18], [1, 0]]);
 const CORE = radial([[0, 1], [0.12, 0.9], [0.3, 0.22], [0.6, 0.04], [1, 0]]); // núcleo nítido: menos «bola de luz»
+const RING = radial([[0, 0], [0.62, 0], [0.8, 0.9], [0.88, 0.5], [1, 0]]);     // anillo: «esta neurona se puede abrir»
 
 const mats = [];
 const G = `float g(float x, float c, float w){ float t = (x - c) / w; return exp(-t * t); }`;
@@ -102,7 +103,7 @@ function pointsMat({ opacity = 1, gain = 1, near = 3, burst = false, tex = SOFT,
 }
 function makePoints(A, mat) {
   const g = new THREE.BufferGeometry();
-  for (const [k, n] of [['position', 3], ['aColor', 3], ['aSize', 1], ['aDir', 3], ['aSeed', 1], ['aPer', 1]]) if (A[k]) g.setAttribute(k, new THREE.Float32BufferAttribute(A[k], n));
+  for (const [k, n] of [['position', 3], ['aColor', 3], ['aSize', 1], ['aDir', 3], ['aSeed', 1], ['aPer', 1], ['aOff', 1]]) if (A[k]) g.setAttribute(k, new THREE.Float32BufferAttribute(A[k], n));
   const pts = new THREE.Points(g, mat); pts.frustumCulled = false; scene.add(pts); return pts;
 }
 
@@ -194,6 +195,27 @@ function axonMat({ color, seg = 1.8, train = 0 } = {}) {
     transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
   });
   mats.push(m); return m;
+}
+
+/* anillos de sonar alrededor de las neuronas que se pueden abrir */
+function ringMat() {
+  const m = new THREE.ShaderMaterial({
+    uniforms: { uTex: { value: RING }, uScale: { value: 500 }, uMaxPx: { value: 160 }, uT: { value: 0 }, uOpacity: { value: 0 } },
+    vertexShader: `
+      attribute float aSize; attribute vec3 aColor; attribute float aOff;
+      uniform float uScale, uMaxPx, uT; varying vec3 vColor; varying float vPh;
+      void main(){
+        vPh = fract(uT + aOff);
+        vec4 mv = modelViewMatrix * vec4(position, 1.0);
+        gl_PointSize = min(aSize * (0.45 + 1.55 * vPh) * uScale / max(-mv.z, 0.5), uMaxPx);
+        vColor = aColor; gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader: `
+      uniform sampler2D uTex; uniform float uOpacity; varying vec3 vColor; varying float vPh;
+      void main(){ float a = texture2D(uTex, gl_PointCoord).a; gl_FragColor = vec4(vColor, a * uOpacity * (1.0 - vPh) * (1.0 - vPh)); }`,
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  });
+  m.userData.px = 160; mats.push(m); return m;
 }
 
 /* ---------- cerebro: corteza de partículas con filamentos ---------- */
@@ -334,7 +356,9 @@ function namedNeuron({ pos, color, big, label, pFire, href }) {
     }
     burst = pointsMat({ opacity: 0, gain: 1.1, burst: true, tex: CORE, maxPx: 10 }); makePoints(A, burst);
   }
-  const node = { pos, color, big, tm, sm, burst, label, pFire, o: -1 };
+  const ring = ringMat();
+  makePoints({ position: [pos.x, pos.y, pos.z, pos.x, pos.y, pos.z], aColor: [color.r, color.g, color.b, color.r, color.g, color.b], aSize: [big ? 3.2 : 1.8, big ? 3.2 : 1.8], aOff: [0, 0.5] }, ring);
+  const node = { pos, color, big, tm, sm, burst, label, pFire, ring, ph: rnd(), o: -1, sx: -1e4, sy: -1e4 };
   if (label) { node.el = label; label.style.color = '#' + color.getHexString(); if (!big) label.tabIndex = -1; }
   NODES.push(node); return node;
 }
@@ -350,9 +374,10 @@ oldEls.forEach((el, i) => {
 SC.forEach((c, i) => {
   const t = curve.getTangentAt(c.u);
   const pos = curve.getPointAt(c.u).addScaledVector(t, 13).addScaledVector(sideAt(c.u), (i % 2 ? -1 : 1) * 2.7).addScaledVector(UP, [1.5, 1, -1, 1.5][i % 4]);
-  const lab = document.createElement('div'); lab.className = 'plabel'; lab.setAttribute('aria-hidden', 'true');
+  const lab = document.createElement('a'); lab.className = 'plabel'; lab.href = c.slug + '.html'; lab.tabIndex = -1; lab.dataset.open = c.slug;
   lab.textContent = c.el.querySelector('h2').textContent; labelsEl.appendChild(lab);
   c.node = namedNeuron({ pos, color: c.color, big: true, label: lab, pFire: c.fire });
+  c.node.scene = c;
   c.pos = pos;
   // colateral del axón principal hasta la neurona, con su botón sináptico
   let best = 0, bd = 1e9; axonPts.forEach((q, k) => { const d = q.distanceToSquared(pos); if (d < bd) { bd = d; best = k; } });
@@ -434,7 +459,9 @@ function updateLabels(p) {
     const vis = v3.z < 1 && Math.abs(v3.x) < 1.1 && Math.abs(v3.y) < 1.1;
     let o = vis ? w * clamp(1.4 - dist / (n.big ? 45 : 26)) : 0;
     o = Math.round(o * 100) / 100;
-    if (o !== n.o) { n.o = o; n.el.style.opacity = o; n.el.style.visibility = o < 0.03 ? 'hidden' : 'visible'; n.el.classList.toggle('live', o > 0.5); if (!n.big) n.el.tabIndex = o > 0.5 ? 0 : -1; }
+    if (o !== n.o) { n.o = o; n.el.style.opacity = o; n.el.style.visibility = o < 0.03 ? 'hidden' : 'visible'; n.el.classList.toggle('live', o > 0.5); n.el.tabIndex = o > 0.5 ? 0 : -1; }
+    n.sx = (v3.x * 0.5 + 0.5) * W; n.sy = (-v3.y * 0.5 + 0.5) * H;
+    n.clickable = vis && (o > 0.45 || (n.big && n.scene.o > 0.5 && dist < 60));
     if (o > 0) {
       if (!n.el._w) n.el._w = n.el.offsetWidth;
       const x = clamp((v3.x * 0.5 + 0.5) * W + (n.big ? 30 : 14), 12, W - n.el._w - 40);
@@ -474,6 +501,31 @@ document.querySelectorAll('[data-open]').forEach(b => b.addEventListener('click'
 sheet.querySelector('.sheet-close').addEventListener('click', closeSheet);
 sheet.addEventListener('click', e => { if (e.target === sheet) closeSheet(); });
 addEventListener('keydown', e => { if (e.key === 'Escape') closeSheet(); });
+// Las neuronas con proyecto se pueden pulsar: el cursor cambia y la neurona se ilumina al pasar por encima.
+let hovered = null;
+function nodeAt(x, y) {
+  let best = null, bd = 1e9;
+  for (const n of NODES) if (n.clickable) { const d = Math.hypot(n.sx - x, n.sy - y), r = n.big ? 80 : 46; if (d < r && d < bd) { bd = d; best = n; } }
+  return best;
+}
+function setHover(n) {
+  if (n === hovered) return;
+  if (hovered && hovered.el) hovered.el.classList.remove('hover');
+  hovered = n; canvas.style.cursor = n ? 'pointer' : '';
+  if (n && n.el) n.el.classList.add('hover');
+}
+canvas.addEventListener('pointermove', e => { if (e.pointerType === 'mouse') setHover(nodeAt(e.clientX, e.clientY)); });
+canvas.addEventListener('pointerleave', () => setHover(null));
+canvas.addEventListener('click', e => {
+  const n = nodeAt(e.clientX, e.clientY); if (!n) return;
+  if (n.big) openSheet(n.scene.slug, n.el);
+  else if (n.el.target === '_blank') window.open(n.el.href, '_blank', 'noopener'); else location.href = n.el.href;
+});
+document.querySelectorAll('.old a, .plabel').forEach(el => {
+  el.addEventListener('mouseenter', () => setHover(NODES.find(n => n.el === el) || null));
+  el.addEventListener('mouseleave', () => setHover(null));
+});
+labelsEl.addEventListener('click', e => { const a = e.target.closest('.plabel'); if (a) { e.preventDefault(); openSheet(a.dataset.open, a); } });
 
 /* ---------- tamaño ---------- */
 function resize() {
@@ -571,6 +623,16 @@ function frame() {
   shellMat.uniforms.uGain.value = 1.3 + 0.7 * (1 - smooth(0.06, 0.13, p)) + 0.9 * outro;
   shellMat.uniforms.uOpacity.value = 0.85 - 0.62 * smooth(0.1, 0.16, p) * (1 - smooth(0.84, 0.9, p));
   bgTree.uniforms.uLit.value = bgSoma.uniforms.uLit.value = outro * 0.4;
+  for (const n of NODES) {
+    const h = n === hovered ? 1 : 0;
+    n.hv = lerp(n.hv || 0, h, 0.15);
+    n.ph = (n.ph + (reduce ? 0 : 0.0065 + 0.008 * n.hv)) % 1;
+    n.ring.uniforms.uT.value = n.ph;
+    const want = n.clickable ? (n.big && n.scene.o > 0.5 ? 0.35 : 0.75) + 0.4 * n.hv : 0;
+    n.ring.uniforms.uOpacity.value = lerp(n.ring.uniforms.uOpacity.value, want, 0.12);
+    n.sm.uniforms.uGain.value = (n.big ? 1.2 : 1) * (1 + 1.4 * n.hv);
+    n.tm.uniforms.uBase.value += 0.6 * n.hv;
+  }
   mats.forEach(m => { if (m.uniforms.uTime) m.uniforms.uTime.value = t; });
 
   composer.render();

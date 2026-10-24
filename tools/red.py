@@ -42,7 +42,7 @@ def red_index(root, projects, previous, L, head, linkedin, github, desc):
 						<figure class="scene-video">
 							<button type="button" data-open="{s}" aria-label="{esc(p['name'])}: ver la demo y cómo funciona">
 								<video muted loop playsinline preload="none" poster="{v['poster']}" data-src="{v['src']}"></video>
-								<span class="vhint">{L('Ver con detalle', 'See in detail')}</span>
+								<span class="vbadge"><svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M5 3.5v9l7.5-4.5z" fill="currentColor"/></svg>{L('Ver demo y detalle', 'Watch demo and details')}</span>
 							</button>
 							<figcaption>{L('Demo real de la app', 'Real app demo')}</figcaption>
 						</figure>"""
@@ -65,8 +65,10 @@ def red_index(root, projects, previous, L, head, linkedin, github, desc):
         nes, nen = q["name"]
         des, den = q["desc"]
         tgt = ' target="_blank" rel="noopener"' if q["href"].startswith("http") else ""
+        gh = q["href"].startswith("https://github.com")
+        go = L("Ver en GitHub", "View on GitHub") if gh else L("Ver proyecto", "View project")
         old.append(f'<li><a href="{q["href"]}"{tgt}>'
-                   f'<b>{L(nes, nen)}</b><small>{L(des, den)}</small></a></li>')
+                   f'<b>{L(nes, nen)}</b><small>{L(des, den)}</small><span class="open">{go}<svg class="ico" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3h7v7M13 3 4 12" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span></a></li>')
 
     stops = ([("Inicio", "Start"), ("2021–2022", "2021–2022")] + [(p["name"], p["name"]) for p in projects]
              + [("Contacto", "Contact")])
