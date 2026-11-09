@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="generator" content="archify 3.2.0">
   <meta name="archify-reader-contract" content="declared-wide-v1">
-  <title>CareerCraft: de tu perfil a la entrevista, sin inventar nada · Diagrama</title>
+  <title>White Toga CV: arquitectura del sistema · Diagrama</title>
   <script>
     // Resolve the theme before first paint so light-preference users don't
     // see a dark flash. The toolbar script below re-applies with UI state.
@@ -5193,7 +5193,7 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
            data-preset-badge-blueprint="PLANO / REV 01"
            data-preset-badge-editorial="EDITORIAL / NOTA DE CAMPO">
         <div class="pulse-dot"></div>
-        <h1>CareerCraft: de tu perfil a la entrevista, sin inventar nada</h1>
+        <h1>White Toga CV: arquitectura del sistema</h1>
       </div>
     </div>
 
@@ -5202,9 +5202,9 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
     <!-- Main Diagram -->
     <div class="diagram-container" data-detail-level="read"
          data-preset-badge-editorial-plate="ARCHIFY / LÁMINA 04">
-      <svg viewBox="0 0 958 660" data-reader-fit="width-first" data-layout-contract="readable-v2" role="img" lang="es" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase" data-node-ui="">
-        <title id="archify-diagram-title">CareerCraft: de tu perfil a la entrevista, sin inventar nada</title>
-        <desc id="archify-diagram-description">Un diagrama de flujo de trabajo generado por Archify.</desc>
+      <svg viewBox="0 0 1270 748" role="img" lang="es" aria-labelledby="archify-diagram-title archify-diagram-description" data-animation="trace" data-preset="classic" data-quality-profile="showcase" data-node-ui="" data-reader-fit="intrinsic-height" data-reader-min-text="7.5" data-reader-primary-text="14">
+        <title id="archify-diagram-title">White Toga CV: arquitectura del sistema</title>
+        <desc id="archify-diagram-description">Un diagrama de arquitectura generado por Archify.</desc>
         <!-- Definitions -->
         <defs>
           <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
@@ -5248,268 +5248,319 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
         <!-- Background Grid -->
         <rect width="100%" height="100%" fill="url(#grid)" />
 
-        <!-- Swimlanes -->
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-0" x="40" y="52" width="902" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="74" class="t-muted" font-size="10" font-weight="600">01 / Tú</text>
+        <!-- Boundaries (behind everything) -->
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="region" data-composition-frame-id="0" data-composition-frame-label="Proceso backend Python (contenedor Docker o sidecar PyInstaller)" x="480" y="10" width="506" height="510" rx="12" class="c-region" stroke-width="1"/>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-1" x="40" y="178" width="902" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="exception-lane" data-composition-frame-id="lane-1-exception" x="46" y="184" width="890" height="94" rx="8" class="c-security-group" stroke-width="1"/>
-        <text x="54" y="200" class="t-security" font-size="10" font-weight="600">EX / Controles</text>
+        <rect data-graph-role="structural-frame" data-composition-frame-kind="security-group" data-composition-frame-id="1" data-composition-frame-label="App de escritorio local-first" x="230" y="390" width="210" height="290" rx="8" class="c-security-group" stroke-width="1"/>
 
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-2" x="40" y="304" width="902" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="326" class="t-muted" font-size="10" font-weight="600">03 / CareerCraft (IA)</text>
-
-        <rect data-graph-role="structural-frame" data-composition-frame-kind="lane" data-composition-frame-id="lane-3" x="40" y="430" width="902" height="106" rx="10" class="c-lane" stroke-width="1"/>
-        <text x="54" y="452" class="t-muted" font-size="10" font-weight="600">04 / Tus datos</text>
-
-        <!-- Phase headers -->
-        <path d="M 80 35 H 320" class="a-emphasis phase-rule" stroke-width="1" stroke-linecap="round" fill="none"/>
-        <rect x="132.4" y="27" width="135.2" height="16" rx="8" class="c-mask phase-chip"/>
-        <text x="200" y="38.5" class="t-backend" font-size="8" font-weight="600" text-anchor="middle" letter-spacing=".04em">1 · Construyes tu perfil</text>
-        <path d="M 390 35 H 477.2" class="a-default phase-rule" stroke-width="1" stroke-linecap="round" fill="none"/>
-        <rect x="388" y="27" width="91.19999999999999" height="16" rx="8" class="c-mask phase-chip"/>
-        <text x="433.6" y="38.5" class="t-muted" font-size="8" font-weight="600" text-anchor="middle" letter-spacing=".04em">2 · ¿Te conviene?</text>
-        <path d="M 540 35 H 655.2" class="a-emphasis phase-rule" stroke-width="1" stroke-linecap="round" fill="none"/>
-        <rect x="538" y="27" width="119.19999999999999" height="16" rx="8" class="c-mask phase-chip"/>
-        <text x="597.6" y="38.5" class="t-backend" font-size="8" font-weight="600" text-anchor="middle" letter-spacing=".04em">3 · CV y carta veraces</text>
-        <path d="M 699.2 35 H 895.2" class="a-dashed phase-rule" stroke-width="1" stroke-linecap="round" fill="none"/>
-        <rect x="729.6" y="27" width="135.2" height="16" rx="8" class="c-mask phase-chip"/>
-        <text x="797.2" y="38.5" class="t-messagebus" font-size="8" font-weight="600" text-anchor="middle" letter-spacing=".04em">4 · Envías y te preparas</text>
-
-        <!-- Workflow groups -->
-
-
-        <!-- Edge paths -->
-        <path data-edge-from="application" data-edge-to="prep" data-edge-label="oferta y lo enviado" data-edge-key="0" data-edge-id="application-prep" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="783.2,498;857.2,498;857.2,398" d="M 783.2 498 L 849.2 498 Q 857.2 498 857.2 490 L 857.2 398" class="a-emphasis" data-animate="edge" style="--step:8" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="confirm" data-edge-to="profile_db" data-edge-label="guarda" data-edge-key="1" data-edge-id="confirm-profile" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="258,154;258,294;210,294;210,498;226,498" d="M 258 154 L 258 286 Q 258 294 250 294 L 218 294 Q 210 294 210 302 L 210 490 Q 210 498 218 498 L 226 498" class="a-emphasis" data-animate="edge" style="--step:2" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="extract" data-edge-to="confirm" data-edge-label="propone" data-edge-key="2" data-edge-id="extract-confirm" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="170,372;195,372;195,120;220,120" d="M 170 372 L 187 372 Q 195 372 195 364 L 195 128 Q 195 120 203 120 L 220 120" class="a-emphasis" data-animate="edge" style="--step:1" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="fit_gate" data-edge-to="generate" data-edge-label="encaja" data-edge-key="3" data-edge-id="fit-generate" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="435,280;435,372;522,372" d="M 435 280 L 435 364 Q 435 372 443 372 L 522 372" class="a-emphasis" data-animate="edge" style="--step:4" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="generate" data-edge-to="truth_gate" data-edge-label="borrador" data-edge-key="4" data-edge-id="generate-truth" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="578,346;578,280" d="M 578 346 L 578 280" class="a-security" data-animate="edge" style="--step:5" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="interview" data-edge-to="confirm" data-edge-label="o respondes" data-edge-key="5" data-edge-id="interview-confirm" data-composition-routing="workflow-v2-auto" data-edge-role="branch" data-composition-points="282,346;282,154" d="M 282 346 L 282 154" class="a-dashed" data-animate="edge" style="--step:12" stroke-width="1.4" marker-end="url(#arrowhead-dashed)"/>
-        <path data-edge-from="offer" data-edge-to="fit_gate" data-edge-label="texto saneado" data-edge-key="6" data-edge-id="offer-fit" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="428,146;428,212" d="M 428 146 L 428 212" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.4" marker-end="url(#arrowhead)"/>
-        <path data-edge-from="profile_db" data-edge-to="fit_gate" data-edge-label="hechos y condiciones" data-edge-key="7" data-edge-id="profile-fit" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="282,472;282,456;343,456;343,296;404,296;404,280" d="M 282 472 L 282 464 Q 282 456 290 456 L 335 456 Q 343 456 343 448 L 343 304 Q 343 296 351 296 L 396 296 Q 404 296 404 288 L 404 280" class="a-emphasis" data-animate="edge" style="--step:3" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="profile_db" data-edge-to="generate" data-edge-label="solo tus hechos" data-edge-key="8" data-edge-id="profile-generate" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="338,505;578,505;578,398" d="M 338 505 L 570 505 Q 578 505 578 497 L 578 398" class="a-emphasis" data-animate="edge" style="--step:12" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="review" data-edge-to="application" data-edge-label="envías" data-edge-key="9" data-edge-id="review-application" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="737.2,154;737.2,472" d="M 737.2 154 L 737.2 472" class="a-emphasis" data-animate="edge" style="--step:7" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="truth_gate" data-edge-to="generate" data-edge-label="corrige" data-edge-key="10" data-edge-id="truth-fix" data-composition-routing="workflow-v2-auto" data-edge-role="return" data-composition-points="602,280;602,296;642,296;642,330;602,330;602,346" d="M 602 280 L 602 288 Q 602 296 610 296 L 634 296 Q 642 296 642 304 L 642 322 Q 642 330 634 330 L 610 330 Q 602 330 602 338 L 602 346" class="a-security" data-animate="edge" style="--step:12" stroke-width="1.4" marker-end="url(#arrowhead-security)"/>
-        <path data-edge-from="truth_gate" data-edge-to="review" data-edge-label="aprobado" data-edge-key="11" data-edge-id="truth-review" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="624,246;713.2,246;713.2,154" d="M 624 246 L 705.2 246 Q 713.2 246 713.2 238 L 713.2 154" class="a-emphasis" data-animate="edge" style="--step:6" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-        <path data-edge-from="upload" data-edge-to="extract" data-edge-label="lee" data-edge-key="12" data-edge-id="upload-extract" data-composition-routing="workflow-v2-auto" data-edge-role="" data-composition-points="48,120;20,120;20,372;66,372" d="M 48 120 L 28 120 Q 20 120 20 128 L 20 364 Q 20 372 28 372 L 66 372" class="a-emphasis" data-animate="edge" style="--step:0" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
-
-        <!-- Nodes -->
-        <g id="node-upload" data-node-id="upload" data-node-label="Subes tu CV" tabindex="0" role="button" aria-label="Enfocar Subes tu CV, CV, PDF de LinkedIn o texto, Tú › 1 · Construyes tu perfil" aria-pressed="false" data-node-kind="external" data-node-sublabel="CV, PDF de LinkedIn o texto" data-node-context="Tú › 1 · Construyes tu perfil">
-          <title>Subes tu CV · CV, PDF de LinkedIn o texto · Tú › 1 · Construyes tu perfil</title>
-          <rect x="48" y="94" width="140" height="52" rx="8" class="c-mask"/>
-          <rect x="48" y="94" width="140" height="52" rx="8" class="c-external" data-animate="node" style="--step:0" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="start" class="semantic-sigil s-external" transform="translate(54 100) scale(0.6875)">
-            <circle cx="8" cy="8" r="5"/>
-            <path d="m7 5.4 3.6 2.6L7 10.6Z" class="sigil-fill"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="118" y="115" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Subes tu CV</text>
-          <text data-detail="context" x="118" y="132" class="t-muted" font-size="8" text-anchor="middle">CV, PDF de LinkedIn o texto</text>
+        <!-- Connection paths (before components for correct z-order) -->
+        <g data-graph-role="automatic-crossover" style="--step:0">
+          <path data-graph-role="automatic-crossover-underlay" d="M 170 231.95 L 260 231.95" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="usuario" data-edge-to="spa" data-edge-label="navegador" data-edge-key="0" data-edge-id="usuario-spa" data-composition-points="170,231.95;260,231.95" data-composition-crossover="halo" data-composition-independent="true" d="M 170 231.95 L 260 231.95" class="a-emphasis" data-animate="edge" style="--step:0" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:1">
+          <path data-graph-role="automatic-crossover-underlay" d="M 410 231.95 L 520 231.95" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="spa" data-edge-to="api" data-edge-label="REST JSON" data-edge-key="1" data-edge-id="spa-api" data-composition-points="410,231.95;520,231.95" data-composition-crossover="halo" data-composition-independent="true" d="M 410 231.95 L 520 231.95" class="a-emphasis" data-animate="edge" style="--step:1" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:2">
+          <path data-graph-role="automatic-crossover-underlay" d="M 595 210 L 595 100" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="api" data-edge-to="auth" data-edge-label="valida token" data-edge-key="2" data-edge-id="api-auth" data-composition-points="595,210;595,100" data-composition-crossover="halo" data-composition-independent="true" d="M 595 210 L 595 100" class="a-security" data-animate="edge" style="--step:2" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:3">
+          <path data-graph-role="automatic-crossover-underlay" d="M 670 240 L 790 240" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="api" data-edge-to="servicios" data-edge-label="invoca" data-edge-key="3" data-edge-id="api-servicios" data-composition-points="670,240;790,240" data-composition-crossover="halo" data-composition-independent="true" d="M 670 240 L 790 240" class="a-emphasis" data-animate="edge" style="--step:3" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:4">
+          <path data-graph-role="automatic-crossover-underlay" d="M 956 254 L 1070 254" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="servicios" data-edge-to="db" data-edge-label="SQL async" data-edge-key="4" data-edge-id="servicios-db" data-composition-points="956,254;1070,254" data-composition-crossover="halo" data-composition-independent="true" d="M 956 254 L 1070 254" class="a-default" data-animate="edge" style="--step:4" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:5">
+          <path data-graph-role="automatic-crossover-underlay" d="M 956 316 L 1070 316" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="servicios" data-edge-to="fotos" data-edge-label="JPEG" data-edge-key="5" data-edge-id="servicios-fotos" data-composition-points="956,316;1070,316" data-composition-crossover="halo" data-composition-independent="true" d="M 956 316 L 1070 316" class="a-default" data-animate="edge" style="--step:5" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:6">
+          <path data-graph-role="automatic-crossover-underlay" d="M 873 200 L 873 100" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="servicios" data-edge-to="pdf" data-edge-label="HTML → PDF" data-edge-key="6" data-edge-id="servicios-pdf" data-composition-points="873,200;873,100" data-composition-crossover="halo" data-composition-independent="true" d="M 873 200 L 873 100" class="a-default" data-animate="edge" style="--step:6" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:7">
+          <path data-graph-role="automatic-crossover-underlay" d="M 873 360 L 873 440" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="servicios" data-edge-to="ai" data-edge-label="complete()" data-edge-key="7" data-edge-id="servicios-ai" data-composition-points="873,360;873,440" data-composition-crossover="halo" data-composition-independent="true" d="M 873 360 L 873 440" class="a-emphasis" data-animate="edge" style="--step:7" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:8">
+          <path data-graph-role="automatic-crossover-underlay" d="M 870 500 L 870 620" fill="none" stroke="var(--mask)" stroke-width="5.8" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="ai" data-edge-to="anthropic" data-edge-label="Messages API" data-edge-key="8" data-edge-id="ai-anthropic" data-composition-points="870,500;870,620" data-composition-crossover="halo" data-composition-independent="true" d="M 870 500 L 870 620" class="a-emphasis" data-animate="edge" style="--step:8" stroke-width="1.8" marker-end="url(#arrowhead-emphasis)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:9">
+          <path data-graph-role="automatic-crossover-underlay" d="M 950 470 L 1070 470" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="ai" data-edge-to="openai" data-edge-label="embeddings" data-edge-key="9" data-edge-id="ai-openai" data-composition-points="950,470;1070,470" data-composition-crossover="halo" data-composition-independent="true" d="M 950 470 L 1070 470" class="a-default" data-animate="edge" style="--step:9" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:10">
+          <path data-graph-role="automatic-crossover-underlay" d="M 154 270 L 154 428 Q 154 436 162 436 L 260 436" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="usuario" data-edge-to="tauri" data-edge-label="abre la app" data-edge-key="10" data-edge-id="usuario-tauri" data-composition-points="154,270;154,436;260,436" data-composition-crossover="halo" data-composition-independent="true" d="M 154 270 L 154 428 Q 154 436 162 436 L 260 436" class="a-default" data-animate="edge" style="--step:10" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:11">
+          <path data-graph-role="automatic-crossover-underlay" d="M 335 420 L 335 270" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="tauri" data-edge-to="spa" data-edge-label="aloja la SPA" data-edge-key="11" data-edge-id="tauri-spa" data-composition-points="335,420;335,270" data-composition-crossover="halo" data-composition-independent="true" d="M 335 420 L 335 270" class="a-default" data-animate="edge" style="--step:11" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:12">
+          <path data-graph-role="automatic-crossover-underlay" d="M 410 436 L 528 436 Q 536 436 536 428 L 536 270" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="tauri" data-edge-to="api" data-edge-label="lanza sidecar" data-edge-key="12" data-edge-id="tauri-api" data-composition-points="410,436;536,436;536,270" data-composition-crossover="halo" data-composition-independent="true" d="M 410 436 L 528 436 Q 536 436 536 428 L 536 270" class="a-default" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+        </g>
+        <g data-graph-role="automatic-crossover" style="--step:13">
+          <path data-graph-role="automatic-crossover-underlay" d="M 335 480 L 335 600" fill="none" stroke="var(--mask)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pointer-events="none"/>
+          <path data-edge-from="tauri" data-edge-to="llavero" data-edge-label="lee clave" data-edge-key="13" data-edge-id="tauri-llavero" data-composition-points="335,480;335,600" data-composition-crossover="halo" data-composition-independent="true" d="M 335 480 L 335 600" class="a-security" data-animate="edge" style="--step:12" stroke-width="1.5" marker-end="url(#arrowhead-security)"/>
         </g>
 
-        <g id="node-confirm" data-node-id="confirm" data-node-label="Revisas y confirmas" tabindex="0" role="button" aria-label="Enfocar Revisas y confirmas, nada entra sin tu OK, Tú › 1 · Construyes tu perfil" aria-pressed="false" data-node-kind="security" data-node-sublabel="nada entra sin tu OK" data-node-tag="revisión humana" data-node-context="Tú › 1 · Construyes tu perfil">
-          <title>Revisas y confirmas · nada entra sin tu OK · Tú › 1 · Construyes tu perfil · revisión humana</title>
-          <rect x="220" y="86" width="124" height="68" rx="8" class="c-mask"/>
-          <rect x="220" y="86" width="124" height="68" rx="8" class="c-security" data-animate="node" style="--step:2" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="person" class="semantic-sigil s-security" transform="translate(226 92) scale(0.6875)">
-            <circle cx="8" cy="4.5" r="2.5"/><path d="M3 14v-2a5 5 0 0 1 10 0v2"/>
+        <!-- Components -->
+        <g id="node-usuario" data-node-id="usuario" data-node-label="Usuario" tabindex="0" role="button" aria-label="Enfocar Usuario, candidato, Componente de arquitectura" aria-pressed="false" data-node-kind="external" data-node-sublabel="candidato" data-node-context="Componente de arquitectura">
+          <title>Usuario · candidato · Componente de arquitectura</title>
+          <rect x="40" y="210" width="130" height="60" rx="8" class="c-mask"/>
+          <rect x="40" y="210" width="130" height="60" rx="8" class="c-external" data-animate="node" style="--step:0" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(46 216) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="282" y="117.2" class="t-primary" font-size="10.1" font-weight="600" text-anchor="middle">Revisas y confirmas</text>
-          <text data-detail="context" x="282" y="131.9" class="t-muted" font-size="8" text-anchor="middle">nada entra sin tu OK</text>
-        <text data-detail="fine" x="282" y="144.7" class="t-security" font-size="7" text-anchor="middle">revisión humana</text>
+          <text data-node-label="" data-detail-anchor="" x="105" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Usuario</text>
+        <text data-detail="context" x="105" y="254" class="t-muted" font-size="9" text-anchor="middle">candidato</text>
         </g>
 
-        <g id="node-offer" data-node-id="offer" data-node-label="Pegas una oferta" tabindex="0" role="button" aria-label="Enfocar Pegas una oferta, Tú › 2 · ¿Te conviene?" aria-pressed="false" data-node-kind="external" data-node-context="Tú › 2 · ¿Te conviene?">
-          <title>Pegas una oferta · Tú › 2 · ¿Te conviene?</title>
-          <rect x="376" y="94" width="104" height="52" rx="8" class="c-mask"/>
-          <rect x="376" y="94" width="104" height="52" rx="8" class="c-external" data-animate="node" style="--step:12" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="briefcase" class="semantic-sigil s-external" transform="translate(382 100) scale(0.6875)">
-            <rect x="2" y="5" width="12" height="9" rx="2"/><path d="M5 5V2h6v3M2 9h12M7 9v2h2V9"/>
+        <g id="node-spa" data-node-id="spa" data-node-label="SPA React" tabindex="0" role="button" aria-label="Enfocar SPA React, Vite · React Query · axios, Componente de arquitectura" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="Vite · React Query · axios" data-node-context="Componente de arquitectura">
+          <title>SPA React · Vite · React Query · axios · Componente de arquitectura</title>
+          <rect x="260" y="210" width="150" height="60" rx="8" class="c-mask"/>
+          <rect x="260" y="210" width="150" height="60" rx="8" class="c-frontend" data-animate="node" style="--step:1" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(266 216) scale(0.6875)">
+            <rect x="2" y="3" width="12" height="10" rx="2"/>
+            <path d="M2 6.5h12"/>
+            <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
+            <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
           </g>
-          <text data-node-label="" x="428" y="125" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Pegas una oferta</text>
+          <text data-node-label="" data-detail-anchor="" x="335" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">SPA React</text>
+        <text data-detail="context" x="335" y="254" class="t-muted" font-size="9" text-anchor="middle">Vite · React Query · axios</text>
         </g>
 
-        <g id="node-review" data-node-id="review" data-node-label="Revisas y envías" tabindex="0" role="button" aria-label="Enfocar Revisas y envías, PDF legible por ATS, Tú › 4 · Envías y te preparas" aria-pressed="false" data-node-kind="security" data-node-sublabel="PDF legible por ATS" data-node-tag="revisión humana" data-node-context="Tú › 4 · Envías y te preparas">
-          <title>Revisas y envías · PDF legible por ATS · Tú › 4 · Envías y te preparas · revisión humana</title>
-          <rect x="685.2" y="86" width="104" height="68" rx="8" class="c-mask"/>
-          <rect x="685.2" y="86" width="104" height="68" rx="8" class="c-security" data-animate="node" style="--step:7" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="person" class="semantic-sigil s-security" transform="translate(691.2 92) scale(0.6875)">
-            <circle cx="8" cy="4.5" r="2.5"/><path d="M3 14v-2a5 5 0 0 1 10 0v2"/>
+        <g id="node-auth" data-node-id="auth" data-node-label="Autenticación" tabindex="0" role="button" aria-label="Enfocar Autenticación, JWT · token local, Proceso backend Python (contenedor Docker o sidecar PyInstaller)" aria-pressed="false" data-node-kind="security" data-node-sublabel="JWT · token local" data-node-context="Proceso backend Python (contenedor Docker o sidecar PyInstaller)">
+          <title>Autenticación · JWT · token local · Proceso backend Python (contenedor Docker o sidecar PyInstaller)</title>
+          <rect x="510" y="40" width="170" height="60" rx="8" class="c-mask"/>
+          <rect x="510" y="40" width="170" height="60" rx="8" class="c-security" data-animate="node" style="--step:3" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(516 46) scale(0.6875)">
+            <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
+            <path d="m5.8 8 1.5 1.5 3-3"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="737.2" y="117" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Revisas y envías</text>
-          <text data-detail="context" x="737.2" y="131.6" class="t-muted" font-size="8" text-anchor="middle">PDF legible por ATS</text>
-        <text data-detail="fine" x="737.2" y="144.4" class="t-security" font-size="7" text-anchor="middle">revisión humana</text>
+          <text data-node-label="" data-detail-anchor="" x="595" y="68" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Autenticación</text>
+        <text data-detail="context" x="595" y="84" class="t-muted" font-size="9" text-anchor="middle">JWT · token local</text>
         </g>
 
-        <g id="node-fit_gate" data-node-id="fit_gate" data-node-label="¿Te conviene?" tabindex="0" role="button" aria-label="Enfocar ¿Te conviene?, la IA cita, el código decide, Controles › 2 · ¿Te conviene?" aria-pressed="false" data-node-kind="security" data-node-sublabel="la IA cita, el código decide" data-node-tag="gate" data-node-context="Controles › 2 · ¿Te conviene?">
-          <title>¿Te conviene? · la IA cita, el código decide · Controles › 2 · ¿Te conviene? · gate</title>
-          <rect x="356" y="212" width="144" height="68" rx="8" class="c-mask"/>
-          <rect x="356" y="212" width="144" height="68" rx="8" class="c-security" data-animate="node" style="--step:4" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="decision" class="semantic-sigil s-security" transform="translate(362 218) scale(0.6875)">
-            <path d="M8 2.2 13.8 8 8 13.8 2.2 8Z"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="428" y="233" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">¿Te conviene?</text>
-          <text data-detail="context" x="428" y="250" class="t-muted" font-size="8" text-anchor="middle">la IA cita, el código decide</text>
-        <text data-detail="fine" x="428" y="268" class="t-security" font-size="7" text-anchor="middle">gate</text>
-        </g>
-
-        <g id="node-truth_gate" data-node-id="truth_gate" data-node-label="¿Es veraz?" tabindex="0" role="button" aria-label="Enfocar ¿Es veraz?, contra tus hechos, Controles › 3 · CV y carta veraces" aria-pressed="false" data-node-kind="security" data-node-sublabel="contra tus hechos" data-node-tag="gate" data-node-context="Controles › 3 · CV y carta veraces">
-          <title>¿Es veraz? · contra tus hechos · Controles › 3 · CV y carta veraces · gate</title>
-          <rect x="532" y="212" width="92" height="68" rx="8" class="c-mask"/>
-          <rect x="532" y="212" width="92" height="68" rx="8" class="c-security" data-animate="node" style="--step:6" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="decision" class="semantic-sigil s-security" transform="translate(538 218) scale(0.6875)">
-            <path d="M8 2.2 13.8 8 8 13.8 2.2 8Z"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="584" y="233" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">¿Es veraz?</text>
-          <text data-detail="context" x="578" y="250" class="t-muted" font-size="8" text-anchor="middle">contra tus hechos</text>
-        <text data-detail="fine" x="578" y="268" class="t-security" font-size="7" text-anchor="middle">gate</text>
-        </g>
-
-        <g id="node-extract" data-node-id="extract" data-node-label="Extrae tus datos" tabindex="0" role="button" aria-label="Enfocar Extrae tus datos, confianza por campo, CareerCraft (IA) › 1 · Construyes tu perfil" aria-pressed="false" data-node-kind="backend" data-node-sublabel="confianza por campo" data-node-context="CareerCraft (IA) › 1 · Construyes tu perfil">
-          <title>Extrae tus datos · confianza por campo · CareerCraft (IA) › 1 · Construyes tu perfil</title>
-          <rect x="66" y="346" width="104" height="52" rx="8" class="c-mask"/>
-          <rect x="66" y="346" width="104" height="52" rx="8" class="c-backend" data-animate="node" style="--step:1" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(72 352) scale(0.6875)">
+        <g id="node-api" data-node-id="api" data-node-label="API FastAPI" tabindex="0" role="button" aria-label="Enfocar API FastAPI, /api/v1 · uvicorn, Proceso backend Python (contenedor Docker o sidecar PyInstaller)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="/api/v1 · uvicorn" data-node-context="Proceso backend Python (contenedor Docker o sidecar PyInstaller)">
+          <title>API FastAPI · /api/v1 · uvicorn · Proceso backend Python (contenedor Docker o sidecar PyInstaller)</title>
+          <rect x="520" y="210" width="150" height="60" rx="8" class="c-mask"/>
+          <rect x="520" y="210" width="150" height="60" rx="8" class="c-backend" data-animate="node" style="--step:2" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(526 216) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="118" y="377" class="t-primary" font-size="10" font-weight="600" text-anchor="middle">Extrae tus datos</text>
-          <text data-detail="context" x="118" y="391.6" class="t-muted" font-size="8" text-anchor="middle">confianza por campo</text>
+          <text data-node-label="" data-detail-anchor="" x="595" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">API FastAPI</text>
+        <text data-detail="context" x="595" y="254" class="t-muted" font-size="9" text-anchor="middle">/api/v1 · uvicorn</text>
         </g>
 
-        <g id="node-interview" data-node-id="interview" data-node-label="Entrevista guiada" tabindex="0" role="button" aria-label="Enfocar Entrevista guiada, solo pregunta lo que falta, CareerCraft (IA) › 1 · Construyes tu perfil" aria-pressed="false" data-node-kind="backend" data-node-sublabel="solo pregunta lo que falta" data-node-context="CareerCraft (IA) › 1 · Construyes tu perfil">
-          <title>Entrevista guiada · solo pregunta lo que falta · CareerCraft (IA) › 1 · Construyes tu perfil</title>
-          <rect x="226" y="346" width="112" height="52" rx="8" class="c-mask"/>
-          <rect x="226" y="346" width="112" height="52" rx="8" class="c-backend" data-animate="node" style="--step:12" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="person" class="semantic-sigil s-backend" transform="translate(232 352) scale(0.6875)">
-            <circle cx="8" cy="4.5" r="2.5"/><path d="M3 14v-2a5 5 0 0 1 10 0v2"/>
-          </g>
-          <text data-node-label="" data-detail-anchor="" x="282" y="377.2" class="t-primary" font-size="10.1" font-weight="600" text-anchor="middle">Entrevista guiada</text>
-          <text data-detail="context" x="282" y="390.2" class="t-muted" font-size="6.6" text-anchor="middle">solo pregunta lo que falta</text>
-        </g>
-
-        <g id="node-generate" data-node-id="generate" data-node-label="Genera CV y carta" tabindex="0" role="button" aria-label="Enfocar Genera CV y carta, en el idioma de la oferta, CareerCraft (IA) › 3 · CV y carta veraces" aria-pressed="false" data-node-kind="backend" data-node-sublabel="en el idioma de la oferta" data-node-context="CareerCraft (IA) › 3 · CV y carta veraces">
-          <title>Genera CV y carta · en el idioma de la oferta · CareerCraft (IA) › 3 · CV y carta veraces</title>
-          <rect x="522" y="346" width="112" height="52" rx="8" class="c-mask"/>
-          <rect x="522" y="346" width="112" height="52" rx="8" class="c-backend" data-animate="node" style="--step:5" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(528 352) scale(0.6875)">
+        <g id="node-pdf" data-node-id="pdf" data-node-label="Render PDF" tabindex="0" role="button" aria-label="Enfocar Render PDF, Jinja2 + WeasyPrint, Proceso backend Python (contenedor Docker o sidecar PyInstaller)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="Jinja2 + WeasyPrint" data-node-context="Proceso backend Python (contenedor Docker o sidecar PyInstaller)">
+          <title>Render PDF · Jinja2 + WeasyPrint · Proceso backend Python (contenedor Docker o sidecar PyInstaller)</title>
+          <rect x="790" y="40" width="160" height="60" rx="8" class="c-mask"/>
+          <rect x="790" y="40" width="160" height="60" rx="8" class="c-backend" data-animate="node" style="--step:7" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(796 46) scale(0.6875)">
             <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="578" y="377.2" class="t-primary" font-size="10.1" font-weight="600" text-anchor="middle">Genera CV y carta</text>
-          <text data-detail="context" x="578" y="390.6" class="t-muted" font-size="6.9" text-anchor="middle">en el idioma de la oferta</text>
+          <text data-node-label="" data-detail-anchor="" x="870" y="68" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Render PDF</text>
+        <text data-detail="context" x="870" y="84" class="t-muted" font-size="9" text-anchor="middle">Jinja2 + WeasyPrint</text>
         </g>
 
-        <g id="node-prep" data-node-id="prep" data-node-label="Prepara cada entrevista" tabindex="0" role="button" aria-label="Enfocar Prepara cada entrevista, por etapa · feedback STAR, CareerCraft (IA) › 4 · Envías y te preparas" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="por etapa · feedback STAR" data-node-context="CareerCraft (IA) › 4 · Envías y te preparas">
-          <title>Prepara cada entrevista · por etapa · feedback STAR · CareerCraft (IA) › 4 · Envías y te preparas</title>
-          <rect x="781.2" y="346" width="152" height="52" rx="8" class="c-mask"/>
-          <rect x="781.2" y="346" width="152" height="52" rx="8" class="c-frontend" data-animate="node" style="--step:9" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="success" class="semantic-sigil s-frontend" transform="translate(787.2 352) scale(0.6875)">
-            <circle cx="8" cy="8" r="5.3"/>
-            <path d="m5.2 8 1.8 1.8 3.8-4"/>
+        <g id="node-servicios" data-node-id="servicios" data-node-label="Servicios de dominio" tabindex="0" role="button" aria-label="Enfocar Servicios de dominio, perfil · encaje · CV · carta · candidaturas, Proceso backend Python (contenedor Docker o sidecar PyInstaller)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="perfil · encaje · CV · carta · candidaturas" data-node-tag="control de veracidad" data-node-context="Proceso backend Python (contenedor Docker o sidecar PyInstaller)">
+          <title>Servicios de dominio · perfil · encaje · CV · carta · candidaturas · Proceso backend Python (contenedor Docker o sidecar PyInstaller) · control de veracidad</title>
+          <rect x="790" y="200" width="166" height="160" rx="8" class="c-mask"/>
+          <rect x="790" y="200" width="166" height="160" rx="8" class="c-backend" data-animate="node" style="--step:4" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(796 206) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="857.2" y="377.5" class="t-primary" font-size="10.4" font-weight="600" text-anchor="middle">Prepara cada entrevista</text>
-          <text data-detail="context" x="857.2" y="392.3" class="t-muted" font-size="8" text-anchor="middle">por etapa · feedback STAR</text>
+          <text data-node-label="" data-detail-anchor="" x="873" y="278" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Servicios de dominio</text>
+        <text data-detail="context" x="873" y="294" class="t-muted" font-size="6.1" text-anchor="middle">perfil · encaje · CV · carta · candidaturas</text>
+        <text data-detail="fine" x="873" y="352" class="t-backend" font-size="7" text-anchor="middle">control de veracidad</text>
         </g>
 
-        <g id="node-profile_db" data-node-id="profile_db" data-node-label="Perfil verificado" tabindex="0" role="button" aria-label="Enfocar Perfil verificado, base de hechos, Tus datos › 1 · Construyes tu perfil" aria-pressed="false" data-node-kind="database" data-node-sublabel="base de hechos" data-node-context="Tus datos › 1 · Construyes tu perfil">
-          <title>Perfil verificado · base de hechos · Tus datos › 1 · Construyes tu perfil</title>
-          <rect x="226" y="472" width="112" height="52" rx="8" class="c-mask"/>
-          <rect x="226" y="472" width="112" height="52" rx="8" class="c-database" data-animate="node" style="--step:3" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(232 478) scale(0.6875)">
+        <g id="node-db" data-node-id="db" data-node-label="Base de datos" tabindex="0" role="button" aria-label="Enfocar Base de datos, PostgreSQL+pgvector / SQLite, Componente de arquitectura" aria-pressed="false" data-node-kind="database" data-node-sublabel="PostgreSQL+pgvector / SQLite" data-node-context="Componente de arquitectura">
+          <title>Base de datos · PostgreSQL+pgvector / SQLite · Componente de arquitectura</title>
+          <rect x="1070" y="210" width="160" height="60" rx="8" class="c-mask"/>
+          <rect x="1070" y="210" width="160" height="60" rx="8" class="c-database" data-animate="node" style="--step:5" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(1076 216) scale(0.6875)">
             <ellipse cx="8" cy="4" rx="5" ry="2"/>
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="282" y="503.2" class="t-primary" font-size="10.1" font-weight="600" text-anchor="middle">Perfil verificado</text>
-          <text data-detail="context" x="282" y="517.9" class="t-muted" font-size="8" text-anchor="middle">base de hechos</text>
+          <text data-node-label="" data-detail-anchor="" x="1150" y="238" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Base de datos</text>
+        <text data-detail="context" x="1150" y="254" class="t-muted" font-size="9" text-anchor="middle">PostgreSQL+pgvector / SQLite</text>
         </g>
 
-        <g id="node-application" data-node-id="application" data-node-label="Candidatura" tabindex="0" role="button" aria-label="Enfocar Candidatura, lo enviado, congelado, Tus datos › 4 · Envías y te preparas" aria-pressed="false" data-node-kind="database" data-node-sublabel="lo enviado, congelado" data-node-context="Tus datos › 4 · Envías y te preparas">
-          <title>Candidatura · lo enviado, congelado · Tus datos › 4 · Envías y te preparas</title>
-          <rect x="691.2" y="472" width="92" height="52" rx="8" class="c-mask"/>
-          <rect x="691.2" y="472" width="92" height="52" rx="8" class="c-database" data-animate="node" style="--step:8" stroke-width="1.5"/>
-          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(697.2 478) scale(0.6875)">
+        <g id="node-fotos" data-node-id="fotos" data-node-label="Disco local" tabindex="0" role="button" aria-label="Enfocar Disco local, fotos de perfil, Componente de arquitectura" aria-pressed="false" data-node-kind="database" data-node-sublabel="fotos de perfil" data-node-context="Componente de arquitectura">
+          <title>Disco local · fotos de perfil · Componente de arquitectura</title>
+          <rect x="1070" y="300" width="160" height="60" rx="8" class="c-mask"/>
+          <rect x="1070" y="300" width="160" height="60" rx="8" class="c-database" data-animate="node" style="--step:6" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="database" class="semantic-sigil s-database" transform="translate(1076 306) scale(0.6875)">
             <ellipse cx="8" cy="4" rx="5" ry="2"/>
             <path d="M3 4v8c0 1.1 2.2 2 5 2s5-.9 5-2V4M3 8c0 1.1 2.2 2 5 2s5-.9 5-2"/>
           </g>
-          <text data-node-label="" data-detail-anchor="" x="737.2" y="504.2" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Candidatura</text>
-          <text data-detail="context" x="737.2" y="517.5" class="t-muted" font-size="6.6" text-anchor="middle">lo enviado, congelado</text>
+          <text data-node-label="" data-detail-anchor="" x="1150" y="328" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Disco local</text>
+        <text data-detail="context" x="1150" y="344" class="t-muted" font-size="9" text-anchor="middle">fotos de perfil</text>
         </g>
 
-        <!-- Edge labels -->
-        <g data-detail="context" data-edge-from="application" data-edge-to="prep" data-edge-label="oferta y lo enviado" data-edge-key="0" data-edge-id="application-prep">
-          <rect x="806.6" y="438" width="101.2" height="14" rx="3" class="c-mask"/>
-          <text x="857.2" y="448" class="t-edge-emphasis" font-size="8" text-anchor="middle">oferta y lo enviado</text>
+        <g id="node-ai" data-node-id="ai" data-node-label="AIService" tabindex="0" role="button" aria-label="Enfocar AIService, router por prefijo de modelo, Proceso backend Python (contenedor Docker o sidecar PyInstaller)" aria-pressed="false" data-node-kind="backend" data-node-sublabel="router por prefijo de modelo" data-node-context="Proceso backend Python (contenedor Docker o sidecar PyInstaller)">
+          <title>AIService · router por prefijo de modelo · Proceso backend Python (contenedor Docker o sidecar PyInstaller)</title>
+          <rect x="790" y="440" width="160" height="60" rx="8" class="c-mask"/>
+          <rect x="790" y="440" width="160" height="60" rx="8" class="c-backend" data-animate="node" style="--step:8" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="backend" class="semantic-sigil s-backend" transform="translate(796 446) scale(0.6875)">
+            <path d="M6 3 3 8l3 5M10 3l3 5-3 5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="870" y="468" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">AIService</text>
+        <text data-detail="context" x="870" y="484" class="t-muted" font-size="9" text-anchor="middle">router por prefijo de modelo</text>
         </g>
-        <g data-detail="context" data-edge-from="confirm" data-edge-to="profile_db" data-edge-label="guarda" data-edge-key="1" data-edge-id="confirm-profile">
-          <rect x="214.6" y="274" width="38.8" height="14" rx="3" class="c-mask"/>
-          <text x="234" y="284" class="t-edge-emphasis" font-size="8" text-anchor="middle">guarda</text>
+
+        <g id="node-openai" data-node-id="openai" data-node-label="OpenAI" tabindex="0" role="button" aria-label="Enfocar OpenAI, text-embedding-3-small, Componente de arquitectura" aria-pressed="false" data-node-kind="external" data-node-sublabel="text-embedding-3-small" data-node-tag="solo SaaS" data-node-context="Componente de arquitectura">
+          <title>OpenAI · text-embedding-3-small · Componente de arquitectura · solo SaaS</title>
+          <rect x="1070" y="440" width="160" height="60" rx="8" class="c-mask"/>
+          <rect x="1070" y="440" width="160" height="60" rx="8" class="c-external" data-animate="node" style="--step:10" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(1076 446) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="1150" y="468" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">OpenAI</text>
+        <text data-detail="context" x="1150" y="484" class="t-muted" font-size="9" text-anchor="middle">text-embedding-3-small</text>
+        <text data-detail="fine" x="1150" y="492" class="t-external" font-size="7" text-anchor="middle">solo SaaS</text>
         </g>
-        <g data-detail="context" data-edge-from="extract" data-edge-to="confirm" data-edge-label="propone" data-edge-key="2" data-edge-id="extract-confirm">
-          <rect x="173.2" y="236" width="43.6" height="14" rx="3" class="c-mask"/>
-          <text x="195" y="246" class="t-edge-emphasis" font-size="8" text-anchor="middle">propone</text>
+
+        <g id="node-anthropic" data-node-id="anthropic" data-node-label="Anthropic Claude" tabindex="0" role="button" aria-label="Enfocar Anthropic Claude, sonnet-4-5 · haiku-4-5, Componente de arquitectura" aria-pressed="false" data-node-kind="external" data-node-sublabel="sonnet-4-5 · haiku-4-5" data-node-context="Componente de arquitectura">
+          <title>Anthropic Claude · sonnet-4-5 · haiku-4-5 · Componente de arquitectura</title>
+          <rect x="790" y="620" width="160" height="60" rx="8" class="c-mask"/>
+          <rect x="790" y="620" width="160" height="60" rx="8" class="c-external" data-animate="node" style="--step:9" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="external" class="semantic-sigil s-external" transform="translate(796 626) scale(0.6875)">
+            <rect x="2.5" y="5" width="8.5" height="8" rx="1.5"/>
+            <path d="M8 2.5h5.5V8M13.5 2.5 7.5 8.5"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="870" y="648" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Anthropic Claude</text>
+        <text data-detail="context" x="870" y="664" class="t-muted" font-size="9" text-anchor="middle">sonnet-4-5 · haiku-4-5</text>
         </g>
-        <g data-detail="context" data-edge-from="fit_gate" data-edge-to="generate" data-edge-label="encaja" data-edge-key="3" data-edge-id="fit-generate">
-          <rect x="459.1" y="352" width="38.8" height="14" rx="3" class="c-mask"/>
-          <text x="478.5" y="362" class="t-edge-emphasis" font-size="8" text-anchor="middle">encaja</text>
+
+        <g id="node-tauri" data-node-id="tauri" data-node-label="Shell Tauri 2" tabindex="0" role="button" aria-label="Enfocar Shell Tauri 2, macOS y Windows · WebView, App de escritorio local-first" aria-pressed="false" data-node-kind="frontend" data-node-sublabel="macOS y Windows · WebView" data-node-context="App de escritorio local-first">
+          <title>Shell Tauri 2 · macOS y Windows · WebView · App de escritorio local-first</title>
+          <rect x="260" y="420" width="150" height="60" rx="8" class="c-mask"/>
+          <rect x="260" y="420" width="150" height="60" rx="8" class="c-frontend" data-animate="node" style="--step:11" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="frontend" class="semantic-sigil s-frontend" transform="translate(266 426) scale(0.6875)">
+            <rect x="2" y="3" width="12" height="10" rx="2"/>
+            <path d="M2 6.5h12"/>
+            <circle cx="4.1" cy="4.8" r=".7" class="sigil-fill"/>
+            <circle cx="6.3" cy="4.8" r=".7" class="sigil-fill"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="335" y="448" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Shell Tauri 2</text>
+        <text data-detail="context" x="335" y="464" class="t-muted" font-size="9" text-anchor="middle">macOS y Windows · WebView</text>
         </g>
-        <g data-detail="context" data-edge-from="generate" data-edge-to="truth_gate" data-edge-label="borrador" data-edge-key="4" data-edge-id="generate-truth">
-          <rect x="553.8" y="303" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="578" y="313" class="t-edge-security" font-size="8" text-anchor="middle">borrador</text>
+
+        <g id="node-llavero" data-node-id="llavero" data-node-label="Llavero del sistema" tabindex="0" role="button" aria-label="Enfocar Llavero del sistema, clave de Anthropic, App de escritorio local-first" aria-pressed="false" data-node-kind="security" data-node-sublabel="clave de Anthropic" data-node-context="App de escritorio local-first">
+          <title>Llavero del sistema · clave de Anthropic · App de escritorio local-first</title>
+          <rect x="260" y="600" width="150" height="60" rx="8" class="c-mask"/>
+          <rect x="260" y="600" width="150" height="60" rx="8" class="c-security" data-animate="node" style="--step:12" stroke-width="1.5"/>
+          <g aria-hidden="true" data-semantic-sigil="security" class="semantic-sigil s-security" transform="translate(266 606) scale(0.6875)">
+            <path d="M8 2.2 13 4v3.5c0 3.1-1.8 5.4-5 6.5-3.2-1.1-5-3.4-5-6.5V4Z"/>
+            <path d="m5.8 8 1.5 1.5 3-3"/>
+          </g>
+          <text data-node-label="" data-detail-anchor="" x="335" y="628" class="t-primary" font-size="11" font-weight="600" text-anchor="middle">Llavero del sistema</text>
+        <text data-detail="context" x="335" y="644" class="t-muted" font-size="9" text-anchor="middle">clave de Anthropic</text>
         </g>
-        <g data-detail="context" data-edge-from="interview" data-edge-to="confirm" data-edge-label="o respondes" data-edge-key="5" data-edge-id="interview-confirm">
-          <rect x="290" y="240" width="62.8" height="14" rx="3" class="c-mask"/>
-          <text x="321.4" y="250" class="t-edge-dashed" font-size="8" text-anchor="middle">o respondes</text>
+
+        <!-- Connection labels -->
+        <g data-detail="context" data-edge-from="usuario" data-edge-to="spa" data-edge-label="navegador" data-edge-key="0" data-edge-id="usuario-spa">
+          <rect x="188.4" y="211.95" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+          <text x="215" y="221.95" class="t-edge-emphasis" font-size="8" text-anchor="middle">navegador</text>
         </g>
-        <g data-detail="context" data-edge-from="offer" data-edge-to="fit_gate" data-edge-label="texto saneado" data-edge-key="6" data-edge-id="offer-fit">
-          <rect x="436" y="169" width="72.4" height="14" rx="3" class="c-mask"/>
-          <text x="472.2" y="179" class="t-muted" font-size="8" text-anchor="middle">texto saneado</text>
+        <g data-detail="context" data-edge-from="spa" data-edge-to="api" data-edge-label="REST JSON" data-edge-key="1" data-edge-id="spa-api">
+          <rect x="438.4" y="211.95" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+          <text x="465" y="221.95" class="t-edge-emphasis" font-size="8" text-anchor="middle">REST JSON</text>
         </g>
-        <g data-detail="context" data-edge-from="profile_db" data-edge-to="fit_gate" data-edge-label="hechos y condiciones" data-edge-key="7" data-edge-id="profile-fit">
-          <rect x="259.5" y="436" width="106" height="14" rx="3" class="c-mask"/>
-          <text x="312.5" y="446" class="t-edge-emphasis" font-size="8" text-anchor="middle">hechos y condiciones</text>
+        <g data-detail="context" data-edge-from="api" data-edge-to="auth" data-edge-label="valida token" data-edge-key="2" data-edge-id="api-auth">
+          <rect x="561.2" y="190" width="67.6" height="14" rx="3" class="c-mask"/>
+          <text x="595" y="200" class="t-edge-security" font-size="8" text-anchor="middle">valida token</text>
         </g>
-        <g data-detail="context" data-edge-from="profile_db" data-edge-to="generate" data-edge-label="solo tus hechos" data-edge-key="8" data-edge-id="profile-generate">
-          <rect x="417" y="485" width="82" height="14" rx="3" class="c-mask"/>
-          <text x="458" y="495" class="t-edge-emphasis" font-size="8" text-anchor="middle">solo tus hechos</text>
+        <g data-detail="context" data-edge-from="api" data-edge-to="servicios" data-edge-label="invoca" data-edge-key="3" data-edge-id="api-servicios">
+          <rect x="710.6" y="220" width="38.8" height="14" rx="3" class="c-mask"/>
+          <text x="730" y="230" class="t-edge-emphasis" font-size="8" text-anchor="middle">invoca</text>
         </g>
-        <g data-detail="context" data-edge-from="review" data-edge-to="application" data-edge-label="envías" data-edge-key="9" data-edge-id="review-application">
-          <rect x="717.8000000000001" y="303" width="38.8" height="14" rx="3" class="c-mask"/>
-          <text x="737.2" y="313" class="t-edge-emphasis" font-size="8" text-anchor="middle">envías</text>
+        <g data-detail="context" data-edge-from="servicios" data-edge-to="db" data-edge-label="SQL async" data-edge-key="4" data-edge-id="servicios-db">
+          <rect x="986.4" y="234" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+          <text x="1013" y="244" class="t-edge-default" font-size="8" text-anchor="middle">SQL async</text>
         </g>
-        <g data-detail="context" data-edge-from="truth_gate" data-edge-to="generate" data-edge-label="corrige" data-edge-key="10" data-edge-id="truth-fix">
-          <rect x="600.2" y="310" width="43.6" height="14" rx="3" class="c-mask"/>
-          <text x="622" y="320" class="t-edge-security" font-size="8" text-anchor="middle">corrige</text>
+        <g data-detail="context" data-edge-from="servicios" data-edge-to="fotos" data-edge-label="JPEG" data-edge-key="5" data-edge-id="servicios-fotos">
+          <rect x="998" y="296" width="30" height="14" rx="3" class="c-mask"/>
+          <text x="1013" y="306" class="t-edge-default" font-size="8" text-anchor="middle">JPEG</text>
         </g>
-        <g data-detail="context" data-edge-from="truth_gate" data-edge-to="review" data-edge-label="aprobado" data-edge-key="11" data-edge-id="truth-review">
-          <rect x="644.4" y="226" width="48.4" height="14" rx="3" class="c-mask"/>
-          <text x="668.6" y="236" class="t-edge-emphasis" font-size="8" text-anchor="middle">aprobado</text>
+        <g data-detail="context" data-edge-from="servicios" data-edge-to="pdf" data-edge-label="HTML → PDF" data-edge-key="6" data-edge-id="servicios-pdf">
+          <rect x="844" y="180" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="873" y="190" class="t-edge-default" font-size="8" text-anchor="middle">HTML → PDF</text>
         </g>
-        <g data-detail="context" data-edge-from="upload" data-edge-to="extract" data-edge-label="lee" data-edge-key="12" data-edge-id="upload-extract">
-          <rect x="28" y="352" width="30" height="14" rx="3" class="c-mask"/>
-          <text x="43" y="362" class="t-edge-emphasis" font-size="8" text-anchor="middle">lee</text>
+        <g data-detail="context" data-edge-from="servicios" data-edge-to="ai" data-edge-label="complete()" data-edge-key="7" data-edge-id="servicios-ai">
+          <rect x="809" y="393" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="838" y="403" class="t-edge-emphasis" font-size="8" text-anchor="middle">complete()</text>
+        </g>
+        <g data-detail="context" data-edge-from="ai" data-edge-to="anthropic" data-edge-label="Messages API" data-edge-key="8" data-edge-id="ai-anthropic">
+          <rect x="796.4000000000001" y="553" width="67.6" height="14" rx="3" class="c-mask"/>
+          <text x="830.2" y="563" class="t-edge-emphasis" font-size="8" text-anchor="middle">Messages API</text>
+        </g>
+        <g data-detail="context" data-edge-from="ai" data-edge-to="openai" data-edge-label="embeddings" data-edge-key="9" data-edge-id="ai-openai">
+          <rect x="981" y="450" width="58" height="14" rx="3" class="c-mask"/>
+          <text x="1010" y="460" class="t-edge-default" font-size="8" text-anchor="middle">embeddings</text>
+        </g>
+        <g data-detail="context" data-edge-from="usuario" data-edge-to="tauri" data-edge-label="abre la app" data-edge-key="10" data-edge-id="usuario-tauri">
+          <rect x="175.6" y="416" width="62.8" height="14" rx="3" class="c-mask"/>
+          <text x="207" y="426" class="t-edge-default" font-size="8" text-anchor="middle">abre la app</text>
+        </g>
+        <g data-detail="context" data-edge-from="tauri" data-edge-to="spa" data-edge-label="aloja la SPA" data-edge-key="11" data-edge-id="tauri-spa">
+          <rect x="261.4" y="338" width="67.6" height="14" rx="3" class="c-mask"/>
+          <text x="295.2" y="348" class="t-edge-default" font-size="8" text-anchor="middle">aloja la SPA</text>
+        </g>
+        <g data-detail="context" data-edge-from="tauri" data-edge-to="api" data-edge-label="lanza sidecar" data-edge-key="12" data-edge-id="tauri-api">
+          <rect x="499.8" y="333" width="72.4" height="14" rx="3" class="c-mask"/>
+          <text x="536" y="343" class="t-edge-default" font-size="8" text-anchor="middle">lanza sidecar</text>
+        </g>
+        <g data-detail="context" data-edge-from="tauri" data-edge-to="llavero" data-edge-label="lee clave" data-edge-key="13" data-edge-id="tauri-llavero">
+          <rect x="275.79999999999995" y="533" width="53.199999999999996" height="14" rx="3" class="c-mask"/>
+          <text x="302.4" y="543" class="t-edge-security" font-size="8" text-anchor="middle">lee clave</text>
+        </g>
+
+        <!-- Boundary labels (foreground masks keep routes out of titles) -->
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="0" data-composition-frame-kind="region" data-composition-frame-label="Proceso backend Python (contenedor Docker o sidecar PyInstaller)">
+          <rect data-graph-role="structural-frame-label-mask" x="484" y="20" width="355.59999999999997" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="488" y="33" class="t-cloud" font-size="9" font-weight="600">Proceso backend Python (contenedor Docker o sidecar PyInstaller)</text>
+        </g>
+
+        <g data-graph-role="structural-frame-label" data-composition-frame-id="1" data-composition-frame-kind="security-group" data-composition-frame-label="App de escritorio local-first">
+          <rect data-graph-role="structural-frame-label-mask" x="234" y="400" width="166.6" height="16" rx="3" class="c-mask"/>
+          <text data-boundary-label="" x="238" y="413" class="t-security" font-size="9" font-weight="600">App de escritorio local-first</text>
         </g>
 
         <!-- Legend -->
         <g data-legend="" data-legend-bridge="">
-          <text x="20" y="560" class="t-primary" font-size="12" font-weight="650">Leyenda</text>
-          <g data-legend-semantic-kind="frontend" data-legend-kind="frontend" data-legend-label="Resultado" data-legend-x="20" data-legend-baseline="580" data-legend-width="85">
-            <rect x="20" y="572" width="14" height="9" rx="2" class="c-frontend" stroke-width="1"/>
-            <text x="42" y="580" class="t-muted" font-size="7.5" font-weight="500">Resultado</text>
+          <text x="40" y="712" class="t-primary" font-size="12" font-weight="650">Leyenda</text>
+          <g data-legend-semantic-kind="frontend" data-legend-kind="frontend" data-legend-label="Frontend" data-legend-x="40" data-legend-baseline="732" data-legend-width="93">
+            <rect x="40" y="723" width="16" height="10" rx="2.5" class="c-frontend" stroke-width="1"/>
+            <text x="62" y="732" class="t-muted" font-size="10" font-weight="500">Frontend</text>
           </g>
-          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Lo que hace la IA" data-legend-x="112" data-legend-baseline="580" data-legend-width="123">
-            <rect x="112" y="572" width="14" height="9" rx="2" class="c-backend" stroke-width="1"/>
-            <text x="134" y="580" class="t-muted" font-size="7.5" font-weight="500">Lo que hace la IA</text>
+          <g data-legend-semantic-kind="backend" data-legend-kind="backend" data-legend-label="Backend" data-legend-x="155" data-legend-baseline="732" data-legend-width="87">
+            <rect x="155" y="723" width="16" height="10" rx="2.5" class="c-backend" stroke-width="1"/>
+            <text x="177" y="732" class="t-muted" font-size="10" font-weight="500">Backend</text>
           </g>
-          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="Control: tu revisión, el código o la auditoría" data-legend-x="242" data-legend-baseline="580" data-legend-width="257">
-            <rect x="242" y="572" width="14" height="9" rx="2" class="c-security" stroke-width="1"/>
-            <text x="264" y="580" class="t-muted" font-size="7.5" font-weight="500">Control: tu revisión, el código o la auditoría</text>
+          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Base de datos" data-legend-x="264" data-legend-baseline="732" data-legend-width="124">
+            <rect x="264" y="723" width="16" height="10" rx="2.5" class="c-database" stroke-width="1"/>
+            <text x="286" y="732" class="t-muted" font-size="10" font-weight="500">Base de datos</text>
           </g>
-          <g data-legend-semantic-kind="database" data-legend-kind="database" data-legend-label="Tu perfil y tus candidaturas" data-legend-x="506" data-legend-baseline="580" data-legend-width="174">
-            <rect x="506" y="572" width="14" height="9" rx="2" class="c-database" stroke-width="1"/>
-            <text x="528" y="580" class="t-muted" font-size="7.5" font-weight="500">Tu perfil y tus candidaturas</text>
+          <g data-legend-semantic-kind="security" data-legend-kind="security" data-legend-label="Seguridad" data-legend-x="410" data-legend-baseline="732" data-legend-width="99">
+            <rect x="410" y="723" width="16" height="10" rx="2.5" class="c-security" stroke-width="1"/>
+            <text x="432" y="732" class="t-muted" font-size="10" font-weight="500">Seguridad</text>
           </g>
-          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="Lo que haces tú" data-legend-x="687" data-legend-baseline="580" data-legend-width="113">
-            <rect x="687" y="572" width="14" height="9" rx="2" class="c-external" stroke-width="1"/>
-            <text x="709" y="580" class="t-muted" font-size="7.5" font-weight="500">Lo que haces tú</text>
+          <g data-legend-semantic-kind="external" data-legend-kind="external" data-legend-label="Externo" data-legend-x="531" data-legend-baseline="732" data-legend-width="87">
+            <rect x="531" y="723" width="16" height="10" rx="2.5" class="c-external" stroke-width="1"/>
+            <text x="553" y="732" class="t-muted" font-size="10" font-weight="500">Externo</text>
           </g>
         </g>
       </svg>
@@ -5692,44 +5743,38 @@ OTHER DEALINGS IN THE FONT SOFTWARE.
       <div class="card">
         <div class="card-header">
           <div class="card-dot emerald"></div>
-          <h3>Primero los hechos</h3>
+          <h3>Flujo principal</h3>
         </div>
         <ul>
-          <li>CV y carta se redactan solo desde tu perfil verificado</li>
-          <li>Cada requisito: cubierto, deducido citando su hecho o ausente; lo ausente no se rellena</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-dot cyan"></div>
-          <h3>El encaje lo decide el código</h3>
-        </div>
-        <ul>
-          <li>La IA solo extrae frases literales de la oferta</li>
-          <li>Idioma, días de oficina, permiso, salario y nivel se comprueban en código; lo que la oferta no dice queda «sin verificar», nunca como un no</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <div class="card-header">
-          <div class="card-dot rose"></div>
-          <h3>Bucle de corrección</h3>
-        </div>
-        <ul>
-          <li>La auditoría corrige en las dos direcciones: ni inflar ni quedarse corto</li>
-          <li>Con algo sin verificar no se exporta</li>
+          <li>CV, PDF de LinkedIn o entrevista guiada → perfil verificado (base de hechos)</li>
+          <li>Encaje con la oferta: la IA cita frases literales y el código decide</li>
+          <li>CV y carta auditados contra tus hechos; sin verificar no se exporta; PDF con WeasyPrint</li>
+          <li>Candidaturas con lo enviado congelado y entrevistas preparadas por etapa</li>
+          <li>Créditos debitados de forma atómica, con el coste real de cada llamada</li>
         </ul>
       </div>
 
       <div class="card">
         <div class="card-header">
           <div class="card-dot violet"></div>
-          <h3>Después de enviar</h3>
+          <h3>Dos modos, mismo backend</h3>
         </div>
         <ul>
-          <li>El estado de la candidatura sale de los hitos que apuntas</li>
-          <li>Cada entrevista se prepara con la oferta, lo que enviaste y la etapa anterior</li>
+          <li>SaaS: PostgreSQL 16 + pgvector, Redis, login JWT</li>
+          <li>Escritorio (macOS y Windows): SQLite, sin Redis ni embeddings, solo Anthropic</li>
+          <li>El mismo backend se empaqueta como sidecar de la app de escritorio</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div class="card-dot amber"></div>
+          <h3>Próximos pasos</h3>
+        </div>
+        <ul>
+          <li>Workers asíncronos para tareas en segundo plano</li>
+          <li>Pagos y suscripciones</li>
+          <li>Despliegue continuo a staging y producción</li>
         </ul>
       </div>
     </div>

@@ -551,9 +551,10 @@ gsap.registerPlugin(ScrollTrigger);
 const state = { p: 0 };
 if (!reduce && window.Lenis) { lenis = new window.Lenis({ lerp: 0.075, smoothWheel: true }); lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add(t => lenis.raf(t * 1000)); gsap.ticker.lagSmoothing(0); }
 const st = gsap.to(state, { p: 1, ease: 'none', scrollTrigger: { trigger: '#track', start: 'top top', end: 'bottom bottom', scrub: reduce ? true : (lenis ? 0.7 : 1.2) } });
-// Enlaces directos: index.html#careercraft lleva a esa neurona; #projects al primer proyecto (enlaces antiguos)
+// Enlaces directos: index.html#whitetoga lleva a esa neurona; #projects al primer proyecto y #careercraft (nombre antiguo) a White Toga CV
 function jumpToHash() {
-  const h = decodeURIComponent(location.hash.slice(1)); if (!h) return;
+  let h = decodeURIComponent(location.hash.slice(1)); if (!h) return;
+  if (h === 'careercraft') h = 'whitetoga';
   const c = SC.find(c => c.slug === h) || (h === 'projects' ? SC[0] : null);
   const p = c ? restOf(c) : h === 'contacto' ? 0.975 : h === 'previous' ? 0.25 : null;
   if (p === null) return;
