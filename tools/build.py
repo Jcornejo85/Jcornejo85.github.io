@@ -221,7 +221,7 @@ def project_page(p):
 
 
 DESC = ("Data Scientist especializado en IA generativa (LLM, RAG y agentes). Cuatro aplicaciones "
-        "completas de 2026 con demo en vídeo: CareerCraft, Writers, KocinAI y Economía Familiar.")
+        "completas de 2026 con demo en vídeo: White Toga CV, Writers, KocinAI y Economía Familiar.")
 
 
 def list_page():
@@ -327,7 +327,25 @@ def about_page():
         f.write(out)
 
 
+# Nombres antiguos de proyectos: la página vieja redirige a la nueva (enlaces ya compartidos)
+REDIRECTS = {"careercraft": "whitetoga"}
+
+
+def redirect_pages():
+    for old, new in REDIRECTS.items():
+        html = f"""<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8"><title>White Toga CV · Juan Manuel Cornejo</title>
+<link rel="canonical" href="https://jcornejo85.github.io/{new}.html">
+<meta http-equiv="refresh" content="0; url={new}.html">
+<script>location.replace("{new}.html" + location.search + location.hash)</script>
+</head><body><p>Este proyecto ahora se llama White Toga CV: <a href="{new}.html">{new}.html</a></p></body></html>
+"""
+        with open(os.path.join(ROOT, f"{old}.html"), "w", encoding="utf-8") as f:
+            f.write(html)
+
+
 if __name__ == "__main__":
+    redirect_pages()
     for p in PROJECTS:
         project_page(p)
     list_page()

@@ -1,6 +1,6 @@
 # Cómo actualizar el portfolio
 
-Las páginas `index.html`, `proyectos.html`, `generic.html` y las de cada proyecto (`careercraft.html`, `writers.html`, `kocinai.html`, `economia-familiar.html`) **se generan**; no las edites a mano.
+Las páginas `index.html`, `proyectos.html`, `generic.html` y las de cada proyecto (`whitetoga.html`, `writers.html`, `kocinai.html`, `economia-familiar.html`) **se generan**; no las edites a mano.
 
 1. Edita textos o vídeos en `tools/content.py`.
 2. Regenera: `python3 tools/build.py`
